@@ -22,7 +22,7 @@ export default class ChatController {
     async getAll(req, res, next) {
         try {
             //only gets boards by user who is logged in
-            let data = await _chatService.find({ authorId: req.session.uid }).populate('authorId', 'name')
+            let data = await _chatService.find({ author: req.session.uid }).populate('author', 'name')
             return res.send(data)
         }
         catch (err) { next(err) }
@@ -30,7 +30,7 @@ export default class ChatController {
 
     async getMessages(req, res, next) {
         try {
-            let data = await _messageService.find({ chatId: req.params.id }).populate('chatId', '_id').populate('authorId', 'name')
+            let data = await _messageService.find({ chatId: req.params.id }).populate('chatId', '_id').populate('author', 'name')
             return res.send(data)
         } catch (error) { next(error) }
 
@@ -49,7 +49,7 @@ export default class ChatController {
     async create(req, res, next) {
         try {
             //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
-            req.body.authorId = req.session.uid
+            req.body.author = req.session.uid
             let data = await _chatService.create(req.body)
             res.send(data)
         } catch (error) { next(error) }
@@ -69,7 +69,7 @@ export default class ChatController {
 
     async delete(req, res, next) {
         try {
-            await _chatService.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
+            await _chatService.findOneAndRemove({ _id: req.params.id, author: req.session.uid })
             res.send("deleted chat")
         } catch (error) { next(error) }
 

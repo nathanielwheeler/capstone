@@ -17,7 +17,7 @@ export default class MessageController {
     async create(req, res, next) {
         try {
             //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
-            req.body.authorId = req.session.uid
+            req.body.author = req.session.uid
             let data = await _messageService.create(req.body)
             res.send(data)
         } catch (error) { next(error) }
@@ -25,7 +25,7 @@ export default class MessageController {
 
     async edit(req, res, next) {
         try {
-            let data = await _messageService.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, req.body, { new: true })
+            let data = await _messageService.findOneAndUpdate({ _id: req.params.id, author: req.session.uid }, req.body, { new: true })
             if (data) {
                 return res.send(data)
             }
@@ -37,7 +37,7 @@ export default class MessageController {
 
     async delete(req, res, next) {
         try {
-            await _messageService.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
+            await _messageService.findOneAndRemove({ _id: req.params.id, author: req.session.uid })
             res.send("deleted message")
         } catch (error) { next(error) }
 

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
+import Groups from './views/Groups.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -15,6 +17,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/groups',
+      name: 'group',
+      component: Groups
     },
     {
       path: '/about',

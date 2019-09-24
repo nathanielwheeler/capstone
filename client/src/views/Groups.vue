@@ -2,7 +2,7 @@
   <div class="groups">
     <div class="row">
       <div class="col-12">
-        <input type="text" placeholder="search"> 
+        <input type="text" placeholder="search"> <button @click="search" class="btn btn-info"></button> 
        <div v-for="group in groups" :key="groups._id"> 
          <router-link :to="{name: 'group', params: {groupId: group._id}}">
            {{group.name}}

@@ -19,6 +19,11 @@ export default new Router({
       component: Login
     },
     {
+      path: '/groups',
+      name: 'group',
+      component: Groups
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

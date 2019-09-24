@@ -23,16 +23,17 @@
 export default {
   name: "groupChat",
   mounted() {
-    this.$store.despatch('getChat'); 
-  }, 
+    this.$store.despatch("getChat");
+  },
   data() {
     return {};
   },
   computed: {}
-  },
-  methods: {},
-  components: {}
 };
+methods: {
+}
+components: {
+}
 </script>
 
 

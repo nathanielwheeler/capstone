@@ -52,11 +52,6 @@
                       <div class="col-6"> 
                         <div classs="form-group"> 
                           <label for="CONST">CONST</label>
-                          <input type
-
-
-
-
                         <button type="submit" @click="createCharacter()" class="btn btn-primary">Submit</button>
 
             </form>

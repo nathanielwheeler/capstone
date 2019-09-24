@@ -14,6 +14,8 @@ export default new Vuex.Store({
     activeGroup: {},
     currentCharater: {},
     inventory: [],
+    items: {},
+
 
 
 
@@ -25,6 +27,12 @@ export default new Vuex.Store({
     setGroups(state, groups) {
       state.groups = groups
     },
+    setCharacter(state, payload) {
+      state.characters = payload
+    },
+    setItem(state, payload) {
+      state.items = payload
+    }
   },
   actions: {
     async register({ commit, dispatch }, creds) {
@@ -59,6 +67,21 @@ export default new Vuex.Store({
       try {
         let res = await api.get('/Groups')
         commit('setGroup', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async createCharacter({ commit, dispatch }, payload) {
+      try {
+        let res = await api.post('/Characters')
+        commit('creatCharacter', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async getCharacter({ commit, dispatch }, payload) {
+      try {
+        commit('getCharacter({ commit, dispatch}, payload')
       } catch (error) {
         console.error(error)
       }

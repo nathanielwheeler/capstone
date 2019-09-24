@@ -12,16 +12,17 @@ export default class ChatController {
             //NOTE all routes after the authenticate method will require the user to be logged in to access
             .use(Authorize.authenticated)
             .get('', this.getAll)
+            .get('/subscriptions', this.getUserSubscriptions)
+            .post('/subscriptions/:id', this.subscribe)
+            .delete('/subscriptions/:id', this.unsubscribe)
             .get('/:id', this.getById)
             .get('/:id/messages', this.getMessages)
             .post('', this.create)
             .delete('/:id', this.delete)
-            // .put('/:id', this.edit)
-            // Subscriptions
-            //FIXME
-            .get('/subscriptions', this.getUserSubscriptions)
-            .post('/:id/subscriptions', this.subscribe)
-            .delete('/:id/subscriptions', this.unsubscribe)
+        // .put('/:id', this.edit)
+        // Subscriptions
+        //FIXME
+
     }
 
     async getAll(req, res, next) {
@@ -92,33 +93,49 @@ export default class ChatController {
     }
 
     async subscribe(req, res, next) {
-        let chat = req.params.id
-        if (!chat.find({ subscribers: { $in: req.session.uid } })) {
-            try {
-                chat.subscribers.push(req.session.uid)
-            } catch (error) {
-                console.error(error)
-            }
-        } else {
-            throw new Error("You're already subscribed bruh")
+        //NOTE Finds the chat to subscribe to
+        try {
+            let chat = await _chatService.findByIdAndUpdate(req.params.id, { $addToSet: { subscribers: req.session.uid } })
+            res.send("Subscribed!")
+        } catch (error) {
+            next(error)
         }
+
     }
 
-    async unsubscribe(req, res, next) {
-        let chat = req.params.id
-        let index = chat.subscribers.indexOf(req.session.uid)
-        if (index == -1) {
-            throw new Error("You aren't even subscribed bro")
-        } else {
-            try {
-                chat.subscribers.splice(index, 1)
-            } catch (error) {
-                console.error(error)
-            }
-        }
-    }
+    // async unsubscribe(req, res, next) {
+    //     let chat = await _chatService.findByIdAndUpdate(req.params.id, { $deleteFromSet: { subscribers: req.session.uid } })
 
+    //     let chat = await _chatService.findById(req.params.id)
+    //     let index = chat.subscribers.indexOf(req.session.uid)
+    //     if (index == -1) {
+    //         next(new Error("You aren't even subscribed bro"))
+    //     } else {
+    //         try {
+    //             chat.subscribers.splice(index, 1)
+    //             await chat.save()
+    //             res.send("Unsubscribed!")
+    //         } catch (error) {
+    //             console.error(error)
+    //         }
+    //     }
+    // }
 
+    // if (!chat.find({ subscribers: { $in: req.session.uid } })) 
+    //NOTE if the users Id is NOT in the subscribers
+    // if (!chat(req.session.uid)) {
+
+    //         //NOTE Add user id to subscriber array
+    //         chat.subscribers.$push(req.session.uid)
+    //         //NOTE Save Changes
+    //         await chat.save();
+    //         //NOTE notify of success
+    //         
+
+    //     }
+    // } else {
+    //     next(new Error("You're already subscribed bruh"))
+    // }
 
 
 

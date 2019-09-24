@@ -21,7 +21,10 @@ export default new Vuex.Store({
   mutations: {
     setUser(state, user) {
       state.user = user
-    }
+    },
+    setGroups(state, groups) {
+      state.groups = groups
+    },
   },
   actions: {
     async register({ commit, dispatch }, creds) {
@@ -52,5 +55,17 @@ export default new Vuex.Store({
         console.warn(e.message)
       }
     },
-  }
+    async getGroups({ commit, dispatch }, payload) {
+      try {
+        let res = await api.get('/Groups')
+        commit('setGroup', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  },
 })
+
+
+
+

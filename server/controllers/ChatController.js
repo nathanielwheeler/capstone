@@ -28,10 +28,11 @@ export default class ChatController {
         catch (err) { next(err) }
     }
 
+    // NOTE This function returns an array with the most recent message at index 0
     async getMessages(req, res, next) {
         try {
-            let data = await _messageService.find({ chatId: req.params.id }).populate('chatId', '_id').populate('author', 'name')
-            return res.send(data)
+            let data = await _messageService.find({ chat: req.params.id }).populate('chat', '_id').populate('author', 'name')
+            return res.send(data.sort(function (a, b) { return b.createdAt - a.createdAt }))
         } catch (error) { next(error) }
 
     }

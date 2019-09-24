@@ -44,10 +44,12 @@ server.use('/account', new AuthController().router)
 //NOTE we have to import access to our controllers
 import ChatController from './controllers/ChatController'
 import MessageController from './controllers/MessageController'
+import SubscriptionController from './controllers/SubscriptionController'
 
 //NOTE remember the forward slash at the start of your path!
 server.use('/api/chat', new ChatController().router)
 server.use('/api/messages', new MessageController().router)
+server.use('/api/subscriptions', new SubscriptionController().router)
 
 
 

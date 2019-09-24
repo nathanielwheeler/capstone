@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-   not empty
+   This is the home page 
   </div>
 </template>
 

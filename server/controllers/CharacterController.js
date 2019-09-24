@@ -1,7 +1,6 @@
 import express from 'express'
-import ChatService from '../services/ChatService';
 import { Authorize } from '../middleware/authorize.js'
-import MessageService from '../services/MessageService';
+import CharacterService from '../services/CharacterService';
 
 let _characterService = new CharacterService().repository
 
@@ -13,7 +12,7 @@ export default class CharacterController {
             .get('/:id', this.getByUser)
             .post('', this.create)
             .delete('/:id', this.delete)
-        // .put('/:id', this.edit)
+            .put('/:id', this.edit)
 
     }
 
@@ -44,16 +43,16 @@ export default class CharacterController {
 
     }
 
-    // async edit(req, res, next) {
-    //     try {
-    //         let data = await _characterService.findOneAndUpdate({ _id: req.params.id, }, req.body, { new: true })
-    //         if (data) {
-    //             return res.send(data)
-    //         }
-    //         throw new Error("invalid id")
-    //     } catch (error) {
-    //         next(error)
-    //     }
-    // }
+    async edit(req, res, next) {
+        try {
+            let data = await _characterService.findOneAndUpdate({ _id: req.params.id, }, req.body, { new: true })
+            if (data) {
+                return res.send(data)
+            }
+            throw new Error("invalid id")
+        } catch (error) {
+            next(error)
+        }
+    }
 
 }

@@ -12,7 +12,7 @@ let _schema = new Schema({
     //every email must be unique on the database
     email: { type: String, required: true, unique: true },
     hash: { type: String, required: true },
-    chats: { type: ObjectId, reference: 'Chat' }
+
     // TODO when unsubscribing from a party, remove any subscribed chats specific to that party.
 }, { timestamps: true })
 

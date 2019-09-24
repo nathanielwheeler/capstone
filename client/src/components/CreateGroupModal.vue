@@ -39,12 +39,19 @@
 
 <script>
 export default {
-  name: "createGroup",
+  name: "Create-Group-Modal",
   data() {
-    return {};
+    return {
+      newGroup: {}
+    };
   },
   computed: {},
-  methods: {},
+  methods: {
+    createGroup() {
+      this.newGroup.chatId = this.chat._id;
+      this.$store.dispatch("createGroup", this.newGroup);
+    }
+  },
   components: {}
 };
 </script>

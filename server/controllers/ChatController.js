@@ -1,10 +1,10 @@
 import express from 'express'
-import ValueService from '../services/ValueService';
+import ChatService from '../services/ChatService';
 import { Authorize } from '../middleware/authorize.js'
 
-let _valueService = new ValueService().repository
+let _chatService = new ChatService().repository
 
-export default class ValueController {
+export default class ChatController {
     constructor() {
         this.router = express.Router()
             //NOTE all routes after the authenticate method will require the user to be logged in to access
@@ -18,7 +18,7 @@ export default class ValueController {
 
     async getAll(req, res, next) {
         try {
-            let data = await _valueService.find({})
+            let data = await _chatService.find({})
             return res.send(data)
         } catch (error) { next(error) }
 
@@ -26,7 +26,7 @@ export default class ValueController {
 
     async getById(req, res, next) {
         try {
-            let data = await _valueService.findById(req.params.id)
+            let data = await _chatService.findById(req.params.id)
             if (!data) {
                 throw new Error("Invalid Id")
             }
@@ -38,14 +38,14 @@ export default class ValueController {
         try {
             //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
             req.body.authorId = req.session.uid
-            let data = await _valueService.create(req.body)
+            let data = await _chatService.create(req.body)
             res.send(data)
         } catch (error) { next(error) }
     }
 
     async edit(req, res, next) {
         try {
-            let data = await _valueService.findOneAndUpdate({ _id: req.params.id, }, req.body, { new: true })
+            let data = await _chatService.findOneAndUpdate({ _id: req.params.id, }, req.body, { new: true })
             if (data) {
                 return res.send(data)
             }
@@ -57,8 +57,8 @@ export default class ValueController {
 
     async delete(req, res, next) {
         try {
-            await _valueService.findOneAndRemove({ _id: req.params.id })
-            res.send("deleted value")
+            await _chatService.findOneAndRemove({ _id: req.params.id })
+            res.send("deleted chat")
         } catch (error) { next(error) }
 
     }

@@ -9,29 +9,9 @@ export default class MessageController {
         this.router = express.Router()
             //NOTE all routes after the authenticate method will require the user to be logged in to access
             .use(Authorize.authenticated)
-            .get('', this.getAll)
-            .get('/:id', this.getById)
             .post('', this.create)
             .put('/:id', this.edit)
             .delete('/:id', this.delete)
-    }
-
-    async getAll(req, res, next) {
-        try {
-            let data = await _messageService.find({})
-            return res.send(data)
-        } catch (error) { next(error) }
-
-    }
-
-    async getById(req, res, next) {
-        try {
-            let data = await _messageService.findById(req.params.id)
-            if (!data) {
-                throw new Error("Invalid Id")
-            }
-            res.send(data)
-        } catch (error) { next(error) }
     }
 
     async create(req, res, next) {
@@ -45,7 +25,7 @@ export default class MessageController {
 
     async edit(req, res, next) {
         try {
-            let data = await _messageService.findOneAndUpdate({ _id: req.params.id, }, req.body, { new: true })
+            let data = await _messageService.findOneAndUpdate({ _id: req.params.id, authorId: req.session.uid }, req.body, { new: true })
             if (data) {
                 return res.send(data)
             }
@@ -57,7 +37,7 @@ export default class MessageController {
 
     async delete(req, res, next) {
         try {
-            await _messageService.findOneAndRemove({ _id: req.params.id })
+            await _messageService.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
             res.send("deleted message")
         } catch (error) { next(error) }
 

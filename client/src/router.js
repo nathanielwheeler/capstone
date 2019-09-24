@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+<<<<<<< HEAD
+=======
+
+>>>>>>> a74ee1ef5aadd861451a113b0bfc134608a54f49
 
 Vue.use(Router)
 

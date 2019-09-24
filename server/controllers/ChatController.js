@@ -1,6 +1,6 @@
 import express from 'express'
 import ChatService from '../services/ChatService';
-import { Authorize } from '../middleware/authorize.js',
+import { Authorize } from '../middleware/authorize.js'
 import MessageService from '../services/MessageService';
 
 let _chatService = new ChatService().repository
@@ -11,11 +11,21 @@ export default class ChatController {
         this.router = express.Router()
             //NOTE all routes after the authenticate method will require the user to be logged in to access
             .use(Authorize.authenticated)
+            .get('', this.getAll)
             .get('/:id', this.getById)
             .get('/:id/messages', this.getMessages)
             .post('', this.create)
             // .put('/:id', this.edit)
             .delete('/:id', this.delete)
+    }
+
+    async getAll(req, res, next) {
+        try {
+            //only gets boards by user who is logged in
+            let data = await _chatService.find({ authorId: req.session.uid }).populate('authorId', 'name')
+            return res.send(data)
+        }
+        catch (err) { next(err) }
     }
 
     async getMessages(req, res, next) {

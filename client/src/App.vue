@@ -1,43 +1,42 @@
 <template>
   <div id="app">
     <div id="nav">
-       <div class="navBar">
-         <div class="row"> 
-    <h1>P&P</h1> 
-    <button class="nav btn btn-info">Nav</button> 
-    <button class="Current Character btn btn-info">Current Character</button>
-    <button class="Characters btn btn-info">Characters</button> 
-    <button class="Group btn btn-info">Group</button> 
-    <button class="LogOut btn btn-danger">Log Out</button>
-  </div>
-         </div>
+      <div class="navBar">
+        <div class="row">
+          <h1 class="col-4">P&P</h1>
+          <button class="nav btn col-4 btn-info">Nav</button>
+          <button class="Current-Character col-4 btn btn-info">Current Character</button>
+          <button class="Characters col-4 btn btn-info">Characters</button>
+          <button class="Group btn col-4 btn-info">Group</button>
+          <button class="LogOut btn col-4 btn-danger" @click="logout()">Log Out</button>
+        </div>
+      </div>
       <!-- <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link> -->
+      <router-link to="/about">About</router-link>-->
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  name: "App"
+  name: "App",
 
-  // mounted() {
-  //   this.$store.dispatch("/");
-  // },
-  // data() {},
+  data() {
+    return {};
+  },
 
   // computed: {
   //   boards() {
   //     return this.$store.state.boards;
   //   }
   // },
-  // methods: {
-  //   logout() {
-  //     this.$store.dispatch(logout, this.logout);
-  //     this.logout = this.$router.push({ name: "logout" });
-  //   }
-  // }
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      location.reload();
+    }
+  }
 };
 </script> 
 

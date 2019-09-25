@@ -12,7 +12,7 @@ export default class ChatController {
             //NOTE all routes after the authenticate method will require the user to be logged in to access
             .get('', this.getAll)
             .use(Authorize.authenticated)
-            .get('', this.getMyChats)
+            // .get('/', this.getMyChats)
             .get('/subscriptions', this.getUserSubscriptions)
             .post('/subscriptions/:id', this.subscribe)
             .delete('/subscriptions/:id', this.unsubscribe)
@@ -35,14 +35,14 @@ export default class ChatController {
         catch (err) { next(err) }
     }
 
-    async getMyChats(req, res, next) {
-        try {
-            //only gets chats by user who is logged in
-            let data = await _chatService.find({ author: req.session.uid }).populate('author', 'name')
-            return res.send(data)
-        }
-        catch (err) { next(err) }
-    }
+    // async getMyChats(req, res, next) {
+    //     try {
+    //         //only gets chats by user who is logged in
+    //         let data = await _chatService.find({ author: req.session.uid }).populate('author', 'name')
+    //         return res.send(data)
+    //     }
+    //     catch (err) { next(err) }
+    // }
 
 
     // NOTE This function returns an array with the most recent message at index 0

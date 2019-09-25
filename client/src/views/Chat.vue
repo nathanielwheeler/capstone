@@ -1,13 +1,14 @@
 <template>
-  <div class="Chat">
-    <div class="chat">{{chat.title}}</div>
-    <message v-for="message in messages" :messageProp="message" :key="message._id" />
+  <div class="chat">
+    {{chat.title}}
+    <message v-for="message in messages" :messageProp="message" :key="message._id"></message>
   </div>
 </template>
 
 
 <script>
-import Message from "../components/Messages";
+import message from "../components/Message";
+
 export default {
   name: "chat",
   mounted() {
@@ -15,7 +16,6 @@ export default {
     this.$store.dispatch("getChat", chatId);
     this.$store.dispatch("getMessages", chatId);
   },
-
   props: [],
   data() {
     return {};
@@ -30,13 +30,12 @@ export default {
     //   comments() {
     //   return this.$store.state.comments[this.taskProp._id] || [];
     // }
+  },
+  methods: {},
+  components: {
+    message
   }
 };
-methods: {
-}
-components: {
-  Message;
-}
 </script>
 
 

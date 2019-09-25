@@ -1,6 +1,6 @@
 <template>
   <div class="message">
-    <h1>{{this.messageProp.author.name}}</h1>
+    <!-- <h1>{{this.messageProp.author.name}}</h1> -->
     <br />
     {{messageProp.body}}
   </div>

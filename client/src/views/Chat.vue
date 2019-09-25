@@ -1,10 +1,9 @@
 <template>
   <div class="Chat">
     <div class="container-fluid">
-      <div class="chat">{{Chat.title}}</div>
-      <input type="text" placeholder="your message" v-model="newchat.description" required />
+      <div class="chat">{{chat.title}}</div>
     </div>
-    <message v-for="message in meassages" :messageProp="message" :key="message._id" />
+    <message v-for="message in messages" :messageProp="message" :key="message._id" />
   </div>
 </template>
 
@@ -17,13 +16,23 @@ export default {
     this.$store.dispatch("getChat", chatId);
     this.$store.dispatch("getMessages", chatId);
   },
+
+  props: ["chatProp"],
   data() {
-    return {};
+    return {
+      chatId: this.chatProp._id
+    };
   },
   computed: {
-    Chat() {
+    chat() {
       return this.$store.state.currentChat;
+    },
+    messages() {
+      return this.$store.state.messages[chatId] || [];
     }
+    //   comments() {
+    //   return this.$store.state.comments[this.taskProp._id] || [];
+    // }
   }
 };
 methods: {

@@ -25,7 +25,7 @@ export default new Vuex.Store({
     inventory: [],
     items: {},
     chats: [],
-    currrentChat: {},
+    currentChat: {},
     messages: {}
 
 
@@ -45,7 +45,7 @@ export default new Vuex.Store({
       state.characters = payload
     },
     setCurrentChat(state, chat) {
-      state.currrentChat = chat
+      state.currentChat = chat
     },
     setItem(state, payload) {
       state.items = payload

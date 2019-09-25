@@ -44,6 +44,9 @@ export default new Vuex.Store({
     setCharacter(state, payload) {
       state.characters = payload
     },
+    setCurrentChat(state, chat) {
+      state.currrentChat = chat
+    },
     setItem(state, payload) {
       state.items = payload
     },
@@ -116,6 +119,24 @@ export default new Vuex.Store({
       }
 
     },
+
+    async  getChat({ commit, dispatch }, chatId) {
+      try {
+        let res = await api.get("chat/" + chatId)
+        commit('setCurrentChat', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    //     async getBoardById({ commit, dispatch }, boardId) {
+    //   try {
+    //     let res = await api.get(`boards/${boardId}`)
+    //     commit('setActiveBoard', res.data)
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // },
+    ,
     async getMessages({ commit, dispatch }, chatId) {
       try {
         let res = await api.get("chat/" + chatId + "/messages")

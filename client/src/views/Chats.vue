@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "Chats",
+  name: "chats",
   mounted() {
     this.$store.dispatch("getChats");
   },

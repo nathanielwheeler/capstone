@@ -1,7 +1,7 @@
 <template>
   <div class="Chat">
     <div class="container-fluid">
-      <div class="chat">{{chat.author}}, {{chat.description}}</div>
+      <div class="chat">{{Chat.title}}</div>
       <input type="text" placeholder="your message" v-model="newchat.description" required />
     </div>
     <message v-for="message in meassages" :messageProp="message" :key="message._id" />
@@ -11,14 +11,20 @@
 
 <script>
 export default {
-  name: "Chat",
+  name: "chat",
   mounted() {
-    this.$store.despatch("getChat");
+    let chatId = this.$route.params.chatId;
+    this.$store.dispatch("getChat", chatId);
+    this.$store.dispatch("getMessages", chatId);
   },
   data() {
     return {};
   },
-  computed: {}
+  computed: {
+    Chat() {
+      return this.$store.state.currentChat;
+    }
+  }
 };
 methods: {
 }

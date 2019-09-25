@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Groups from './views/Groups.vue'
-import GroupChat from './views/GroupChat.vue'
+import CurrentChat from './views/CurrentChat.vue'
+import Chats from './views/Chats.vue'
 
 
 Vue.use(Router)
@@ -11,12 +12,12 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/home',
+      path: '/',
       name: 'home',
       component: Home
     },
     {
-      path: '/',
+      path: '/login',
       name: 'login',
       component: Login
     },
@@ -26,8 +27,13 @@ export default new Router({
       component: Groups
     },
     {
+      path: '/chats',
+      name: 'chats',
+      component: Chats
+    },
+    {
       path: "*",
-      redirect: '/'
+      redirect: '/login'
     },
     {
       path: '/about',

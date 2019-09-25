@@ -4,7 +4,9 @@
       <div class="navBar">
         <div class="row">
           <h1 class="col-4">P&P</h1>
-          <button class="nav btn col-4 btn-info">Nav</button>
+          <router-link to="/chats" class="col-4">
+            <button class="nav btn btn-info">Chats</button>
+          </router-link>
           <button class="Current-Character col-4 btn btn-info">Current Character</button>
           <button class="Characters col-4 btn btn-info">Characters</button>
           <button class="Group btn col-4 btn-info">Group</button>
@@ -26,15 +28,9 @@ export default {
     return {};
   },
 
-  // computed: {
-  //   boards() {
-  //     return this.$store.state.boards;
-  //   }
-  // },
   methods: {
     logout() {
       this.$store.dispatch("logout");
-      location.reload();
     }
   }
 };

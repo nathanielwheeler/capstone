@@ -25,8 +25,8 @@ export default new Vuex.Store({
     inventory: [],
     items: {},
     chats: [],
-    currrentChat: {}
-
+    currrentChat: {},
+    messages: {}
 
 
 
@@ -46,6 +46,9 @@ export default new Vuex.Store({
     },
     setItem(state, payload) {
       state.items = payload
+    },
+    setMessages(state, data) {
+      Vue.set(state.messages, data.chatID, data.messages)
     }
   },
   actions: {
@@ -113,8 +116,35 @@ export default new Vuex.Store({
       }
 
     },
-  },
-})
+    async getMessages({ commit, dispatch }, chatId) {
+      try {
+        let res = await api.get("chat/" + chatId + "/messages")
+        let data = {
+          chatId,
+          messages: res.data
+        }
+        commit('setMessages', data)
+      }
+      catch (error) {
+        console.error(error)
+      }
+    }
+
+  }
+}
+)
+
+// async getComments({ commit, dispatch }, taskId) {
+
+//   try {
+//     let res = await api.get("tasks/" + taskId + "/comments")
+//     let data = {
+//       taskId,
+//       comments: res.data
+//     }
+//     commit('setComments', data)
+//   } catch (error) { console.error(error) }
+// },
 
 
 

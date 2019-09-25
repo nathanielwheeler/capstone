@@ -3,7 +3,8 @@
     <div class="container-fluid">
       <div class="chat">{{chat.author}}, {{chat.description}}</div>
       <input type="text" placeholder="your message" v-model="newchat.description" required />
-    </div>insert messages here
+    </div>
+    <message v-for="message in meassages" :messageProp="message" :key="message._id" />
   </div>
 </template>
 

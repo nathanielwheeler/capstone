@@ -3,14 +3,20 @@ import express from 'express'
 import cors from 'cors'
 import bp from 'body-parser'
 import DbContext from "./db/dbconfig"
+import Socket from './socket'
 
 const port = process.env.PORT || 3000
 
 //NOTE next we need to create our server
-let server = express()
+let server = express();
+const socketServer = require('http').createServer(server);
+const io = require("socket.io")(socketServer);
+
+
 
 //NOTE Fire up database connection
 DbContext.connect()
+Socket.setIO(io)
 
 //NOTE Creates a reference to the build project on the client (if api only remove this line)
 server.use(express.static(__dirname + '/../client/dist'))
@@ -65,5 +71,7 @@ server.use('*', (req, res, next) => {
   res.status(404).send("Route not found")
 })
 
-
+socketServer.listen(port, () => {
+  console.log("Server running on port:", port)
+})
 server.listen(port, () => { console.log(`Server is running on port: ${port}`) })

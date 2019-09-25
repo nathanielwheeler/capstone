@@ -1,6 +1,7 @@
 import express from 'express'
 import MessageService from '../services/MessageService';
 import { Authorize } from '../middleware/authorize.js'
+import socket from '../socket/index'
 
 let _messageService = new MessageService().repository
 
@@ -19,6 +20,7 @@ export default class MessageController {
             //NOTE the user id is accessable through req.body.uid, never trust the client to provide you this information
             req.body.author = req.session.uid
             let data = await _messageService.create(req.body)
+            socket.notifyMessage(data)
             res.send(data)
         } catch (error) { next(error) }
     }

@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Groups from './views/Groups.vue'
+import GroupChat from './views/GroupChat.vue'
+
 
 Vue.use(Router)
 

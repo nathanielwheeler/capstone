@@ -18,6 +18,29 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "App"
+
+  // mounted() {
+  //   this.$store.dispatch("/");
+  // },
+  // data() {},
+
+  // computed: {
+  //   boards() {
+  //     return this.$store.state.boards;
+  //   }
+  // },
+  // methods: {
+  //   logout() {
+  //     this.$store.dispatch(logout, this.logout);
+  //     this.logout = this.$router.push({ name: "logout" });
+  //   }
+  // }
+};
+</script> 
+
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

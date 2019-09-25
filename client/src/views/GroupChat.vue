@@ -12,7 +12,7 @@
   <div class="chat"> 
     {{chat.author}}, {{chat.description}} 
   </div>
-  <input type="text" placeholder="your message" v-model=newchat.description" required /> 
+  <input type="text" placeholder="your message" v-model="newchat.description" required /> 
     </div>
   </div>
   
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "groupChat",
+  name: "GroupChat",
   mounted() {
     this.$store.despatch("getChat");
   },

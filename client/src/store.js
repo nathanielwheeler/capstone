@@ -51,7 +51,7 @@ export default new Vuex.Store({
       state.items = payload
     },
     setMessages(state, data) {
-      Vue.set(state.messages, data.chatID, data.messages)
+      Vue.set(state.messages, data.chatId, data.messages)
     }
   },
   actions: {

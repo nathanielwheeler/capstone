@@ -1,6 +1,6 @@
 <template>
-  <div class="Messages">
-    {{messageProp.author.name}}
+  <div class="message">
+    <h1>{{this.messageProp.author.name}}</h1>
     <br />
     {{messageProp.body}}
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "Messages",
+  name: "message",
 
   props: ["messageProp"],
   data() {

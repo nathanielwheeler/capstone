@@ -6,7 +6,7 @@
       <button type="submit">Create a Chat</button>
     </form>
     <div v-for="chat in chats" :key="chat._id">
-      <router-link :to="{name:'chat' , params: {chatId:chat._id}}">{{chat.title}}</router-link>
+      <router-link :to="{name:'chat' , params: {chatId: chat._id}}">{{chat.title}}</router-link>
     </div>
   </div>
 </template>

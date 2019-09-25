@@ -38,6 +38,7 @@ export default class ChatController {
     async getMessages(req, res, next) {
         try {
             let data = await _messageService.find({ chat: req.params.id }).populate('chat', '_id').populate('author', 'name')
+            // @ts-ignore
             return res.send(data.sort(function (a, b) { return b.createdAt - a.createdAt }))
         } catch (error) { next(error) }
 
@@ -95,6 +96,7 @@ export default class ChatController {
     async subscribe(req, res, next) {
         //NOTE Finds the chat to subscribe to
         try {
+            // @ts-ignore
             let chat = await _chatService.findByIdAndUpdate(req.params.id, { $addToSet: { subscribers: req.session.uid } })
             res.send("Subscribed!")
         } catch (error) {
@@ -105,6 +107,7 @@ export default class ChatController {
 
     async unsubscribe(req, res, next) {
         try {
+            // @ts-ignore
             let chat = await _chatService.findByIdAndUpdate(req.params.id, { $pull: { subscribers: req.session.uid } })
             res.send("Unsubscribed!")
         } catch (error) {

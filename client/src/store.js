@@ -128,14 +128,6 @@ export default new Vuex.Store({
         console.error(error)
       }
     }
-    //     async getBoardById({ commit, dispatch }, boardId) {
-    //   try {
-    //     let res = await api.get(`boards/${boardId}`)
-    //     commit('setActiveBoard', res.data)
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
-    // },
     ,
     async getMessages({ commit, dispatch }, chatId) {
       try {

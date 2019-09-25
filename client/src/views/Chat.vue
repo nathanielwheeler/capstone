@@ -1,16 +1,16 @@
 <template>
-  <div class="groupChat">
+  <div class="Chat">
     <div class="container-fluid">
       <div class="chat">{{chat.author}}, {{chat.description}}</div>
       <input type="text" placeholder="your message" v-model="newchat.description" required />
-    </div>
+    </div>insert messages here
   </div>
 </template>
 
 
 <script>
 export default {
-  name: "CurrentChat",
+  name: "Chat",
   mounted() {
     this.$store.despatch("getChat");
   },

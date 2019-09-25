@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Groups from './views/Groups.vue'
-import CurrentChat from './views/CurrentChat.vue'
+import Chat from './views/Chat.vue'
 import Chats from './views/Chats.vue'
 
 
@@ -31,6 +31,13 @@ export default new Router({
       name: 'chats',
       component: Chats
     },
+    {
+      path: '/chats/:chatId',
+      name: 'chat',
+      props: true,
+      component: Chat
+    },
+
     {
       path: "*",
       redirect: '/login'

@@ -79,7 +79,7 @@ export default new Vuex.Store({
     },
 
 
-    async getChats({ commit, dispatch }, payload) {
+    async getChats({ commit, dispatch }) {
       try {
         let res = await api.get('/chat')
         commit('setChats', res.data)
@@ -105,7 +105,7 @@ export default new Vuex.Store({
 
     async addChat({ commit, dispatch }, chatData) {
       try {
-        api.post('chat', chatData)
+        await api.post('chat', chatData)
         dispatch('getChats')
       } catch (error) {
         console.error(error)

@@ -4,6 +4,15 @@ import Axios from 'axios'
 import router from './router'
 import AuthService from './AuthService'
 
+
+let base = window.location.host.includes('localhost:8080') ? '//localhost:3000/' : '/'
+
+let api = Axios.create({
+  baseURL: base + "api/",
+  timeout: 3000,
+  withCredentials: true
+})
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -29,8 +38,8 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user
     },
-    setGroups(state, groups) {
-      state.groups = groups
+    setChats(state, chats) {
+      state.chats = chats
     },
     setCharacter(state, payload) {
       state.characters = payload
@@ -68,29 +77,42 @@ export default new Vuex.Store({
         console.warn(e.message)
       }
     },
-    async getGroups({ commit, dispatch }, payload) {
+
+
+    async getChats({ commit, dispatch }, payload) {
       try {
-        let res = await api.get('/Groups')
-        commit('setGroup', res.data)
+        let res = await api.get('/chat')
+        commit('setChats', res.data)
       } catch (error) {
         console.error(error)
       }
     },
-    async createCharacter({ commit, dispatch }, payload) {
+    // async createCharacter({ commit, dispatch }, payload) {
+    //   try {
+    //     let res = await api.post('/Characters')
+    //     commit('creatCharacter', res.data)
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // },
+    // async getCharacter({ commit, dispatch }, payload) {
+    //   try {
+    //     commit('getCharacter({ commit, dispatch}, payload')
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // }
+
+    async addChat({ commit, dispatch }, chatData) {
       try {
-        let res = await api.post('/Characters')
-        commit('creatCharacter', res.data)
+        api.post('chat', chatData)
+        dispatch('getChats')
       } catch (error) {
         console.error(error)
+
       }
+
     },
-    async getCharacter({ commit, dispatch }, payload) {
-      try {
-        commit('getCharacter({ commit, dispatch}, payload')
-      } catch (error) {
-        console.error(error)
-      }
-    }
   },
 })
 

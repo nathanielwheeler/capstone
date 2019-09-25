@@ -15,6 +15,8 @@ export default new Vuex.Store({
     currentCharater: {},
     inventory: [],
     items: {},
+    chats: [],
+    currrentChat: {}
 
 
 
@@ -42,7 +44,7 @@ export default new Vuex.Store({
       try {
         let user = await AuthService.Register(creds)
         commit('setUser', user)
-        router.push({ name: "boards" })
+        router.push({ name: "home" })
       } catch (e) {
         console.warn(e.message)
       }
@@ -51,7 +53,7 @@ export default new Vuex.Store({
       try {
         let user = await AuthService.Login(creds)
         commit('setUser', user)
-        router.push({ name: "boards" })
+        router.push({ name: "home" })
       } catch (e) {
         console.warn(e.message)
       }

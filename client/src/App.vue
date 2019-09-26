@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <div class="navBar">
+      <div class="container-fluid">
         <div class="row">
           <router-link to="/" class="col-4">
             <h1>P&P</h1>
@@ -14,11 +14,12 @@
           <button class="Group btn col-4 btn-info">Group</button>
           <button class="LogOut btn col-4 btn-danger" @click="logout()">Log Out</button>
         </div>
+
+        <!-- <router-link to="/">Home</router-link>
+        <router-link to="/about">About</router-link>-->
+        <router-view />
       </div>
-      <!-- <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>-->
     </div>
-    <router-view />
   </div>
 </template>
 

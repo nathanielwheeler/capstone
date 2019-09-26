@@ -124,7 +124,7 @@ export default class ChatController {
     async unsubscribe(req, res, next) {
         try {
             // @ts-ignore
-            let chat = await _chatService.findOneAndDelete(req.params.id, { $deleteFromSet: { subscribers: req.session.uid } })
+            let chat = await _chatService.findByIdAndUpdate(req.params.id, { $pull: { subscribers: req.session.uid } })
             res.send("Unsubscribed!")
         } catch (error) {
             next(error)

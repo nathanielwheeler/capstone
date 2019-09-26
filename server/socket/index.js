@@ -17,7 +17,7 @@ class Socket {
   }
 
   notifyMessage(data) {
-    this.io.emit('create', data)
+    this.io.emit('addMessage', data)
   }
 
 

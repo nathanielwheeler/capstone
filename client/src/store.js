@@ -141,8 +141,16 @@ export default new Vuex.Store({
       catch (error) {
         console.error(error)
       }
+    },
+    async addMessage({ commit, dispatch }, message) {
+      try {
+        let res = await api.post("/messages", message)
+        dispatch("getMessages", message.chat)
+      }
+      catch (error) {
+        console.error(error)
+      }
     }
-
   }
 }
 )

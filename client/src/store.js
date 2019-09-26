@@ -30,7 +30,8 @@ export default new Vuex.Store({
     items: {},
     chats: [],
     currentChat: {},
-    messages: {}
+    messages: {},
+    subscribedChats: []
 
 
 
@@ -41,12 +42,16 @@ export default new Vuex.Store({
       state.chats = []
       state.messages = {}
       state.currentChat = {}
+      state.subscribedChats = []
     },
     setUser(state, user) {
       state.user = user
     },
     setChats(state, chats) {
       state.chats = chats
+    },
+    setSubscribedChats(state, chats) {
+      state.subscribedChats = chats
     },
     setCharacter(state, payload) {
       state.characters = payload
@@ -145,6 +150,16 @@ export default new Vuex.Store({
       try {
         let res = await api.get("chat/" + chatId)
         commit('setCurrentChat', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    ,
+
+    async getSubscribedChats({ commit, dispatch }) {
+      try {
+        let res = await api.get("chat/subscriptions")
+        commit('setSubscribedChats', res.data)
       } catch (error) {
         console.error(error)
       }

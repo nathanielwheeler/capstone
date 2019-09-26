@@ -8,13 +8,9 @@
     <message v-for="message in messages" :messageProp="message" :key="message._id"></message>
   </div>
       </div>
-        <div class="row"> 
-        <div class="col-12"> 
          <messageInput /> 
         </div>
       </div>
-    </div>
-  </div>
 </template>
 
 
@@ -54,6 +50,9 @@ export default {
 
 
 <style scoped>
+messageInput {
+  text-align: center;
+}
 .messageBox {
   height: 450px;
   overflow-y: auto;

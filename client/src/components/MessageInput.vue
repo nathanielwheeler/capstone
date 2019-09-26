@@ -1,10 +1,10 @@
 <template>
   <div class="message-input">
-   <div class="input-group mb-3">
+   <div class="input-group flex-nowrap mb-3">
     <form @submit.prevent="addMessage">
-      <input type="text" placeholder="message" v-model="message.body" required />
+      <input class="form-control"  type="text" placeholder="message" v-model="message.body" required />
       <div class="input-group-append">
-         <button class="btn btn-info" type="submit">Send</button>
+         <span class="btn btn-info input-group-text" type="submit">Send</span>
       </div>
     </form>
   </div>

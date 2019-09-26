@@ -108,8 +108,10 @@ export default class ChatController {
         //NOTE Finds the chat to subscribe to
         try {
             // @ts-ignore
+
             let chat = await _chatService.findByIdAndUpdate(req.params.id, { $addToSet: { subscribers: req.session.uid } })
             res.send("Subscribed!")
+
         } catch (error) {
             next(error)
         }

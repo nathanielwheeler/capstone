@@ -156,15 +156,7 @@ export default new Vuex.Store({
     }
     ,
 
-    async getSubscribedChats({ commit, dispatch }) {
-      try {
-        let res = await api.get("chat/subscriptions")
-        commit('setSubscribedChats', res.data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    ,
+
     async getMessages({ commit, dispatch }, chatId) {
       try {
         let res = await api.get("chat/" + chatId + "/messages")
@@ -184,6 +176,24 @@ export default new Vuex.Store({
         dispatch("getMessages", message.chat)
       }
       catch (error) {
+        console.error(error)
+      }
+    },
+    async getSubscribedChats({ commit, dispatch }) {
+      try {
+        let res = await api.get("chat/subscriptions")
+        commit('setSubscribedChats', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    ,
+
+    async unsubscribe({ commit, dispatch }, chatId) {
+      try {
+        let res = await api.delete('/chat/subscriptions/' + chatId)
+        dispatch('getSubscribedChats')
+      } catch (error) {
         console.error(error)
       }
     }

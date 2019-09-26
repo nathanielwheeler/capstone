@@ -6,7 +6,8 @@ const _model = new Schema({
     title: { type: String, required: true },
     description: { type: String },
     author: { type: ObjectId, ref: 'User', required: true },
-    subscribers: [{ type: ObjectId, ref: 'User' }]
+    subscribers: [{ type: ObjectId, ref: 'User' }],
+    messageCount: { type: Number }
 }, { timestamps: true })
 
 export default class ChatService {

@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row">  
         <h3 class="col-12"> {{chat.title}}</h3>
-      <div class="col-12 d-flex flex-column-reverse">
+      <div class="messageBox col-12 d-flex flex-column-reverse border " v-chat-scroll>
    
     <message v-for="message in messages" :messageProp="message" :key="message._id"></message>
   </div>
@@ -55,6 +55,12 @@ export default {
 
 
 <style scoped>
+.messageBox {
+  height: 450px;
+}
+h3 {
+  text-align: center;
+}
 .chat {
   text-align: center;
 }

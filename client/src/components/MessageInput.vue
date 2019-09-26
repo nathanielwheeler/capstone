@@ -47,7 +47,7 @@ export default {
 <style scoped>
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 70px;
+  grid-template-columns: 1fr 65px;
   grid-template-rows: auto;
   grid-template-areas: "input button";
 }
@@ -57,6 +57,6 @@ export default {
 }
 .grid-button {
   grid-area: button;
-  max-width: 70px;
+  max-width: 65px;
 }
 </style>

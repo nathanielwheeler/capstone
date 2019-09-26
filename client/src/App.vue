@@ -5,7 +5,7 @@
         <div class="row">
           <h1 class="col-4">P&P</h1>
           <router-link to="/chats" class="col-4">
-            <button class="nav btn btn-info">Chats</button>
+            <button class="Chats btn btn-info">Chats</button>
           </router-link>
           <button class="Current-Character col-4 btn btn-info">Current Character</button>
           <button class="Characters col-4 btn btn-info">Characters</button>
@@ -56,12 +56,12 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-.nav {
+.Chats {
   border-radius: 20%;
   width: 80px;
   height: 40px;
 }
-.Current {
+.Current-Character {
   border-radius: 20%;
   width: 80px;
   height: 40px;

@@ -37,7 +37,6 @@ export default {
         //author: this.user._id,
         chat: this.$route.params.chatId
       };
-      debugger;
       this.$store.dispatch("addMessage", message);
       this.message = {};
     }

@@ -57,6 +57,7 @@ export default {
 <style scoped>
 .messageBox {
   height: 450px;
+  overflow-y: auto;
 }
 h3 {
   text-align: center;
@@ -68,6 +69,7 @@ h3 {
   border-radius: 20%;
   width: 80px;
   height: 40px;
+  z-index: 10000;
 }
 .Current {
   border-radius: 20%;

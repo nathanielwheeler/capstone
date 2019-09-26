@@ -26,11 +26,13 @@ export default class ChatController {
 
     }
 
+    // @ts-ignore
     async getAll(req, res, next) {
         try {
             //only gets boards by user who is logged in
             let data = await _chatService.find({})
-            return res.send(data)
+            // @ts-ignore
+            return res.send(data.sort(function (a, b) { return b.createdAt - a.createdAt }))
         }
         catch (err) { next(err) }
     }
@@ -109,6 +111,7 @@ export default class ChatController {
         try {
             // @ts-ignore
 
+            // @ts-ignore
             let chat = await _chatService.findByIdAndUpdate(req.params.id, { $addToSet: { subscribers: req.session.uid } })
             res.send("Subscribed!")
 
@@ -120,6 +123,7 @@ export default class ChatController {
 
     async unsubscribe(req, res, next) {
         try {
+            // @ts-ignore
             // @ts-ignore
             let chat = await _chatService.findByIdAndUpdate(req.params.id, { $pull: { subscribers: req.session.uid } })
             res.send("Unsubscribed!")

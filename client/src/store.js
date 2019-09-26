@@ -38,6 +38,9 @@ export default new Vuex.Store({
   mutations: {
     resetState(state) {
       state.user = {}
+      state.chats = []
+      state.messages = {}
+      state.currentChat = {}
     },
     setUser(state, user) {
       state.user = user

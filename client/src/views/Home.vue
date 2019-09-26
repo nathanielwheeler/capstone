@@ -1,14 +1,25 @@
 <template>
   <div class="home">
-   This is the home page 
+    Welcome to Post & Play, an app that lets people play tabletop games, without the tabletop!
+    <br />
+    <div v-if="user._id"></div>
+    <div v-else>
+      <router-link to="/login">login</router-link>to join a chat, keep track of basic character stats, and have fun!
+    </div>
   </div>
 </template>
+
 
 <script>
 // @ is an alias to /src
 
 export default {
   name: "home",
-  components: {}
+  components: {},
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
+  }
 };
 </script>

@@ -3,7 +3,9 @@
     <div id="nav">
       <div class="navBar">
         <div class="row">
-          <h1 class="col-4">P&P</h1>
+          <router-link to="/" class="col-4">
+            <h1>P&P</h1>
+          </router-link>
           <router-link to="/chats" class="col-4">
             <button class="Chats btn btn-info">Chats</button>
           </router-link>

@@ -10,6 +10,9 @@
 <script>
 export default {
   name: "subscribedChats",
+  mounted() {
+    this.$store.dispatch("getSubscribedChats");
+  },
   data() {
     return {};
   },

@@ -1,14 +1,12 @@
 <template>
   <div class="message-input">
-   <div class="input-group flex-nowrap mb-3">
-    <form @submit.prevent="addMessage">
-      <input class="form-control"  type="text" placeholder="message" v-model="message.body" required />
-      <div class="input-group-append">
-         <span class="btn btn-info input-group-text" type="submit">Send</span>
+    <form class="grid-container" @submit.prevent="addMessage">
+      <input class="grid-input" type="text" placeholder="message" v-model="message.body" required />
+      <div class="grid-button">
+        <button class="btn btn-info" type="submit">Send</button>
       </div>
     </form>
   </div>
-</div>
 </template>
 
 
@@ -47,4 +45,18 @@ export default {
 
 
 <style scoped>
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 65px;
+  grid-template-rows: auto;
+  grid-template-areas: "input button";
+}
+.grid-input {
+  grid-area: input;
+  width: 100%;
+}
+.grid-button {
+  grid-area: button;
+  max-width: 65px;
+}
 </style>

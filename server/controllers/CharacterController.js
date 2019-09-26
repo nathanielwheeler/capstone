@@ -9,16 +9,26 @@ export default class CharacterController {
         this.router = express.Router()
             //NOTE all routes after the authenticate method will require the user to be logged in to access
             .use(Authorize.authenticated)
-            .get('/:id', this.getByUser)
+            .get('', this.getCharacters)
+            .get('/:id', this.getById)
             .post('', this.create)
             .delete('/:id', this.delete)
             .put('/:id', this.edit)
 
     }
 
-    async getByUser(req, res, next) {
+    async getCharacters(req, res, next) {
         try {
-            let data = await _characterService.findById(req.session.uid)
+            let data = await _characterService.find({ author: req.session.uid })
+            return res.send(data)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    async getById(req, res, next) {
+        try {
+            let data = await _characterService.findById(req.params.id)
             if (!data) {
                 throw new Error("Invalid Id")
             }

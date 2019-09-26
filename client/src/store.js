@@ -65,7 +65,7 @@ export default new Vuex.Store({
         console.log('Connected to socket')
       })
       socket.on('addMessage', data => {
-        commit('getMessages', data)
+        dispatch('getMessages', data.chat)
       })
     },
     joinRoom({ commit, dispatch }, boardId) { socket.emit('join', { boardId }) }

@@ -3,6 +3,7 @@
     Welcome to Post & Play, an app that lets people play tabletop games, without the tabletop!
     <br />
     <div v-if="user._id">
+      Your Current Chats:
       <subscribed-chats />
     </div>
     <div v-else>

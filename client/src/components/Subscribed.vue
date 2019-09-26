@@ -1,7 +1,20 @@
 <template>
   <div class="subscribedChats">
+    <div class="row"></div>
     <div v-for="chat in chats" :key="chat._id">
-      <router-link :to="{name:'chat' , params: {chatId: chat._id}}">{{chat.title}}</router-link>
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <router-link :to="{name:'chat' , params: {chatId: chat._id}}" class="col-6">{{chat.title}}</router-link>
+          <button
+            type="button"
+            class="btn btn-danger col-1 mybutton"
+            @click="unsubscribe(chat._id)"
+          >
+            <b>-</b>
+          </button>
+        </div>
+      </div>
+      <br />
     </div>
   </div>
 </template>
@@ -21,11 +34,18 @@ export default {
       return this.$store.state.subscribedChats;
     }
   },
-  methods: {},
+  methods: {
+    unsubscribe(chatId) {
+      this.$store.dispatch("unsubscribe", chatId);
+    }
+  },
   components: {}
 };
 </script>
 
 
 <style scoped>
+.mybutton {
+  padding: 0px;
+}
 </style>

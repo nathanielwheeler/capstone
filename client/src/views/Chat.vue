@@ -2,9 +2,10 @@
  
   <div class="chat">
     <div class="container-fluid">
-      <div class="row"> 
+      <div class="row">  
+        <h3 class="col-12"> {{chat.title}}</h3>
       <div class="col-12 d-flex flex-column-reverse">
-    {{chat.title}}
+   
     <message v-for="message in messages" :messageProp="message" :key="message._id"></message>
   </div>
       </div>

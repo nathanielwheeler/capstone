@@ -3,6 +3,10 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 import router from './router'
 import AuthService from './AuthService'
+import io from "socket.io-client"
+
+let socket = {};
+
 
 
 let base = window.location.host.includes('localhost:8080') ? '//localhost:3000/' : '/'
@@ -55,6 +59,20 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    initializeSocket({ commit, dispatch }) {
+      socket = io('//localhost:3000')
+      socket.on('CONNECTED', data => {
+        console.log('Connected to socket')
+      })
+      socket.on('addMessage', data => {
+        commit('getMessages', data)
+      })
+    },
+    joinRoom({ commit, dispatch }, boardId) { socket.emit('join', { boardId }) }
+    ,
+    leaveRoom({ commit, dispatch }, boardId) {
+      socket.emit('leave', { boardId })
+    },
     async register({ commit, dispatch }, creds) {
       try {
         let user = await AuthService.Register(creds)
@@ -141,8 +159,16 @@ export default new Vuex.Store({
       catch (error) {
         console.error(error)
       }
+    },
+    async addMessage({ commit, dispatch }, message) {
+      try {
+        let res = await api.post("/messages", message)
+        dispatch("getMessages", message.chat)
+      }
+      catch (error) {
+        console.error(error)
+      }
     }
-
   }
 }
 )

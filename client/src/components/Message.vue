@@ -1,8 +1,8 @@
 <template>
   <div class="message">
     <!-- <h1>{{this.messageProp.author.name}}</h1> -->
-    <br />
-    {{messageProp.body}}
+    <br /> 
+    <strong> {{messageProp.author.name}}: </strong> {{messageProp.body}}
   </div>
 </template>
 

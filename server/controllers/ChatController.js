@@ -112,9 +112,6 @@ export default class ChatController {
             let chat = await _chatService.findByIdAndUpdate(req.params.id, { $addToSet: { subscribers: req.session.uid } })
             res.send("Subscribed!")
 
-
-            res.send("You are already subscribed")
-
         } catch (error) {
             next(error)
         }

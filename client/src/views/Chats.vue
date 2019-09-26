@@ -42,4 +42,7 @@ export default {
 
 
 <style scoped>
+.chats {
+  text-align: center;
+}
 </style>

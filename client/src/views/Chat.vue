@@ -1,13 +1,26 @@
 <template>
+ 
   <div class="chat">
+    <div class="container-fluid">
+      <div class="row"> 
+      <div class="col-12 d-flex flex-column-reverse">
     {{chat.title}}
     <message v-for="message in messages" :messageProp="message" :key="message._id"></message>
+  </div>
+      </div>
+        <div class="row"> 
+        <div class="col-12"> 
+         <messageInput /> 
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 
 <script>
 import message from "../components/Message";
+import messageInput from "../components/MessageInput";
 
 export default {
   name: "chat",
@@ -33,13 +46,17 @@ export default {
   },
   methods: {},
   components: {
-    message
+    message,
+    messageInput
   }
 };
 </script>
 
 
 <style scoped>
+.chat {
+  text-align: center;
+}
 .nav {
   border-radius: 20%;
   width: 80px;

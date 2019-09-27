@@ -48,6 +48,7 @@ export default {
     getCharacters() {},
 
     createCharacter() {
+      debugger;
       this.$store.dispatch("createCharacter", this.newCharacter);
       this.newCharacter = { name: "", stats: "", description: "" };
     }

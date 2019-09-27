@@ -6,13 +6,18 @@ const _model = new Schema({
     name: { type: String, required: true },
     author: { type: ObjectId, ref: 'User', required: true },
     stats: {
-        strength: { type: Number },
-        dexterity: { type: Number },
-        constitution: { type: Number },
-        charisma: { type: Number },
-        intelligence: { type: Number },
-        wisdom: { type: Number },
+        type: String
+    },
+    description: { type: String },
+    style: {
+        type: Object,
+        default: {
+            color: '#eee8d5',
+            background: '#002b36',
+            borderColor: '#839496',
+        },
     }
+
 }, { timestamps: true })
 
 export default class CharacterService {

@@ -32,7 +32,7 @@ export default {
   },
   computed: {},
   methods: {
-    editMessage() {
+    editMessage(message) {
       this.$store.dispatch("editMessage", message);
     },
     deleteMessage(message) {

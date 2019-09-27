@@ -154,7 +154,10 @@ export default new Vuex.Store({
       }
     },
 
-    async createCharacter({ commit, dispatch }, characterData) {
+    async createCharacter({
+      commit,
+      dispatch
+    }, characterData) {
       try {
         await api.post('character', characterData)
         dispatch('getCharacters')
@@ -162,7 +165,10 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async getCharacters({ commit, dispatch }, payload) {
+    async getCharacters({
+      commit,
+      dispatch
+    }, payload) {
       try {
         let res = await api.get('/character')
         commit('setCharacter', payload)
@@ -240,8 +246,9 @@ export default new Vuex.Store({
       dispatch
     }, payload) {
       try {
+        debugger
         let res = await api.put('/messages/' + payload._id)
-        dispatch('editMessages', payload.chat._id)
+        dispatch('editMessage', payload.chat._id)
       } catch (error) {
         console.error(error)
       }
@@ -270,7 +277,10 @@ export default new Vuex.Store({
       }
     },
 
-    async subscribe({ commit, dispatch }, chatId) {
+    async subscribe({
+      commit,
+      dispatch
+    }, chatId) {
       try {
         let res = await api.post('/chat/subscriptions/' + chatId)
         dispatch('getChats')

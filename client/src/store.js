@@ -196,6 +196,16 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
+    },
+
+    async subscribe({ commit, dispatch }, chatId) {
+      try {
+        let res = await api.post('/chat/subscriptions/' + chatId)
+        dispatch('getChats')
+
+      } catch (error) {
+
+      }
     }
   }
 }

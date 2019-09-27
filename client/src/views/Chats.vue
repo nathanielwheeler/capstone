@@ -1,16 +1,17 @@
 <template>
   <div class="Chats">
-    <div class="col-12"></div>
-    <form @submit.prevent="addChat">
-      <input type="text" placeholder="title" v-model="newChat.title" required />
-      <input type="text" placeholder="description" v-model="newChat.description" />
-      <button type="submit">Create a Chat</button>
-    </form>
+    <div class="col-12">
+      <form @submit.prevent="addChat">
+        <input type="text" placeholder="title" v-model="newChat.title" required />
+        <input type="text" placeholder="description" v-model="newChat.description" />
+        <button type="submit">Create a Chat</button>
+      </form>
+    </div>
     <div v-for="chat in chats" :key="chat._id">
-      <div>
+      <div class="col-12">
         <router-link :to="{name:'chat' , params: {chatId: chat._id}}">{{chat.title}}</router-link>
 
-        <button class="btn btn-primary mybutton">
+        <button class="btn btn-primary mybutton" @click="subscribe(chat._id)">
           <b>+</b>
         </button>
       </div>
@@ -42,6 +43,9 @@ export default {
     addChat() {
       this.$store.dispatch("addChat", this.newChat);
       this.newChat = { title: "", description: "" };
+    },
+    subscribe(chatId) {
+      this.$store.dispatch("subscribe", chatId);
     }
   },
   components: {}

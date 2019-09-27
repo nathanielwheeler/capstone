@@ -44,6 +44,7 @@ export default new Vuex.Store({
       state.messages = {}
       state.currentChat = {}
       state.subscribedChats = []
+      state.characters = []
     },
     setUser(state, user) {
       state.user = user
@@ -130,7 +131,7 @@ export default new Vuex.Store({
     }) {
       try {
         let success = await AuthService.Logout()
-        if (!success) {}
+        if (!success) { }
         commit('resetState')
         router.push({
           name: "login"
@@ -152,21 +153,23 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    // async createCharacter({ commit, dispatch }, payload) {
-    //   try {
-    //     let res = await api.post('/Characters')
-    //     commit('creatCharacter', res.data)
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
-    // },
-    // async getCharacter({ commit, dispatch }, payload) {
-    //   try {
-    //     commit('getCharacter({ commit, dispatch}, payload')
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
-    // }
+
+    async createCharacter({ commit, dispatch }, characterData) {
+      try {
+        await api.post('character', characterData)
+        dispatch('getCharacters')
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async getCharacters({ commit, dispatch }, payload) {
+      try {
+        let res = await api.get('/character')
+        commit('setCharacter', payload)
+      } catch (error) {
+        console.error(error)
+      }
+    },
 
     async addChat({
       commit,
@@ -232,6 +235,17 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async editMessage({
+      commit,
+      dispatch
+    }, payload) {
+      try {
+        let res = await api.put('/messages/' + payload._id)
+        dispatch('editMessages', payload.chat._id)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async getSubscribedChats({
       commit,
       dispatch
@@ -253,6 +267,16 @@ export default new Vuex.Store({
         dispatch('getSubscribedChats')
       } catch (error) {
         console.error(error)
+      }
+    },
+
+    async subscribe({ commit, dispatch }, chatId) {
+      try {
+        let res = await api.post('/chat/subscriptions/' + chatId)
+        dispatch('getChats')
+
+      } catch (error) {
+
       }
     }
   }

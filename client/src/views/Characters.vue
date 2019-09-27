@@ -44,7 +44,14 @@ export default {
       return this.$store.state.characters;
     }
   },
-  methods: {},
+  methods: {
+    getCharacters() {},
+
+    createCharacter() {
+      this.$store.dispatch("createCharacter", this.newCharacter);
+      this.newCharacter = { name: "", stats: "", description: "" };
+    }
+  },
   components: {
     Character,
     CreateCharacterModal

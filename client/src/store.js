@@ -159,7 +159,7 @@ export default new Vuex.Store({
       dispatch
     }, characterData) {
       try {
-        await api.post('character', characterData)
+        await api.post('characters', characterData)
         dispatch('getCharacters')
       } catch (error) {
         console.error(error)

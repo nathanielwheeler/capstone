@@ -25,7 +25,7 @@
                 <label for="character class">Character Description</label>
                 <input type="text" class="form-control" id="characterDescription" placeholder="Character Description"
                   v-model="newCharacter.description" />
-                        <button type="submit" @click="createCharacter()" class="btn btn-primary">Submit</button>
+                        <button type="submit" @click="createCharacter(user)" class="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>
@@ -47,10 +47,15 @@ export default {
       newCharacter: {}
     };
   },
-  computed: {},
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
+  },
   methods: {
-    createCharacter() {
-      this.newCharacter.authorId = this.author._id;
+    createCharacter(user) {
+      debugger;
+      this.newCharacter.authorId = user._id;
       this.$store.dispatch("createCharacter", this.newCharacter);
       this.newCharacter = {};
     }

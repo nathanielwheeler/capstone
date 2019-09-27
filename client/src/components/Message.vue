@@ -16,10 +16,10 @@
     <div class="row" v-else>
       <!-- <h1>{{this.messageProp.author.name}}</h1> -->
       <br />
-      <div class="col-3 col-md-2">
+      <div class="col-3 col-md-2 text-right">
         <strong>{{messageProp.author.name}}:</strong>
       </div>
-      <div class="col-9 col-md-10">
+      <div class="col-9 col-md-10 text-left">
         {{messageProp.body}}
         <span class="dropdown">
           <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
@@ -69,4 +69,8 @@ export default {
 
 
 <style scoped>
+.dialogue-box {
+  border: 1px solid black;
+  padding: 10px;
+}
 </style>

@@ -170,7 +170,7 @@ export default new Vuex.Store({
       dispatch
     }, payload) {
       try {
-        let res = await api.get('/character')
+        let res = await api.get('/characters')
         commit('setCharacter', payload)
       } catch (error) {
         console.error(error)

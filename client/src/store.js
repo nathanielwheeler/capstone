@@ -232,6 +232,17 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async editMessage({
+      commit,
+      dispatch
+    }, payload) {
+      try {
+        let res = await api.put('/messages/' + payload._id)
+        dispatch('editMessages', payload.chat._id)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async getSubscribedChats({
       commit,
       dispatch

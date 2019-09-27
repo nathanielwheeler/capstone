@@ -8,7 +8,7 @@
       <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
       <div class="dropdown-menu">
         <a @click="editMessage" class="dropdown-item">edit</a>
-        <a @click="deleteMessage" class="dropdown-item">delete</a>
+        <a @click="deleteMessage(messageProp)" class="dropdown-item">delete</a>
       </div>
     </div>
   </div>
@@ -23,13 +23,20 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    let payload = {
+      author: this.messageProp.author._id,
+      chatId: this.messageProp.chat._id,
+      messageId: this.messageProp._id
+    };
+  },
   computed: {},
   methods: {
     editMessage() {
-      this.$store.dispatch("editMessage", messageProp);
+      this.$store.dispatch("editMessage", payload);
     },
-    deleteMessage() {
-      this.$store.dispatch("deleteMessage", messageProp);
+    deleteMessage(message) {
+      this.$store.dispatch("deleteMessage", message);
     }
   },
 

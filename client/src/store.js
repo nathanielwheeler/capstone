@@ -31,7 +31,8 @@ export default new Vuex.Store({
     chats: [],
     currentChat: {},
     messages: {},
-    subscribedChats: []
+    subscribedChats: [],
+    currentMessage: {},
 
 
 
@@ -68,7 +69,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    initializeSocket({ commit, dispatch }) {
+    initializeSocket({
+      commit,
+      dispatch
+    }) {
       socket = io('//localhost:3000')
       socket.on('CONNECTED', data => {
         console.log('Connected to socket')
@@ -77,42 +81,71 @@ export default new Vuex.Store({
         dispatch('getMessages', data.chat)
       })
     },
-    joinRoom({ commit, dispatch }, boardId) { socket.emit('join', { boardId }) }
-    ,
-    leaveRoom({ commit, dispatch }, boardId) {
-      socket.emit('leave', { boardId })
+    joinRoom({
+      commit,
+      dispatch
+    }, boardId) {
+      socket.emit('join', {
+        boardId
+      })
     },
-    async register({ commit, dispatch }, creds) {
+    leaveRoom({
+      commit,
+      dispatch
+    }, boardId) {
+      socket.emit('leave', {
+        boardId
+      })
+    },
+    async register({
+      commit,
+      dispatch
+    }, creds) {
       try {
         let user = await AuthService.Register(creds)
         commit('setUser', user)
-        router.push({ name: "home" })
+        router.push({
+          name: "home"
+        })
       } catch (e) {
         console.warn(e.message)
       }
     },
-    async login({ commit, dispatch }, creds) {
+    async login({
+      commit,
+      dispatch
+    }, creds) {
       try {
         let user = await AuthService.Login(creds)
         commit('setUser', user)
-        router.push({ name: "home" })
+        router.push({
+          name: "home"
+        })
       } catch (e) {
         console.warn(e.message)
       }
     },
-    async logout({ commit, dispatch }) {
+    async logout({
+      commit,
+      dispatch
+    }) {
       try {
         let success = await AuthService.Logout()
-        if (!success) { }
+        if (!success) {}
         commit('resetState')
-        router.push({ name: "login" })
+        router.push({
+          name: "login"
+        })
       } catch (e) {
         console.warn(e.message)
       }
     },
 
 
-    async getChats({ commit, dispatch }) {
+    async getChats({
+      commit,
+      dispatch
+    }) {
       try {
         let res = await api.get('/chat')
         commit('setChats', res.data)
@@ -138,7 +171,10 @@ export default new Vuex.Store({
       }
     },
 
-    async addChat({ commit, dispatch }, chatData) {
+    async addChat({
+      commit,
+      dispatch
+    }, chatData) {
       try {
         await api.post('chat', chatData)
         dispatch('getChats')
@@ -149,18 +185,23 @@ export default new Vuex.Store({
 
     },
 
-    async  getChat({ commit, dispatch }, chatId) {
+    async getChat({
+      commit,
+      dispatch
+    }, chatId) {
       try {
         let res = await api.get("chat/" + chatId)
         commit('setCurrentChat', res.data)
       } catch (error) {
         console.error(error)
       }
-    }
-    ,
+    },
 
 
-    async getMessages({ commit, dispatch }, chatId) {
+    async getMessages({
+      commit,
+      dispatch
+    }, chatId) {
       try {
         let res = await api.get("chat/" + chatId + "/messages")
         let data = {
@@ -168,31 +209,48 @@ export default new Vuex.Store({
           messages: res.data
         }
         commit('setMessages', data)
-      }
-      catch (error) {
+      } catch (error) {
         console.error(error)
       }
     },
-    async addMessage({ commit, dispatch }, message) {
+    async addMessage({
+      commit,
+      dispatch
+    }, message) {
       try {
         let res = await api.post("/messages", message)
         dispatch("getMessages", message.chat)
-      }
-      catch (error) {
+      } catch (error) {
         console.error(error)
       }
     },
-    async getSubscribedChats({ commit, dispatch }) {
+    async deleteMessage({
+      commit,
+      dispatch
+    }, payload) {
+      try {
+        let res = await api.delete('/messages/' + payload._id)
+        dispatch('getMessages', payload.chat._id)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async getSubscribedChats({
+      commit,
+      dispatch
+    }) {
       try {
         let res = await api.get("chat/subscriptions")
         commit('setSubscribedChats', res.data)
       } catch (error) {
         console.error(error)
       }
-    }
-    ,
+    },
 
-    async unsubscribe({ commit, dispatch }, chatId) {
+    async unsubscribe({
+      commit,
+      dispatch
+    }, chatId) {
       try {
         let res = await api.delete('/chat/subscriptions/' + chatId)
         dispatch('getSubscribedChats')
@@ -201,8 +259,7 @@ export default new Vuex.Store({
       }
     }
   }
-}
-)
+})
 
 // async getComments({ commit, dispatch }, taskId) {
 
@@ -215,7 +272,3 @@ export default new Vuex.Store({
 //     commit('setComments', data)
 //   } catch (error) { console.error(error) }
 // },
-
-
-
-

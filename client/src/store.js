@@ -131,7 +131,7 @@ export default new Vuex.Store({
     }) {
       try {
         let success = await AuthService.Logout()
-        if (!success) {}
+        if (!success) { }
         commit('resetState')
         router.push({
           name: "login"
@@ -159,7 +159,8 @@ export default new Vuex.Store({
       dispatch
     }, characterData) {
       try {
-        await api.post('characters', characterData)
+        debugger
+        await api.post('/characters', characterData)
         dispatch('getCharacters')
       } catch (error) {
         console.error(error)
@@ -168,10 +169,10 @@ export default new Vuex.Store({
     async getCharacters({
       commit,
       dispatch
-    }, payload) {
+    }) {
       try {
         let res = await api.get('/characters')
-        commit('setCharacter', payload)
+        commit('setCharacter', res.data)
       } catch (error) {
         console.error(error)
       }

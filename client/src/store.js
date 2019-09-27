@@ -164,7 +164,7 @@ export default new Vuex.Store({
     },
     async getCharacters({ commit, dispatch }, payload) {
       try {
-        let res = await api.get('/character')
+        let res = await api.get('/characters')
         commit('setCharacter', payload)
       } catch (error) {
         console.error(error)

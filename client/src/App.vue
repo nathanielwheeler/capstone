@@ -1,28 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <div class="container-fluid">
-        <div class="row">
-          <router-link to="/" class="col-4">
-            <h1>P&P</h1>
-          </router-link>
-          <router-link to="/chats" class="col-4">
-            <button class="Chats btn btn-info">Chats</button>
-          </router-link>
-          <button class="Current-Character col-4 btn btn-info">Current Character</button>
-          <router-link to="/characters" class="col-4">
-            <button class="Characters btn btn-info">Characters</button>
-          </router-link>
-          <button class="Group btn col-4 btn-info">Group</button>
-          <button class="LogOut btn col-4 btn-danger" @click="logout()">Log Out</button>
-        </div>
-
-        <!-- <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>-->
-
-        <router-view />
+    <nav id="nav">
+      <div class="row">
+        <router-link to="/" class="col-4">
+          <h1>P&P</h1>
+        </router-link>
+        <router-link to="/chats" class="col-4">
+          <button class="Chats btn btn-info">Chats</button>
+        </router-link>
+        <button class="Current-Character col-4 btn btn-info">Current Character</button>
+        <router-link to="/characters" class="col-4">
+          <button class="Characters btn btn-info">Characters</button>
+        </router-link>
+        <button class="Group btn col-4 btn-info">Group</button>
+        <button class="LogOut btn col-4 btn-danger" @click="logout()">Log Out</button>
       </div>
-    </div>
+    </nav>
+    <router-view />
   </div>
 </template>
 

@@ -1,17 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="message">
-    <!-- <h1>{{this.messageProp.author.name}}</h1> -->
-    <br />
-    <strong>{{messageProp.author.name}}:</strong>
-    {{messageProp.body}}
-    <div class="dropdown">
-      <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
-      <div class="dropdown-menu">
-        <a href="#" data-toggle="modal" data-target="#editMessage">Edit</a>
-        <!-- <a @click="editMessage(messageProp)" class="dropdown-item">edit</a> -->
-        <a @click="deleteMessage(messageProp)" class="dropdown-item">delete</a>
-=======
   <div class="message container">
     <!-- NOTE This appears if a character is selected -->
     <div class="row" v-if="messageProp.dialogueBool === true">
@@ -41,7 +28,6 @@
             <a @click="deleteMessage(messageProp)" class="dropdown-item">delete</a>
           </div>
         </span>
->>>>>>> 93a480a53a333c78a29de01716730178dfd71b09
       </div>
     </div>
   </div>
@@ -50,10 +36,7 @@
 
 <script>
   // import EditMessageModal from "../components/EditMesssageModal";
-
-<<<<<<< HEAD
   export default {
-    name: "message",
 
     props: ["messageProp"],
     data() {
@@ -66,41 +49,24 @@
         messageId: this.messageProp._id
       };
     },
-    computed: {},
+    computed: {
+      currentCharacter() {
+        return this.$store.state.currentCharacter;
+      }
+    },
     methods: {
       editMessage(message) {
         this.$store.dispatch("editMessage", message);
       },
       deleteMessage(message) {
         this.$store.dispatch("deleteMessage", message);
-      }
-=======
-  props: ["messageProp"],
-  data() {
-    return {};
-  },
-  mounted() {
-    let payload = {
-      author: this.messageProp.author._id,
-      chatId: this.messageProp.chat._id,
-      messageId: this.messageProp._id
-    };
-  },
-  computed: {
-    currentCharacter() {
-      return this.$store.state.currentCharacter;
-    }
-  },
-  methods: {
-    editMessage(message) {
-      this.$store.dispatch("editMessage", message);
->>>>>>> 93a480a53a333c78a29de01716730178dfd71b09
-    },
+      },
 
-    components: {
-      // FIXME EditMessageModal
+      components: {
+        // FIXME EditMessageModal
+      }
     }
-  };
+  }
 </script>
 
 

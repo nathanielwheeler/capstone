@@ -131,7 +131,7 @@ export default new Vuex.Store({
     }) {
       try {
         let success = await AuthService.Logout()
-        if (!success) {}
+        if (!success) { }
         commit('resetState')
         router.push({
           name: "login"

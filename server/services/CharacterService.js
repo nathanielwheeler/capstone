@@ -12,9 +12,10 @@ const _model = new Schema({
     style: {
         type: Object,
         default: {
-            color: '#000000',
-            background: '#ffffff'
-        }
+            color: '#eee8d5',
+            background: '#002b36',
+            borderColor: '#839496',
+        },
     }
 
 }, { timestamps: true })

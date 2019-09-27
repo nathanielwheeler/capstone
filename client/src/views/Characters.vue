@@ -7,8 +7,9 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <button class="btn btn-info">Make a new character!</button>
+        <!-- <button class="btn btn-info" data-toggle="modal" :data-target="#create-character-modal">Make a new character!</button>    -->
       </div>
+      <create-character-modal />
       <div class="col-12">
         <character
           v-for="character in characters"
@@ -21,13 +22,22 @@
 </template>
 
 
+
 <script>
+import CreateCharacterModal from "../components/CreateCharacterModal.vue";
 import Character from "../components/Character";
 export default {
   name: "characters",
-  mounted() {},
+  prop: ["characterProp"],
   data() {
-    return {};
+    return {
+      newCharacter: ""
+    };
+  },
+  mounted() {
+    let characterProp = {
+      UserId: this.$store.state.user._id
+    };
   },
   computed: {
     characters() {
@@ -36,7 +46,8 @@ export default {
   },
   methods: {},
   components: {
-    Character
+    Character,
+    CreateCharacterModal
   }
 };
 </script>

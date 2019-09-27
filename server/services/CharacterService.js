@@ -8,7 +8,14 @@ const _model = new Schema({
     stats: {
         type: String
     },
-    description: { type: String }
+    description: { type: String },
+    style: {
+        type: Object,
+        default: {
+            color: '#000000',
+            background: '#ffffff'
+        }
+    }
 
 }, { timestamps: true })
 

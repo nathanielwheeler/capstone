@@ -8,7 +8,15 @@ const _model = new Schema({
     stats: {
         type: String
     },
-    description: { type: String }
+    description: { type: String },
+    style: {
+        type: Object,
+        default: {
+            color: '#eee8d5',
+            background: '#002b36',
+            borderColor: '#839496',
+        },
+    }
 
 }, { timestamps: true })
 

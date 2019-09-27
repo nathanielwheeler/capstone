@@ -131,7 +131,7 @@ export default new Vuex.Store({
     }) {
       try {
         let success = await AuthService.Logout()
-        if (!success) {}
+        if (!success) { }
         commit('resetState')
         router.push({
           name: "login"
@@ -154,7 +154,10 @@ export default new Vuex.Store({
       }
     },
 
-    async createCharacter({ commit, dispatch }, characterData) {
+    async createCharacter({
+      commit,
+      dispatch
+    }, characterData) {
       try {
         await api.post('character', characterData)
         dispatch('getCharacters')
@@ -162,9 +165,12 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    async getCharacters({ commit, dispatch }, payload) {
+    async getCharacters({
+      commit,
+      dispatch
+    }, payload) {
       try {
-        let res = await api.get('/character')
+        let res = await api.get('/characters')
         commit('setCharacter', payload)
       } catch (error) {
         console.error(error)
@@ -235,6 +241,18 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async editMessage({
+      commit,
+      dispatch
+    }, payload) {
+      try {
+        debugger
+        let res = await api.put('/messages/' + payload._id)
+        dispatch('editMessage', payload.chat._id)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async getSubscribedChats({
       commit,
       dispatch
@@ -259,7 +277,10 @@ export default new Vuex.Store({
       }
     },
 
-    async subscribe({ commit, dispatch }, chatId) {
+    async subscribe({
+      commit,
+      dispatch
+    }, chatId) {
       try {
         let res = await api.post('/chat/subscriptions/' + chatId)
         dispatch('getChats')

@@ -10,7 +10,9 @@
             <button class="Chats btn btn-info">Chats</button>
           </router-link>
           <button class="Current-Character col-4 btn btn-info">Current Character</button>
-          <button class="Characters col-4 btn btn-info">Characters</button>
+          <router-link to="/characters" class="col-4">
+            <button class="Characters btn btn-info">Characters</button>
+          </router-link>
           <button class="Group btn col-4 btn-info">Group</button>
           <button class="LogOut btn col-4 btn-danger" @click="logout()">Log Out</button>
         </div>

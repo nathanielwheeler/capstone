@@ -7,7 +7,7 @@
     <div class="dropdown">
       <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
       <div class="dropdown-menu">
-        <a @click="editMessage" class="dropdown-item">edit</a>
+        <a @click="editMessage(messageProp)" class="dropdown-item">edit</a>
         <a @click="deleteMessage(messageProp)" class="dropdown-item">delete</a>
       </div>
     </div>
@@ -32,8 +32,8 @@ export default {
   },
   computed: {},
   methods: {
-    editMessage() {
-      this.$store.dispatch("editMessage", payload);
+    editMessage(message) {
+      this.$store.dispatch("editMessage", message);
     },
     deleteMessage(message) {
       this.$store.dispatch("deleteMessage", message);

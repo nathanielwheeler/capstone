@@ -5,6 +5,7 @@ import Login from './views/Login.vue'
 import Groups from './views/Groups.vue'
 import Chat from './views/Chat.vue'
 import Chats from './views/Chats.vue'
+import Characters from './views/Characters.vue'
 
 
 Vue.use(Router)
@@ -25,6 +26,11 @@ export default new Router({
       path: '/groups',
       name: 'group',
       component: Groups
+    },
+    {
+      path: '/characters',
+      name: 'characters',
+      component: Characters
     },
     {
       path: '/chats',

@@ -1,6 +1,10 @@
 <template>
   <div class="createCharacter">
-     <button class="btn btn-info" data-toggle="modal" data-target="#createCharacterModal">Make a new character!</button>
+    <button
+      class="btn btn-info"
+      data-toggle="modal"
+      data-target="#createCharacterModal"
+    >Make a new character!</button>
 
     <div id="createCharacterModal" class="modal" role="dialog">
       <div class="modal-dialog">
@@ -13,19 +17,34 @@
             <form>
               <div class="form-group">
                 <label for="group name">Character Name</label>
-                <input type="text" class="form-control" id="charactername" placeholder="Character Name"
-                  v-model="newCharacter.name" />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="charactername"
+                  placeholder="Character Name"
+                  v-model="newCharacter.name"
+                />
               </div>
               <div class="form-group">
                 <label for="group name">Character Stats</label>
-                <input type="text" class="form-control" id="characterStats" placeholder="Character Stats"
-                  v-model="newCharacter.stats" />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="characterStats"
+                  placeholder="Character Stats"
+                  v-model="newCharacter.stats"
+                />
               </div>
               <div class="form-group">
                 <label for="character class">Character Description</label>
-                <input type="text" class="form-control" id="characterDescription" placeholder="Character Description"
-                  v-model="newCharacter.description" />
-                        <button type="submit" @click="createCharacter(user)" class="btn btn-primary">Submit</button>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="characterDescription"
+                  placeholder="Character Description"
+                  v-model="newCharacter.description"
+                />
+                <button type="submit" @click="createCharacter(user)" class="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>
@@ -44,7 +63,11 @@ export default {
   name: "Create-Character-Modal",
   data() {
     return {
-      newCharacter: {}
+      newCharacter: {
+        description: "",
+        name: "",
+        stats: ""
+      }
     };
   },
   computed: {
@@ -54,10 +77,8 @@ export default {
   },
   methods: {
     createCharacter(user) {
-      debugger;
-      this.newCharacter.authorId = user._id;
       this.$store.dispatch("createCharacter", this.newCharacter);
-      this.newCharacter = {};
+      this.newCharacter = { description: "", name: "", stats: "" };
     }
   },
   components: {}

@@ -235,6 +235,17 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async editMessage({
+      commit,
+      dispatch
+    }, payload) {
+      try {
+        let res = await api.put('/messages/' + payload._id)
+        dispatch('editMessages', payload.chat._id)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async getSubscribedChats({
       commit,
       dispatch
@@ -256,6 +267,16 @@ export default new Vuex.Store({
         dispatch('getSubscribedChats')
       } catch (error) {
         console.error(error)
+      }
+    },
+
+    async subscribe({ commit, dispatch }, chatId) {
+      try {
+        let res = await api.post('/chat/subscriptions/' + chatId)
+        dispatch('getChats')
+
+      } catch (error) {
+
       }
     }
   }

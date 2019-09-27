@@ -6,7 +6,8 @@ const _model = new Schema({
     body: { type: String, required: true },
     author: { type: ObjectId, ref: 'User', required: true },
     chat: { type: ObjectId, ref: 'Chat', required: true },
-    style: { type: ObjectId, ref: 'Character', default: '' }
+    style: { type: ObjectId, ref: 'Character', default: '' },
+    dialogueBool: { type: Boolean, default: false }
 }, { timestamps: true })
 
 export default class MessageService {

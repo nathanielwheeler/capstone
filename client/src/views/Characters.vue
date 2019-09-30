@@ -12,6 +12,7 @@
       <create-character-modal />
       <div class="col-12">
         <div v-for="character in characters" :key="character._id">{{character.name}}
+          <button class="btn btn-danger" type="button" @click="deleteCharacter(character._id)">Delete</button>
     </div>
       </div>
     </div>
@@ -44,9 +45,11 @@ export default {
     getCharacters() {},
 
     createCharacter() {
-      debugger;
       this.$store.dispatch("createCharacter", this.newCharacter);
       this.newCharacter = { name: "", stats: "", description: "" };
+    },
+    deleteCharacter(characterId){
+this.$store.dispatch("deleteCharacter", characterId)
     }
   },
   components: {

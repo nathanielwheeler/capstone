@@ -2,7 +2,12 @@
   <div class="chat">
     <div class="container-fluid">
       <div class="row">
-        <h3 class="col-12">{{chat.title}}</h3>
+        <h3 class="col-12">
+          {{chat.title}}
+          <button class="btn btn-primary mybutton" @click="subscribe(chat._id)">
+            <b>Subscribe</b>
+          </button>
+        </h3>
         <div class="messageBox col-12 d-flex flex-column-reverse border" v-chat-scroll>
           <message v-for="message in messages" :messageProp="message" :key="message._id"></message>
         </div>
@@ -41,7 +46,11 @@
       //   return this.$store.state.comments[this.taskProp._id] || [];
       // }
     },
-    methods: {},
+    methods: {
+      subscribe(chatId) {
+        this.$store.dispatch("subscribe", chatId);
+      }
+    },
     components: {
       message,
       messageInput,
@@ -52,19 +61,19 @@
 
 
 <style scoped>
+  .mybutton {
+    padding: 0px;
+  }
+
   messageInput {
     text-align: center;
-    position: relative;
     z-index: -1;
-
   }
 
   .messageBox {
     height: 450px;
     overflow-y: auto;
     overflow-wrap: break-word;
-    position: relative;
-    z-index: 1;
   }
 
   h3 {
@@ -73,36 +82,5 @@
 
   .chat {
     text-align: center;
-  }
-
-  .nav {
-    border-radius: 20%;
-    width: 80px;
-    height: 40px;
-    z-index: 10000;
-  }
-
-  .Current {
-    border-radius: 20%;
-    width: 80px;
-    height: 40px;
-  }
-
-  .Characters {
-    border-radius: 20%;
-    width: 80px;
-    height: 40px;
-  }
-
-  .Group {
-    border-radius: 20%;
-    width: 80px;
-    height: 40px;
-  }
-
-  .LogOut {
-    border-radius: 20%;
-    width: 80px;
-    height: 40px;
   }
 </style>

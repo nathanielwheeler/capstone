@@ -26,7 +26,5 @@
 </script>
 
 <style scoped>
-  #modal {
-    z-index: 1000;
-  }
+
 </style>

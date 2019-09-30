@@ -32,14 +32,14 @@
             <button @click.stop="showformModal = true">Edit</button>
             <quick-modal class="bg-dark text-light position-relative z-index" :toggle="showformModal"
               @close="showformModal = false">
-              <form @submit.prevent="submit">
+              <form @submit.prevent="editMessage(messageProp)">
                 <div class="form-group">
                   <label for>Something Here</label>
                   <input type="text" />
                 </div>
               </form>
               <div slot="modal-footer">
-                <button type="button" @click="editMessage(message)" class="btn btn-success">Submit</button>
+                <button type="button" @click="editMessage(messageProp)" class="btn btn-success">Submit</button>
               </div>
             </quick-modal>
 
@@ -55,9 +55,12 @@
 <script>
   import editMessageModal from "../components/EditMessageModal";
   export default {
-    props: ["messageProp",],
+    props: ["messageProp"],
     data() {
       return {
+        message: {
+          body: ""
+        },
         // editMessageModal
         showformModal: false
       };

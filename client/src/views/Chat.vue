@@ -54,6 +54,7 @@
 <style scoped>
   messageInput {
     text-align: center;
+    position: relative;
     z-index: -1;
 
   }
@@ -62,6 +63,8 @@
     height: 450px;
     overflow-y: auto;
     overflow-wrap: break-word;
+    position: relative;
+    z-index: 1;
   }
 
   h3 {

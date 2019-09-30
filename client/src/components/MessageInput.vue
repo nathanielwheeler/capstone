@@ -5,14 +5,6 @@
       <div class="grid-button">
         <button class="btn btn-info" type="submit">Send</button>
       </div>
-      <!-- <active-character-modal /> -->
-      <div class="col-12">
-        <!-- <activecharacter
-          v-for="activeCharacter in activeCharacters"
-          :characterProp="activeCharacter"
-          :key="activeCharacter._id"
-        >{{activeCharacterProp.name}}</activecharacter>-->
-      </div>
     </form>
     <span class="dropdown">
       <button class="btn btn-info btn-block dropdown-toggle top-margin" data-toggle="dropdown">

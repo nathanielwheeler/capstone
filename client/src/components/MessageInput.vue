@@ -2,7 +2,7 @@
   <div class="message-input">
     <form class="grid-container" @submit.prevent="addMessage">
       <span class="dropdown">
-        <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+        <button class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">
           <span v-if="activeCharacter != {}">(None)</span>
           <span v-else>{{activeCharacter.name}}</span>
         </button>

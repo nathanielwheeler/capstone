@@ -8,6 +8,7 @@
         </div>
       </div>
       <messageInput />
+      <active-character-modal />
     </div>
   </div>
 </template>
@@ -16,6 +17,7 @@
 <script>
 import message from "../components/Message";
 import messageInput from "../components/MessageInput";
+import activeCharacterModal from "../components/ActiveCharacterModal";
 
 export default {
   name: "chat",
@@ -42,7 +44,8 @@ export default {
   methods: {},
   components: {
     message,
-    messageInput
+    messageInput,
+    activeCharacterModal
   }
 };
 </script>

@@ -166,6 +166,16 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+
+    async deleteCharacter({ commit, dispatch }, characterId) {
+      try {
+        await api.delete('/characters/' + characterId)
+        dispatch('getCharacters')
+      } catch (error) {
+
+      }
+    },
+
     async getCharacters({
       commit,
       dispatch

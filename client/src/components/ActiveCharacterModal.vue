@@ -1,17 +1,16 @@
 <template>
   <div class="activeCharacter">
+    <br> 
     <button
       class="btn btn-info"
       data-toggle="modal"
       data-target="#activeCharacterModal"
-    >Edit your character!</button>
-
+    >Current Active Character!</button>
     <div id="activeCharacterModal" class="modal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">My Active Character</h4>
+            <h4 class="modal-title">Current Active Character</h4>
           </div>
           <div class="modal-body">
             <form>
@@ -21,8 +20,8 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="submit" @click="editcharacter()" class="btn btn-info">Submit</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" @click="editcharacter()" class="btn btn-info"> Edit Character</button>
+            <button type="button" class="btn btn-danger border" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -49,10 +48,9 @@ export default {
   },
   methods: {
     getActiveCharacter() {
-      debugger;
-      this.newCharacter.authorId = user._id;
-      this.$store.dispatch("createCharacter", this.newCharacter);
-      this.newCharacter = {};
+      this.activeCharacter.authorId = user._id;
+      this.$store.dispatch("getactiveCharacter", this.activeCharacter);
+      this.activeCharacter = {};
     }
   },
   components: {}

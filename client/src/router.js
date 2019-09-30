@@ -33,8 +33,8 @@ export default new Router({
       component: Characters
     },
     {
-      path: '/currentcharacter',
-      name: 'currentcharacter',
+      path: '/currentCharacter',
+      name: 'currentCharacter',
       component: CurrentCharacter
     },
     {

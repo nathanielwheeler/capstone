@@ -210,7 +210,6 @@ export default new Vuex.Store({
       dispatch
     }, chatId) {
       try {
-        debugger
         let res = await api.get("chat/" + chatId + "/messages")
         let data = {
           chatId,

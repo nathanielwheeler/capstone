@@ -24,8 +24,9 @@
         <span class="dropdown">
           <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
           <div class="dropdown-menu">
-            <button @click="openEditor(editMessage)" class="button" role="button" data-toggle="modal"
-              data-target="#editMessageModal">edit</button>
+            <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
+              data-target="#editMessageModal">edit</a> -->
+            <editMessageModal />
             <a @click="deleteMessage(messageProp)" class="dropdown-item">delete</a>
           </div>
         </span>
@@ -39,7 +40,7 @@
   import editMessageModal from "../components/EditMessageModal";
   export default {
 
-    props: ["messageProp",],
+    props: ["messageProp", "editMessage"],
     data() {
       return {
         editMessageModal

@@ -21,19 +21,17 @@
       </div>
       <div class="col-9 col-md-10 text-left">
         {{messageProp.body}}
-        <span class="dropdown">
+        <span class="dropdown position-relative">
           <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
           <div class="dropdown-menu">
             <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
             data-target="#editMessageModal">edit</a>-->
-            <editMessageModal />
 
-            <!-- <button @click="showformModal = true">trigger</button>
-            <quick-modal
-              class="bg-dark text-light"
-              :toggle="showformModal"
-              @close="showformModal = false"
-            >
+            <!-- <editMessageModal /> -->
+
+            <button @click.stop="showformModal = true">Edit</button>
+            <quick-modal class="bg-dark text-light position-relative z-index" :toggle="showformModal"
+              @close="showformModal = false">
               <form @submit.prevent="submit">
                 <div class="form-group">
                   <label for>Something Here</label>
@@ -41,9 +39,9 @@
                 </div>
               </form>
               <div slot="modal-footer">
-                <button type="button" @click="submit" class="btn btn-success">Submit</button>
+                <button type="button" @click="editMessage(message)" class="btn btn-success">Submit</button>
               </div>
-            </quick-modal>-->
+            </quick-modal>
 
             <a @click="deleteMessage(messageProp)" class="dropdown-item">Delete</a>
           </div>
@@ -55,52 +53,59 @@
 
 
 <script>
-import editMessageModal from "../components/EditMessageModal";
-export default {
-  props: ["messageProp", "editMessage"],
-  data() {
-    return {
-      // editMessageModal
-      showformModal: false
-    };
-  },
-  mounted() {
-    let payload = {
-      author: this.messageProp.author._id,
-      chatId: this.messageProp.chat._id,
-      messageId: this.messageProp._id
-    };
-  },
-  computed: {
-    currentCharacter() {
-      return this.$store.state.currentCharacter;
-    }
-  },
-  methods: {
-    openEditor(editMessage) {
-      $("#editMessageModal").modal("show");
+  import editMessageModal from "../components/EditMessageModal";
+  export default {
+    props: ["messageProp",],
+    data() {
+      return {
+        // editMessageModal
+        showformModal: false
+      };
     },
-    deleteMessage(message) {
-      this.$store.dispatch("deleteMessage", message);
+    mounted() {
+      let payload = {
+        author: this.messageProp.author._id,
+        chatId: this.messageProp.chat._id,
+        messageId: this.messageProp._id
+      };
     },
-    submit() {
-      console.log("cool");
-      this.showformModal = false;
+    computed: {
+      currentCharacter() {
+        return this.$store.state.currentCharacter;
+      }
+    },
+    methods: {
+      // openEditor(editMessage) {
+      //   $("#editMessageModal").modal("show");
+      // },
+      deleteMessage(message) {
+        this.$store.dispatch("deleteMessage", message);
+      },
+      submit() {
+        console.log("cool");
+        this.showformModal = false;
+      },
+      editMessage(message) {
+        this.$store.dispatch("editMessage", message);
+        this.showformModal = false;
+
+
+      },
+    },
+    components: {
+      editMessageModal
     }
-    // editMessage(message) {
-    //   this.$store.dispatch("editMessage", message);
-    // },
-  },
-  components: {
-    editMessageModal
-  }
-};
+  };
 </script>
 
 
 <style scoped>
-.dialogue-box {
-  border: 1px solid black;
-  padding: 10px;
-}
+  .dialogue-box {
+    border: 1px solid black;
+    padding: 10px;
+  }
+
+  .z-index {
+    z-index: 9999 !important;
+  }
 </style>

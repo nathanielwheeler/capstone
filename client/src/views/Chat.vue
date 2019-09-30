@@ -1,16 +1,15 @@
 <template>
- 
   <div class="chat">
     <div class="container-fluid">
-      <div class="row">  
-        <h3 class="col-12"> {{chat.title}}</h3>
-      <div class="messageBox col-12 d-flex flex-column-reverse border " v-chat-scroll>
-    <message v-for="message in messages" :messageProp="message" :key="message._id"></message>
-  </div>
-      </div>
-         <messageInput /> 
+      <div class="row">
+        <h3 class="col-12">{{chat.title}}</h3>
+        <div class="messageBox col-12 d-flex flex-column-reverse border" v-chat-scroll>
+          <message v-for="message in messages" :messageProp="message" :key="message._id"></message>
         </div>
       </div>
+      <messageInput />
+    </div>
+  </div>
 </template>
 
 

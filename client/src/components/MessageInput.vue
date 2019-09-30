@@ -5,21 +5,22 @@
       <div class="grid-button">
         <button class="btn btn-info" type="submit">Send</button>
       </div>
-       <actvie-character-modal />
+      <active-character-modal />
       <div class="col-12">
-        <activecharacter
+        <!-- <activecharacter
           v-for="activeCharacter in activeCharacters"
           :characterProp="activeCharacter"
           :key="activeCharacter._id"
-        >{{activeCharacterProp.name}}</activecharacter>
+        >{{activeCharacterProp.name}}</activecharacter>-->
       </div>
     </form>
-
   </div>
 </template>
 
 
 <script>
+// import ActiveCharacter from "./";
+import activeCharacterModal from "./ActiveCharacterModal";
 export default {
   name: "message-input",
   data() {
@@ -48,7 +49,9 @@ export default {
       this.message = {};
     }
   },
-  components: {}
+  components: {
+    activeCharacterModal
+  }
 };
 </script>
 

@@ -50,7 +50,9 @@ export default class ChatController {
     // NOTE This function returns an array with the most recent message at index 0
     async getMessages(req, res, next) {
         try {
-            let data = await _messageService.find({ chat: req.params.id }).populate('chat', '_id').populate('author', 'name')
+            let data = await _messageService.find({ chat: req.params.id })
+                .populate('chat', '_id')
+                .populate('author', 'name')
             // @ts-ignore
             return res.send(data.sort(function (a, b) { return b.createdAt - a.createdAt }))
         } catch (error) { next(error) }

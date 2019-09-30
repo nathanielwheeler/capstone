@@ -1,6 +1,10 @@
 <template>
   <div class="activeCharacter">
-     <button class="btn btn-info" data-toggle="modal" data-target="#activeCharacterModal">Edit your character!</button>
+    <button
+      class="btn btn-info"
+      data-toggle="modal"
+      data-target="#activeCharacterModal"
+    >Edit your character!</button>
 
     <div id="activeCharacterModal" class="modal" role="dialog">
       <div class="modal-dialog">
@@ -10,14 +14,14 @@
             <h4 class="modal-title">My Active Character</h4>
           </div>
           <div class="modal-body">
-            <form> 
-                <label for="group name">{{character.name}}</label> 
-                <label for="group name">{{character.stats}}</label>
+            <form>
+              <label for="group name">{{character.name}}</label>
+              <label for="group name">{{character.stats}}</label>
               <label for="character class">{{character.description}}</label>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="submit" @click="editcharacter()" class="btn btn-info">Submit</button> 
+            <button type="submit" @click="editcharacter()" class="btn btn-info">Submit</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -29,16 +33,19 @@
 
 <script>
 export default {
-  name: "Create-Character-Modal",
+  name: "Active-Character-Modal",
   data() {
     return {
-      newCharacter: {}
+      character: {}
     };
   },
   computed: {
     user() {
       return this.$store.state.user;
     }
+    // character() {
+    //   return this.$store.state.character;
+    // }
   },
   methods: {
     getActiveCharacter() {

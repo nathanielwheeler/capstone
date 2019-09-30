@@ -14,9 +14,9 @@
           </div>
           <div class="modal-body">
             <form>
-              <label for="group name">{{character.name}}</label>
-              <label for="group name">{{character.stats}}</label>
-              <label for="character class">{{character.description}}</label>
+              <label for="group name">{{activeCharacter.name}}</label>
+              <label for="group name">{{activeCharacter.stats}}</label>
+              <label for="character class">{{activeCharacter.description}}</label>
             </form>
           </div>
           <div class="modal-footer">
@@ -41,10 +41,10 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    activeCharacter() {
+      return this.$store.state.activeCharacter;
     }
-    // character() {
-    //   return this.$store.state.character;
-    // }
   },
   methods: {
     getActiveCharacter() {

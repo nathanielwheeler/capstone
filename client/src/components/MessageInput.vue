@@ -1,18 +1,6 @@
 <template>
   <div class="message-input">
     <form class="grid-container" @submit.prevent="addMessage">
-      <span class="dropdown">
-        <button class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">
-          <span v-if="activeCharacter != {}">(None)</span>
-          <span v-else>{{activeCharacter.name}}</span>
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" @click="resetActiveCharacter">(None)</a>
-          <div v-for="character in characters" :key="character._id">
-            <a class="dropdown-item" @click="changeActiveCharacter(character)">{{character.name}}</a>
-          </div>
-        </div>
-      </span>
       <input class="grid-input" type="text" placeholder="message" v-model="message.body" required />
       <div class="grid-button">
         <button class="btn btn-info" type="submit">Send</button>
@@ -26,6 +14,18 @@
         >{{activeCharacterProp.name}}</activecharacter>-->
       </div>
     </form>
+    <span class="dropdown">
+      <button class="btn btn-info btn-block dropdown-toggle top-margin" data-toggle="dropdown">
+        <span v-if="activeCharacter === {}">(None)</span>
+        <span v-else>{{activeCharacter.name}}</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" @click="resetActiveCharacter">(None)</a>
+        <div v-for="character in characters" :key="character._id">
+          <a class="dropdown-item" @click="changeActiveCharacter(character)">{{character.name}}</a>
+        </div>
+      </div>
+    </span>
   </div>
 </template>
 
@@ -82,13 +82,9 @@ export default {
 <style scoped>
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 65px;
+  grid-template-columns: 1fr 65px;
   grid-template-rows: auto;
-  grid-template-areas: "dropdown input button";
-}
-
-.grid-dropdown {
-  grid-area: dropdown;
+  grid-template-areas: "input button";
 }
 
 .grid-input {
@@ -99,5 +95,8 @@ export default {
 .grid-button {
   grid-area: button;
   max-width: 65px;
+}
+.top-margin {
+  margin-top: 5px;
 }
 </style>

@@ -81,10 +81,10 @@
       deleteMessage(message) {
         this.$store.dispatch("deleteMessage", message);
       },
-      submit() {
-        console.log("cool");
-        this.showformModal = false;
-      },
+      // submit() {
+      //   console.log("cool");
+      //   this.showformModal = false;
+      // },
       editMessage(message) {
         this.$store.dispatch("editMessage", message);
         this.showformModal = false;

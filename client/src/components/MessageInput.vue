@@ -76,7 +76,7 @@
       components: {
         activeCharacterModal
       }
-    };
+    }
 </script>
 
 

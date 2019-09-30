@@ -1,6 +1,10 @@
 <template>
   <div class="message-input">
     <form class="grid-container" @submit.prevent="addMessage">
+      <span class="dropdown">
+        <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Voice</button>
+        <div class="dropdown-menu" v-for="character in characters" :key="character._id"></div>
+      </span>
       <input class="grid-input" type="text" placeholder="message" v-model="message.body" required />
       <div class="grid-button">
         <button class="btn btn-info" type="submit">Send</button>
@@ -31,11 +35,15 @@ export default {
     };
   },
   mounted() {
-    let chatId = this.$route.params.chatId;
+    return this.$route.params.chatId;
+    return this.$store.dispatch("getCharacters");
   },
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    characters() {
+      return this.$store.state.characters;
     }
   },
   methods: {
@@ -59,9 +67,13 @@ export default {
 <style scoped>
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 65px;
+  grid-template-columns: 80px 1fr 65px;
   grid-template-rows: auto;
-  grid-template-areas: "input button";
+  grid-template-areas: "dropdown input button";
+}
+.grid-dropdown {
+  grid-area: dropdown;
+  max-width: 80px;
 }
 .grid-input {
   grid-area: input;

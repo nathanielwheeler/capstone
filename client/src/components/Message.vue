@@ -45,7 +45,7 @@
               </div>
             </quick-modal>-->
 
-            <a @click="deleteMessage(messageProp)" class="dropdown-item">delete</a>
+            <a @click="deleteMessage(messageProp)" class="dropdown-item">Delete</a>
           </div>
         </span>
       </div>

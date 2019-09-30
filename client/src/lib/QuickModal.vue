@@ -1,5 +1,5 @@
 <template>
-  <div class="card show" v-if="toggle">
+  <div class="card show" id="modal" v-if="toggle">
     <slot>
       <h1>MODAL GOES HERE</h1>
     </slot>
@@ -12,15 +12,21 @@
 
 
 <script>
-export default {
-  props: {
-    toggle: { type: Boolean, required: true }
-  },
-  name: "QuickModal",
-  methods: {
-    closeModal() {
-      this.$emit("close");
+  export default {
+    props: {
+      toggle: { type: Boolean, required: true }
+    },
+    name: "QuickModal",
+    methods: {
+      closeModal() {
+        this.$emit("close");
+      }
     }
-  }
-};
+  };
 </script>
+
+<style scoped>
+  #modal {
+    z-index: 1000;
+  }
+</style>

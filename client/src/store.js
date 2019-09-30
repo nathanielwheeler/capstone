@@ -33,6 +33,7 @@ export default new Vuex.Store({
     messages: {},
     subscribedChats: [],
     currentMessage: {},
+    activeCharacter: {},
 
 
 
@@ -45,6 +46,7 @@ export default new Vuex.Store({
       state.currentChat = {}
       state.subscribedChats = []
       state.characters = []
+      state.activeCharacter
     },
     setUser(state, user) {
       state.user = user
@@ -57,6 +59,9 @@ export default new Vuex.Store({
     },
     setCharacter(state, payload) {
       state.characters = payload
+    },
+    setActiveCharacter(state, payload) {
+      state.activeCharacter = payload
     },
     setCurrentChat(state, chat) {
       state.currentChat = chat
@@ -131,7 +136,7 @@ export default new Vuex.Store({
     }) {
       try {
         let success = await AuthService.Logout()
-        if (!success) { }
+        if (!success) {}
         commit('resetState')
         router.push({
           name: "login"
@@ -159,23 +164,12 @@ export default new Vuex.Store({
       dispatch
     }, characterData) {
       try {
-        debugger
         await api.post('/characters', characterData)
         dispatch('getCharacters')
       } catch (error) {
         console.error(error)
       }
     },
-
-    async deleteCharacter({ commit, dispatch }, characterId) {
-      try {
-        await api.delete('/characters/' + characterId)
-        dispatch('getCharacters')
-      } catch (error) {
-
-      }
-    },
-
     async getCharacters({
       commit,
       dispatch
@@ -187,7 +181,17 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-
+    async getActiveCharacter({
+      commit,
+      dispatch
+    }) {
+      try {
+        let res = await api.get('/characters', activeCharacterId)
+        commit('getActiveCharacter', res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async addChat({
       commit,
       dispatch

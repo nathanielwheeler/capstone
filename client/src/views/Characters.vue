@@ -11,8 +11,9 @@
       </div>
       <create-character-modal />
       <div class="col-12">
-        <div v-for="character in characters" :key="character._id">{{character.name}}
-          <button class="btn btn-danger" type="button" @click="deleteCharacter(character._id)">Delete</button>
+        <div v-for="character in characters" :key="character._id">
+        <router-link :to="{name:'character' , params: {characterId: character._id}}">{{character.name}}</router-link>
+
     </div>
       </div>
     </div>
@@ -47,9 +48,6 @@ export default {
     createCharacter() {
       this.$store.dispatch("createCharacter", this.newCharacter);
       this.newCharacter = { name: "", stats: "", description: "" };
-    },
-    deleteCharacter(characterId){
-this.$store.dispatch("deleteCharacter", characterId)
     }
   },
   components: {

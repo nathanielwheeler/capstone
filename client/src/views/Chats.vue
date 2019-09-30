@@ -13,7 +13,7 @@
       <div class="col-12 my-1" v-for="chat in chats" :key="chat._id">
         <router-link :to="{name:'chat' , params: {chatId: chat._id}}">{{chat.title}}</router-link>
         <button class="btn btn-primary mybutton" @click="subscribe(chat._id)">
-          <b>+</b>
+          <b>Subscribe</b>
         </button>
       </div>
     </div>

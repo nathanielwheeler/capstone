@@ -5,7 +5,7 @@
       <div class="grid-button">
         <button class="btn btn-info" type="submit">Send</button>
       </div>
-      <active-character-modal />
+      <!-- <active-character-modal /> -->
       <div class="col-12">
         <!-- <activecharacter
           v-for="activeCharacter in activeCharacters"

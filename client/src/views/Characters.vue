@@ -11,7 +11,8 @@
       </div>
       <create-character-modal />
       <div class="col-12">
-        <div v-for="character in characters" :key="character._id">{{character.name}}</div>
+        <div v-for="character in characters" :key="character._id">{{character.name}}
+    </div>
       </div>
     </div>
   </div>
@@ -21,6 +22,8 @@
 
 <script>
 import CreateCharacterModal from "../components/CreateCharacterModal.vue";
+import ActiveCharacterModal from "../components/ActiveCharacterModal.vue";
+
 export default {
   name: "characters",
   prop: ["characterProp"],
@@ -47,7 +50,8 @@ export default {
     }
   },
   components: {
-    CreateCharacterModal
+    CreateCharacterModal,
+    ActiveCharacterModal
   }
 };
 </script>

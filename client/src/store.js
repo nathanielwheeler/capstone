@@ -22,18 +22,18 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: {},
-    groups: [],
-    characters: [],
-    activeGroup: {},
-    currentCharater: {},
-    inventory: [],
-    items: {},
     chats: [],
     currentChat: {},
     messages: {},
     subscribedChats: [],
     currentMessage: {},
+    characters: [],
+    currentCharater: {},
     activeCharacter: {},
+    inventory: [],
+    items: {},
+    groups: [],
+    activeGroup: {},
 
 
 
@@ -136,7 +136,7 @@ export default new Vuex.Store({
     }) {
       try {
         let success = await AuthService.Logout()
-        if (!success) {}
+        if (!success) { }
         commit('resetState')
         router.push({
           name: "login"

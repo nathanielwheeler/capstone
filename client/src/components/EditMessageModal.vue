@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade" id="editMessage" tabindex="-1" role="dialog">
+  <div class="modal fade" id="editMessageModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -23,7 +23,7 @@
 
 <script>
   export default {
-    name: 'editMessage',
+    name: 'editMessageModal',
     data() {
       return {}
     },

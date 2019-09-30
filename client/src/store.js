@@ -197,7 +197,7 @@ export default new Vuex.Store({
     },
     async changeActiveCharacter({ commit, dispatch }, characterId) {
       try {
-        let res = await api.get("character/" + characterId)
+        let res = await api.get("/characters/" + characterId)
         commit('setActiveCharacter', res.data)
       } catch (error) { console.error(error) }
     },

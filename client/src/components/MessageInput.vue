@@ -9,7 +9,7 @@
         <div class="dropdown-menu">
           <a class="dropdown-item" @click="resetActiveCharacter">(None)</a>
           <div v-for="character in characters" :key="character._id">
-            <a class="dropdown-item" @click="changeActiveCharacter">{{character.name}}</a>
+            <a class="dropdown-item" @click="changeActiveCharacter(character)">{{character.name}}</a>
           </div>
         </div>
       </span>
@@ -70,9 +70,8 @@ export default {
       this.$store.dispatch("resetActiveCharacter");
       this.activeCharacter = {};
     },
-    changeActiveCharacter() {
-      let characterId = this.character._id;
-      this.$store.dispatch("changeActiveCharacter", characterId);
+    changeActiveCharacter(character) {
+      this.$store.dispatch("changeActiveCharacter", character._id);
     }
   },
   components: {}

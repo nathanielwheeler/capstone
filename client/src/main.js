@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import VueChatScroll from 'vue-chat-scroll'
 import AuthService from "./AuthService"
+import "./lib/QuickComponents"
 //Vue.config.productionTip = false
 Vue.use(VueChatScroll)
 

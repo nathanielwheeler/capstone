@@ -6,13 +6,13 @@ import Groups from './views/Groups.vue'
 import Chat from './views/Chat.vue'
 import Chats from './views/Chats.vue'
 import Characters from './views/Characters.vue'
+import CurrentCharacter from './views/CurrentCharacter.vue'
 
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'home',
       component: Home
@@ -31,6 +31,11 @@ export default new Router({
       path: '/characters',
       name: 'characters',
       component: Characters
+    },
+    {
+      path: '/currentcharacter',
+      name: 'currentcharacter',
+      component: CurrentCharacter
     },
     {
       path: '/chats',
@@ -54,7 +59,7 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: function () {
-        return import(/* webpackChunkName: "about" */ './views/About.vue')
+        return import( /* webpackChunkName: "about" */ './views/About.vue')
       }
     }
   ]

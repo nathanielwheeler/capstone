@@ -11,7 +11,9 @@
       </div>
       <create-character-modal />
       <div class="col-12">
-        <div v-for="character in characters" :key="character._id">{{character.name}}
+        <div v-for="character in characters" :key="character._id">
+        <router-link :to="{name:'character' , params: {characterId: character._id}}">{{character.name}}</router-link>
+
     </div>
       </div>
     </div>
@@ -44,7 +46,6 @@ export default {
     getCharacters() {},
 
     createCharacter() {
-      debugger;
       this.$store.dispatch("createCharacter", this.newCharacter);
       this.newCharacter = { name: "", stats: "", description: "" };
     }

@@ -43,7 +43,10 @@ export default {
     }
   },
   methods: {
-    getCharacters() {},
+    getCharacters() {
+      this.$store.dispatch("getActiveCharacter", this.activeCharacter);
+      this.activeCharacter = { name: "", stats: "", description: "" };
+    },
 
     createCharacter() {
       this.$store.dispatch("createCharacter", this.newCharacter);

@@ -8,9 +8,9 @@
         <router-link to="/chats" class="col-4">
           <button class="Chats btn btn-info">Chats</button>
         </router-link>
-        <router-link to="/currentCharacter" class="col-4">
+        <!-- <router-link to="/currentCharacter" class="col-4">
           <button class="Current-Character col-4 btn btn-info">Current Character</button>
-        </router-link>
+        </router-link> -->
         <router-link to="/characters" class="col-4">
           <button class="Characters btn btn-info">Characters</button>
         </router-link>

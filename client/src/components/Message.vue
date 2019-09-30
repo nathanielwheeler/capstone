@@ -24,7 +24,8 @@
         <span class="dropdown">
           <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
           <div class="dropdown-menu">
-            <a @click="editMessage(messageProp)" class="dropdown-item">edit</a>
+            <button @click="openEditor(editMessage)" class="button" role="button" data-toggle="modal"
+              data-target="#editMessageModal">edit</button>
             <a @click="deleteMessage(messageProp)" class="dropdown-item">delete</a>
           </div>
         </span>
@@ -35,12 +36,14 @@
 
 
 <script>
-  // import EditMessageModal from "../components/EditMesssageModal";
+  import editMessageModal from "../components/EditMessageModal";
   export default {
 
-    props: ["messageProp"],
+    props: ["messageProp",],
     data() {
-      return {};
+      return {
+        editMessageModal
+      };
     },
     mounted() {
       let payload = {
@@ -55,24 +58,28 @@
       }
     },
     methods: {
-      editMessage(message) {
-        this.$store.dispatch("editMessage", message);
+      openEditor(editMessage) {
+        $("#editMessageModal").modal('show');
       },
       deleteMessage(message) {
         this.$store.dispatch("deleteMessage", message);
       },
+      // editMessage(message) {
+      //   this.$store.dispatch("editMessage", message);
+      // },
 
-      components: {
-        // FIXME EditMessageModal
-      }
+
+    },
+    components: {
+      editMessageModal
     }
   }
 </script>
 
 
 <style scoped>
-.dialogue-box {
-  border: 1px solid black;
-  padding: 10px;
-}
+  .dialogue-box {
+    border: 1px solid black;
+    padding: 10px;
+  }
 </style>

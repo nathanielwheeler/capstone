@@ -7,7 +7,7 @@ import Chat from './views/Chat.vue'
 import Chats from './views/Chats.vue'
 import Characters from './views/Characters.vue'
 import CurrentCharacter from './views/CurrentCharacter.vue'
-
+import DiceSim from './views/DiceSim.vue'
 
 Vue.use(Router)
 
@@ -46,6 +46,12 @@ export default new Router({
     path: '/chats/:chatId',
     name: 'chat',
     component: Chat
+  },
+
+  {
+    path: '/dice/',
+    name: 'dice',
+    component: DiceSim
   },
 
   {

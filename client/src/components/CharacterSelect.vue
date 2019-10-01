@@ -3,10 +3,10 @@
     <span class="dropdown show">
       <button class="btn btn-info btn-block dropdown-toggle top-margin" data-toggle="dropdown">
         <span v-if="activeCharacter != {} || ''">Voice: {{activeCharacter.name}}</span>
-        <span v-else>Voice: (No Character Selected)</span>
+        <span v-else>(No Character Selected)</span>
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" @click="resetActiveCharacter">(None)</a>
+        <a class="dropdown-item" @click="resetActiveCharacter()">(None)</a>
         <a
           v-for="character in characters"
           :key="character._id"
@@ -43,7 +43,7 @@ export default {
   methods: {
     resetActiveCharacter() {
       this.$store.dispatch("resetActiveCharacter");
-      this.activeCharacter = {};
+      // this.activeCharacter = {};
     },
     changeActiveCharacter(character) {
       let characterId = character._id;
@@ -56,6 +56,9 @@ export default {
 
 
 <style scoped>
+button {
+  margin: 10px;
+}
 .dropdown-menu {
   transform: unset !important;
 }

@@ -27,15 +27,24 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    activeCharacter() {
+      return this.$store.state.activeCharacter;
     }
   },
   methods: {
     addMessage() {
+      let activeCharacter = this.activeCharacter;
       let message = {
         body: this.message.body,
         //author: this.user._id,
         chat: this.$route.params.chatId
       };
+      if (activeCharacter.hasOwnProperty("_id")) {
+        message.dialogueBool = true;
+        message.style = activeCharacter._id;
+      }
+      debugger;
       this.$store.dispatch("addMessage", message);
       this.message = {};
     }

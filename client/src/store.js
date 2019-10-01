@@ -227,7 +227,7 @@ export default new Vuex.Store({
       }
     },
     resetActiveCharacter({ commit, dispatch }) {
-      this.commit('setActiveCharacter', {})
+      commit('setActiveCharacter', {})
     },
     async changeActiveCharacter({ commit, dispatch }, characterId) {
       try {

@@ -71,7 +71,11 @@ export default new Vuex.Store({
     },
     setMessages(state, data) {
       Vue.set(state.messages, data.chatId, data.messages)
-    }
+    },
+
+    editMessage(state, payload) {
+      state.currentMessage = payload
+    },
   },
   actions: {
     initializeSocket({
@@ -302,7 +306,7 @@ export default new Vuex.Store({
       // debugger
       try {
         let res = await api.put('/messages/' + payload._id, payload)
-        commit('setMessages', res.data.body)
+        commit('editMessage', res.data.body)
         dispatch('getMessages', payload.chat._id)
       } catch (error) {
         console.error(error)

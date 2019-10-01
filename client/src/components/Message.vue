@@ -28,7 +28,7 @@
         <p
           :contentEditable="user._id == messageProp.author._id"
           v-text="messageProp.body"
-          @blur="editMessage"
+          @blur="editMessage(message)"
         ></p>
         <div v-if="user._id != messageProp.author._id"></div>
         <div v-else>
@@ -69,7 +69,7 @@
             <div class="col-6">
               <!-- <editMessageModal :messageProp="messageProp"/> -->
               <button>
-                <i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i>
+                <i class="fas fa-trash-alt" @click="deleteMessage(this.messageProp._id)"></i>
               </button>
             </div>
           </div>
@@ -127,8 +127,7 @@ export default {
     //   this.showformModal = false;
     // },
     editMessage(message) {
-      // debugger
-      this.$store.dispatch("editMessage", message);
+      this.$store.dispatch("editMessage", this.messageProp);
       this.showformModal = false;
     }
   },

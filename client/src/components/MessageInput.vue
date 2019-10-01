@@ -24,15 +24,13 @@
 
 <script>
 // import ActiveCharacter from "./";
-import activeCharacterModal from "./ActiveCharacterModal";
 export default {
   name: "message-input",
   data() {
     return {
       message: {
         body: ""
-      },
-      characters: {}
+      }
     };
   },
   mounted() {
@@ -45,23 +43,9 @@ export default {
     },
     characters() {
       return this.$store.state.characters;
-    }
-  },
-  methods: {
-    addMessage() {
-      let message = {
-        body: this.message.body,
-        //author: this.user._id,
-        chat: this.$route.params.chatId
-      };
-    }
-  },
-  mounted() {
-    let chatId = this.$route.params.chatId;
-  },
-  computed: {
-    user() {
-      return this.$store.state.user;
+    },
+    activeCharacter() {
+      return this.$store.state.activeCharacter;
     }
   },
   methods: {
@@ -73,11 +57,17 @@ export default {
       };
       this.$store.dispatch("addMessage", message);
       this.message = {};
+    },
+    resetActiveCharacter() {
+      this.$store.dispatch("resetActiveCharacter");
+      this.activeCharacter = {};
+    },
+    changeActiveCharacter() {
+      let characterId = this.character._id;
+      this.$store.dispatch("changeActiveCharacter", characterId);
     }
   },
-  components: {
-    activeCharacterModal
-  }
+  components: {}
 };
 </script>
 

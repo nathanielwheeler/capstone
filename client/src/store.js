@@ -170,6 +170,36 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+
+    async deleteCharacter({ commit, dispatch }, characterId) {
+      try {
+        await api.delete('/characters/' + characterId)
+        dispatch('getCharacters')
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async editCharacter({ commit, dispatch }, character) {
+      try {
+        let change = await api.put('/characters/' + character._id, character)
+        commit('editCharacter', change)
+        dispatch('getCharacters')
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    // async updateComment({ commit }, comment) {
+    //   try {
+    //     let endPoint = `comments/${comment._id}`
+    //     let updatedComment = await _api.put(endPoint, comment)
+    //     commit('updateComment', updatedComment)
+    //   } catch (error) {
+    //     console.error('store.js: setCommentLikeValue()')
+    //   }
+    // }
+
     async getCharacters({
       commit,
       dispatch
@@ -184,7 +214,7 @@ export default new Vuex.Store({
     async getCharacter({
       commit,
       dispatch
-    }) {
+    }, characterId) {
       try {
         let res = await api.get('/characters/' + characterId)
         commit('setActiveCharacter', res.data)

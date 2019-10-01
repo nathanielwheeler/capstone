@@ -303,7 +303,7 @@ export default new Vuex.Store({
       commit,
       dispatch
     }, payload) {
-      debugger
+
       try {
         let res = await api.put('/messages/' + payload._id, payload)
         commit('editMessage', res.data)

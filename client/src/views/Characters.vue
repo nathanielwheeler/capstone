@@ -43,8 +43,7 @@
                     </div>
                     <div class="form-group">
                       <label for="group name">Character Stats</label>
-                      <input
-                        type="text"
+                      <textarea
                         class="form-control"
                         id="characterStats"
                         placeholder
@@ -53,13 +52,19 @@
                     </div>
                     <div class="form-group">
                       <label for="character class">Character Description</label>
-                      <input
+                      <textarea
+                        class="form-control"
+                        aria-label="With textarea"
+                        id="characterDescription"
+                        v-model="character.description"
+                      ></textarea>
+                      <!-- <input
                         type="text"
                         class="form-control"
                         id="characterDescription"
                         placeholder
                         v-model="character.description"
-                      />
+                      />-->
                       <button
                         type="submit"
                         @click="editCharacter(character)"
@@ -120,7 +125,10 @@ export default {
     },
 
     deleteCharacter(characterId) {
-      this.$store.dispatch("deleteCharacter", characterId);
+      let x = confirm("Are you sure you want to delete this character?");
+      if (x == true) {
+        this.$store.dispatch("deleteCharacter", characterId);
+      }
     },
     editCharacter(character) {
       this.$store.dispatch("editCharacter", character);

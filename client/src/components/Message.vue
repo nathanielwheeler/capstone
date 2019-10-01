@@ -20,7 +20,7 @@
         <strong>{{messageProp.author.name}}:</strong>
       </div>
       <div class="col-9 col-md-10 text-left">
-        {{messageProp.body}}
+        <p :contentEditable="user._id == messageProp.author._id" v-text="messageProp.body" @blur="updateText"></p>
         <div v-if="user._id != messageProp.author._id"></div>
         <div v-else>
           <!-- <span class="dropdown position-relative">
@@ -58,7 +58,7 @@
                 </div> -->
            <div class="row"> 
              <div class="col-6"> 
-              <editMessageModal />
+              <!-- <editMessageModal :messageProp="messageProp"/> -->
               <button><i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i></button>
              </div> 
              </div> 
@@ -101,6 +101,13 @@ export default {
     }
   },
   methods: {
+
+    updateText(evt){
+      var updated = evt.target.innerText
+      this.messageProp.body = updated
+    },
+
+
     // openEditor(editMessage) {
     //   $("#editMessageModal").modal("show");
     // },

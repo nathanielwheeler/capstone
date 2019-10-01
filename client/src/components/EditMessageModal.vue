@@ -1,9 +1,8 @@
 <template>
   <div class="editMessage">
-    <button><i class="fas fa-pencil-alt" data-toggle="modal" data-target="#editMessageModal"></i></button>
+    <button><i class="fas fa-pencil-alt" data-toggle="modal" :data-target="'#editMessageModal'+messageProp._id"></i></button>
     <!-- <a class="edit" data-toggle="modal" data-target="#editMessageModal"></a> -->
-    <div id="editMessageModal" class="modal" role="dialog">
-    <div class="modal fade" id="editMessageModal" tabindex="-1" role="dialog">
+    <div class="modal" :id="'editMessageModal:'+messageProp._id" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -11,8 +10,8 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             </button>
           </div>
-          </div> 
-          <form @submit.prevent="editMessageModal(messageProp)">
+         
+          <form>
             <div class="form-group"> 
               <label for>Edit Here</label> 
               <input 
@@ -20,7 +19,7 @@
               class="form-control"
               id="messageBody"
               placeholder
-              v-model="messageProp.body"/> 
+            
               </div> 
               </form> 
           <div class="modal-body">
@@ -29,7 +28,8 @@
                     @click="editMessage(messageProp)"
                     class="btn btn-success"
                   >Submit</button>
-          </div> 
+           </div>
+           </div> 
           </div> 
           </div> 
           <div class="modal-footer">
@@ -38,7 +38,6 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 </template>
 
@@ -49,22 +48,33 @@ export default {
   props: ['messageProp'], 
   data() {
     return {
-      message: {
-        body: ""
-      },
+      // message: {
+      //   body: ""
+      // },
     };
   },
   mounted() {
-    let payload = {
-      author: this.messageProp.author._id,
-      chatId: this.messageProp.chat._id, 
-      messageId: this.messageProp._id
-    }; 
+    // let payload = {
+    //   author: this.messageProp.author._id,
+    //   chatId: this.messageProp.chat._id, 
+    //   messageId: this.messageProp._id
+    // }; 
   }, 
-  computed: {},
-  methods: {},
+  computed: {
+    currentCharacter() {
+return this.$store.state.currentCharacter; 
+    },
+    user() {
+      return this.$store.state.user; 
+    }
+    },
+  methods: {
+  editMessage(message) {
+    this.$store.dispatch("editMessage", message); 
+  }
+  },
   components: {}
-};debugger
+};
 </script>
 
 

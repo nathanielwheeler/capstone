@@ -25,13 +25,13 @@
         <div v-else>
           <!-- <span class="dropdown position-relative">
             <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
-            <div class="dropdown-menu"> -->
-              <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
-              data-target="#editMessageModal">edit</a>-->
+          <div class="dropdown-menu">-->
+          <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
+          data-target="#editMessageModal">edit</a>-->
 
-              <!-- <editMessageModal /> -->
+          <!-- <editMessageModal /> -->
 
-              <!-- <button @click.stop="showformModal = true">Edit</button>
+          <!-- <button @click.stop="showformModal = true">Edit</button>
               <quick-modal
                 class="bg-dark text-light position-relative z-index"
                 :toggle="showformModal"
@@ -55,14 +55,13 @@
                     @click="editMessage(messageProp)"
                     class="btn btn-success"
                   >Submit</button>
-                </div> -->
-              <EditMessageModal />
-              <i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i>
-            </div>
-          <!-- </span> -->
+          </div>-->
+          <EditMessageModal />
+          <i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i>
         </div>
-      </span>
-    </span>
+        <!-- </span> -->
+      </div>
+    </div>
   </div>
 </template>
 

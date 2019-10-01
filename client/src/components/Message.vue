@@ -12,7 +12,7 @@
       </div>
       <div class="col-9 dialogue-box">{{messageProp.body}}</div>
     </div>
-    <!-- NOTE This appears if a character is not selected -->
+    <!--  This appears if a character is not selected -->
     <div class="row" v-else>
       <!-- <h1>{{this.messageProp.author.name}}</h1> -->
       <br />
@@ -21,7 +21,7 @@
       </div>
       <div class="col-9 col-md-10 text-left">
         {{messageProp.body}}
-        <span class="dropdown position-relative">
+        <span NOTE class="dropdown position-relative">
           <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
           <div class="dropdown-menu">
             <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
@@ -30,7 +30,7 @@
             <!-- <editMessageModal /> -->
 
             <button @click.stop="showformModal = true">Edit</button>
-            <quick-modal class="bg-dark text-light position-relative z-index" :toggle="showformModal"
+            <quick-modal NOTE class="bg-dark text-light position-relative z-index" :toggle="showformModal"
               @close="showformModal = false">
               <form @submit.prevent="editMessage(messageProp)">
                 <div class="form-group">
@@ -89,6 +89,7 @@
       //   this.showformModal = false;
       // },
       editMessage(message) {
+        // debugger
         this.$store.dispatch("editMessage", message);
         this.showformModal = false;
 
@@ -109,6 +110,7 @@
   }
 
   .z-index {
+    /* position: relative !important; */
     z-index: 9999 !important;
   }
 </style>

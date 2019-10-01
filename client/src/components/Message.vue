@@ -19,44 +19,47 @@
       <div class="col-3 col-md-2 text-right">
         <strong>{{messageProp.author.name}}:</strong>
       </div>
-      <div class="col-9 col-md-10 text-left">{{messageProp.body}}</div>
-    </div>
-    <!-- NOTE This appears on a new line after the message content -->
-    <span class="timestamp">{{messageProp.createdAt}}</span>
-    <span v-if="user._id != messageProp.author._id"></span>
-    <span v-else>
-      <span class="dropdown position-relative">
-        <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
-        <div class="dropdown-menu">
-          <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
-          data-target="#editMessageModal">edit</a>-->
+      <div class="col-9 col-md-10 text-left">
+        {{messageProp.body}}
+        <div v-if="user._id != messageProp.author._id"></div>
+        <div v-else>
+          <!-- <span class="dropdown position-relative">
+            <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
+            <div class="dropdown-menu"> -->
+              <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
+              data-target="#editMessageModal">edit</a>-->
 
-          <!-- <editMessageModal /> -->
+              <!-- <editMessageModal /> -->
 
-          <button @click.stop="showformModal = true">Edit</button>
-          <quick-modal
-            class="bg-dark text-light position-relative z-index"
-            :toggle="showformModal"
-            @close="showformModal = false"
-          >
-            <form @submit.prevent="editMessage(messageProp)">
-              <div class="form-group">
-                <label for>Something Here</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="messageBody"
-                  placeholder
-                  v-model="messageProp.body"
-                />
-              </div>
-            </form>
-            <div slot="modal-footer">
-              <button type="button" @click="editMessage(messageProp)" class="btn btn-success">Submit</button>
+              <!-- <button @click.stop="showformModal = true">Edit</button>
+              <quick-modal
+                class="bg-dark text-light position-relative z-index"
+                :toggle="showformModal"
+                @close="showformModal = false"
+              >
+                <form @submit.prevent="editMessage(messageProp)">
+                  <div class="form-group">
+                    <label for>Something Here</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="messageBody"
+                      placeholder
+                      v-model="messageProp.body"
+                    />
+                  </div>
+                </form>
+                <div slot="modal-footer">
+                  <button
+                    type="button"
+                    @click="editMessage(messageProp)"
+                    class="btn btn-success"
+                  >Submit</button>
+                </div> -->
+              <EditMessageModal />
+              <i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i>
             </div>
-          </quick-modal>
-
-          <a @click="deleteMessage(messageProp)" class="dropdown-item">Delete</a>
+          <!-- </span> -->
         </div>
       </span>
     </span>

@@ -44,7 +44,6 @@ export default {
         message.dialogueBool = true;
         message.style = activeCharacter._id;
       }
-      debugger;
       this.$store.dispatch("addMessage", message);
       this.message = {};
     }

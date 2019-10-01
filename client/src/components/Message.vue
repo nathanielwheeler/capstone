@@ -57,8 +57,12 @@
                     class="btn btn-success"
                   >Submit</button>
                 </div> -->
-              <EditMessageModal />
-              <i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i>
+           <div class="row"> 
+             <div class="col-6"> 
+              <editMessageModal />
+              <button><i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i></button>
+             </div> 
+             </div> 
             </div>
           <!-- </span> -->
         </div>

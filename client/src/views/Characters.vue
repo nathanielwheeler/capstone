@@ -13,16 +13,20 @@
       <div class="col-12">
         <div v-for="character in characters" :key="character._id">
           <router-link
-            :to="{name:'character' , params: {characterId: character._id}}"
+            :to="{name:'characters' , params: {characterId: character._id}}"
           >{{character.name}}</router-link>
 
-          <button class="btn btn-info" data-toggle="modal" data-target="#editCharacterModal">Edit</button>
+          <button
+            class="btn btn-info"
+            data-toggle="modal"
+            :data-target="'#editCharacterModal'+character._id"
+          >Edit</button>
 
-          <div id="editCharacterModal" class="modal" role="dialog">
+          <div :id="'editCharacterModal'+character._id" class="modal" role="dialog">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <button type="button" class="close" data-dismiss="modal"></button>
                   <h4 class="modal-title">Edit your character</h4>
                 </div>
                 <div class="modal-body">

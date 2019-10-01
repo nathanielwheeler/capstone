@@ -65,8 +65,9 @@ export default {
       this.$store.dispatch("resetActiveCharacter");
       this.activeCharacter = {};
     },
-    changeActiveCharacter() {
-      let characterId = this.character._id;
+    changeActiveCharacter(character) {
+      let characterId = character._id;
+      debugger;
       this.$store.dispatch("changeActiveCharacter", characterId);
     }
   },

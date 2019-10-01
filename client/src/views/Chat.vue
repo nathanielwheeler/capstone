@@ -13,6 +13,7 @@
         </div>
       </div>
       <messageInput />
+      <character-select />
       <active-character-modal />
     </div>
   </div>
@@ -20,67 +21,69 @@
 
 
 <script>
-  import message from "../components/Message";
-  import messageInput from "../components/MessageInput";
-  import activeCharacterModal from "../components/ActiveCharacterModal";
+import message from "../components/Message";
+import messageInput from "../components/MessageInput";
+import CharacterSelect from "../components/CharacterSelect";
+import activeCharacterModal from "../components/ActiveCharacterModal";
 
-  export default {
-    name: "chat",
-    mounted() {
-      let chatId = this.$route.params.chatId;
-      this.$store.dispatch("getChat", chatId);
-      this.$store.dispatch("getMessages", chatId);
+export default {
+  name: "chat",
+  mounted() {
+    let chatId = this.$route.params.chatId;
+    this.$store.dispatch("getChat", chatId);
+    this.$store.dispatch("getMessages", chatId);
+  },
+  props: [],
+  data() {
+    return {};
+  },
+  computed: {
+    chat() {
+      return this.$store.state.currentChat;
     },
-    props: [],
-    data() {
-      return {};
-    },
-    computed: {
-      chat() {
-        return this.$store.state.currentChat;
-      },
-      messages() {
-        return this.$store.state.messages[this.$route.params.chatId];
-      }
-      //   comments() {
-      //   return this.$store.state.comments[this.taskProp._id] || [];
-      // }
-    },
-    methods: {
-      subscribe(chatId) {
-        this.$store.dispatch("subscribe", chatId);
-      }
-    },
-    components: {
-      message,
-      messageInput,
-      activeCharacterModal
+    messages() {
+      return this.$store.state.messages[this.$route.params.chatId];
     }
-  };
+    //   comments() {
+    //   return this.$store.state.comments[this.taskProp._id] || [];
+    // }
+  },
+  methods: {
+    subscribe(chatId) {
+      this.$store.dispatch("subscribe", chatId);
+    }
+  },
+  components: {
+    message,
+    messageInput,
+    CharacterSelect,
+    activeCharacterModal
+  }
+};
 </script>
 
 
 <style scoped>
-  .mybutton {
-    padding: 0px;
-  }
+.mybutton {
+  padding: 0px;
+}
 
-  messageInput {
-    text-align: center;
-    z-index: -1;
-  }
+messageInput {
+  text-align: center;
+  z-index: -1;
+}
 
-  .messageBox {
-    height: 450px;
-    overflow-y: auto;
-    overflow-wrap: break-word;
-  }
+.messageBox {
+  height: 450px;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+}
 
-  h3 {
-    text-align: center;
-  }
+h3 {
+  text-align: center;
+}
 
-  .chat {
-    text-align: center;
-  }
+.chat {
+  text-align: center;
+}
 </style>

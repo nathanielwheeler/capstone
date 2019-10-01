@@ -23,15 +23,15 @@
         {{messageProp.body}}
         <div v-if="user._id != messageProp.author._id"></div>
         <div v-else>
-          <span NOTE class="dropdown position-relative">
+          <!-- <span NOTE class="dropdown position-relative">
             <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu"> -->
               <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
               data-target="#editMessageModal">edit</a>-->
 
               <!-- <editMessageModal /> -->
 
-              <button @click.stop="showformModal = true">Edit</button>
+              <!-- <button @click.stop="showformModal = true">Edit</button>
               <quick-modal
                 NOTE
                 class="bg-dark text-light position-relative z-index"
@@ -56,12 +56,11 @@
                     @click="editMessage(messageProp)"
                     class="btn btn-success"
                   >Submit</button>
-                </div>
-              </quick-modal>
-
-              <a @click="deleteMessage(messageProp)" class="dropdown-item">Delete</a>
+                </div> -->
+              <EditMessageModal />
+              <i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i>
             </div>
-          </span>
+          <!-- </span> -->
         </div>
       </div>
     </div>

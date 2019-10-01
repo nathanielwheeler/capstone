@@ -1,6 +1,6 @@
 <template>
   <div class="character-select">
-    <span class="dropdown show">
+    <span class="dropup show">
       <button class="btn btn-info btn-block dropdown-toggle top-margin" data-toggle="dropdown">
         <span v-if="activeCharacter != {} || ''">Voice: {{activeCharacter.name}}</span>
         <span v-else>(No Character Selected)</span>

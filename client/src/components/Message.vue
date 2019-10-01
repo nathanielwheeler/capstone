@@ -10,7 +10,7 @@
           <em>{{messageProp.author.name}}</em>
         </div>
       </div>
-      <div class="col-9 dialogue-box">{{messageProp.body}}</div>
+      <p class="col-9 dialogue-box">{{messageProp.body}}</p>
     </div>
     <!--  NOTE This appears if a character is not selected -->
     <div class="row" v-else>
@@ -20,7 +20,11 @@
         <strong>{{messageProp.author.name}}:</strong>
       </div>
       <div class="col-9 col-md-10 text-left">
-        <p :contentEditable="user._id == messageProp.author._id" v-text="messageProp.body" @blur="updateText"></p>
+        <p
+          :contentEditable="user._id == messageProp.author._id"
+          v-text="messageProp.body"
+          @blur="updateText"
+        ></p>
         <div v-if="user._id != messageProp.author._id"></div>
         <div v-else>
           <!-- <span class="dropdown position-relative">
@@ -55,18 +59,19 @@
                     @click="editMessage(messageProp)"
                     class="btn btn-success"
                   >Submit</button>
-                </div> -->
-           <div class="row"> 
-             <div class="col-6"> 
+          </div>-->
+          <div class="row">
+            <div class="col-6">
               <!-- <editMessageModal :messageProp="messageProp"/> -->
-              <button><i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i></button>
-             </div> 
-             </div> 
+              <button>
+                <i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i>
+              </button>
             </div>
-          <!-- </span> -->
+          </div>
         </div>
         <!-- </span> -->
       </div>
+      <!-- </span> -->
     </div>
   </div>
 </template>
@@ -101,12 +106,10 @@ export default {
     }
   },
   methods: {
-
-    updateText(evt){
-      var updated = evt.target.innerText
-      this.messageProp.body = updated
+    updateText(evt) {
+      var updated = evt.target.innerText;
+      this.messageProp.body = updated;
     },
-
 
     // openEditor(editMessage) {
     //   $("#editMessageModal").modal("show");

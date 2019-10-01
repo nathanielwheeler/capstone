@@ -10,7 +10,12 @@
           <em>{{messageProp.author.name}}</em>
         </div>
       </div>
-      <p class="col-9 dialogue-box">{{messageProp.body}}</p>
+      <p
+        :contentEditable="user._id == messageProp.author._id"
+        v-text="messageProp.body"
+        @blur="updateText"
+        class="col-9 dialogue-box"
+      >{{messageProp.body}}</p>
     </div>
     <!--  NOTE This appears if a character is not selected -->
     <div class="row" v-else>

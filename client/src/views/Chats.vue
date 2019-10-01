@@ -12,9 +12,6 @@
     <div class="row justify-content-center">
       <div class="col-12 my-1" v-for="chat in chats" :key="chat._id">
         <router-link :to="{name:'chat' , params: {chatId: chat._id}}">{{chat.title}}</router-link>
-        <button class="btn btn-primary mybutton" @click="subscribe(chat._id)">
-          <b>Subscribe</b>
-        </button>
       </div>
     </div>
   </div>
@@ -43,9 +40,6 @@ export default {
     addChat() {
       this.$store.dispatch("addChat", this.newChat);
       this.newChat = { title: "", description: "" };
-    },
-    subscribe(chatId) {
-      this.$store.dispatch("subscribe", chatId);
     }
   },
   components: {}

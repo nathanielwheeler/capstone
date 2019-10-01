@@ -14,8 +14,13 @@
           </div>
           <div class="modal-body">
             <form>
+              <h1>Character Name</h1>
               <label for="group name">{{activeCharacter.name}}</label>
+              <br> 
+              <h3>Character Stats</h3>
               <label for="group name">{{activeCharacter.stats}}</label>
+              <br> 
+              <h3>Character Description</h3> 
               <label for="character class">{{activeCharacter.description}}</label>
             </form>
           </div>

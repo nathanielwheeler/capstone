@@ -28,7 +28,7 @@
         <p
           :contentEditable="user._id == messageProp.author._id"
           v-text="messageProp.body"
-          @blur="updateText"
+          @blur="editMessage"
         ></p>
         <div v-if="user._id != messageProp.author._id"></div>
         <div v-else>

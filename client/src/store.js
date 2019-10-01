@@ -300,7 +300,8 @@ export default new Vuex.Store({
       dispatch
     }, payload) {
       try {
-        let res = await api.put('/messages/' + payload._id)
+        let change = await api.put('/messages/' + payload._id, payload)
+        dispatch('editMessage', change)
         dispatch('getMessages', payload.chat._id)
       } catch (error) {
         console.error(error)

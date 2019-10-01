@@ -53,6 +53,7 @@ export default class ChatController {
             let data = await _messageService.find({ chat: req.params.id })
                 .populate('chat', '_id')
                 .populate('author', 'name')
+                .populate('character')
             // @ts-ignore
             return res.send(data.sort(function (a, b) { return b.createdAt - a.createdAt }))
         } catch (error) { next(error) }
@@ -62,6 +63,7 @@ export default class ChatController {
     async getById(req, res, next) {
         try {
             let data = await _chatService.findById(req.params.id)
+                .populate('style', 'name')
             if (!data) {
                 throw new Error("Invalid Id")
             }

@@ -42,7 +42,7 @@ export default {
       };
       if (activeCharacter.hasOwnProperty("_id")) {
         message.dialogueBool = true;
-        message.style = activeCharacter._id;
+        message.character = activeCharacter._id;
       }
       this.$store.dispatch("addMessage", message);
       this.message = {};

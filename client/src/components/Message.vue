@@ -4,7 +4,7 @@
     <div class="row" v-if="messageProp.dialogueBool === true">
       <div class="col-3">
         <div class="row">
-          <strong>Character Name</strong>
+          <strong v-if="messageProp.character">{{messageProp.character.name}}</strong>
         </div>
         <div class="row">
           <em>{{messageProp.author.name}}</em>
@@ -12,7 +12,7 @@
       </div>
       <div class="col-9 dialogue-box">{{messageProp.body}}</div>
     </div>
-    <!--  This appears if a character is not selected -->
+    <!--  NOTE This appears if a character is not selected -->
     <div class="row" v-else>
       <!-- <h1>{{this.messageProp.author.name}}</h1> -->
       <br />
@@ -23,17 +23,16 @@
         {{messageProp.body}}
         <div v-if="user._id != messageProp.author._id"></div>
         <div v-else>
-          <!-- <span NOTE class="dropdown position-relative">
+          <!-- <span class="dropdown position-relative">
             <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
-            <div class="dropdown-menu"> -->
-              <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
-              data-target="#editMessageModal">edit</a>-->
+          <div class="dropdown-menu">-->
+          <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
+          data-target="#editMessageModal">edit</a>-->
 
-              <!-- <editMessageModal /> -->
+          <!-- <editMessageModal /> -->
 
-              <!-- <button @click.stop="showformModal = true">Edit</button>
+          <!-- <button @click.stop="showformModal = true">Edit</button>
               <quick-modal
-                NOTE
                 class="bg-dark text-light position-relative z-index"
                 :toggle="showformModal"
                 @close="showformModal = false"
@@ -66,6 +65,7 @@
             </div>
           <!-- </span> -->
         </div>
+        <!-- </span> -->
       </div>
     </div>
   </div>
@@ -125,6 +125,10 @@ export default {
 
 
 <style scoped>
+.timestamp {
+  color: #bbb;
+  font-size: 9pt;
+}
 .dialogue-box {
   border: 1px solid black;
   padding: 10px;

@@ -120,7 +120,10 @@ export default {
     },
 
     deleteCharacter(characterId) {
-      this.$store.dispatch("deleteCharacter", characterId);
+      let x = confirm("Are you sure you want to delete this character?");
+      if (x == true) {
+        this.$store.dispatch("deleteCharacter", characterId);
+      }
     },
     editCharacter(character) {
       this.$store.dispatch("editCharacter", character);

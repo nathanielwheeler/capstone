@@ -6,16 +6,19 @@
         <button class="btn btn-info" type="submit">Send</button>
       </div>
     </form>
-    <span class="dropdown">
+    <span class="dropdown show">
       <button class="btn btn-info btn-block dropdown-toggle top-margin" data-toggle="dropdown">
-        <span v-if="activeCharacter === {}">(None)</span>
-        <span v-else>{{activeCharacter.name}}</span>
+        <span v-if="activeCharacter != {}">Voice: {{activeCharacter.name}}</span>
+        <span v-else>Voice: (None)</span>
       </button>
       <div class="dropdown-menu">
         <a class="dropdown-item" @click="resetActiveCharacter">(None)</a>
-        <div v-for="character in characters" :key="character._id">
-          <a class="dropdown-item" @click="changeActiveCharacter(character)">{{character.name}}</a>
-        </div>
+        <a
+          v-for="character in characters"
+          :key="character._id"
+          class="dropdown-item"
+          @click="changeActiveCharacter(character)"
+        >{{character.name}}</a>
       </div>
     </span>
   </div>
@@ -34,8 +37,8 @@ export default {
     };
   },
   mounted() {
-    return this.$route.params.chatId;
     return this.$store.dispatch("getCharacters");
+    return this.$route.params.chatId;
   },
   computed: {
     user() {
@@ -91,5 +94,9 @@ export default {
 }
 .top-margin {
   margin-top: 5px;
+}
+
+.dropdown-menu {
+  transform: unset !important;
 }
 </style>

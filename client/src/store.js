@@ -303,10 +303,10 @@ export default new Vuex.Store({
       commit,
       dispatch
     }, payload) {
-      // debugger
+      debugger
       try {
         let res = await api.put('/messages/' + payload._id, payload)
-        commit('editMessage', res.data.body)
+        commit('editMessage', res.data)
         dispatch('getMessages', payload.chat._id)
       } catch (error) {
         console.error(error)

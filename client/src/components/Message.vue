@@ -30,16 +30,30 @@
             <!-- <editMessageModal /> -->
 
             <button @click.stop="showformModal = true">Edit</button>
-            <quick-modal NOTE class="bg-dark text-light position-relative z-index" :toggle="showformModal"
-              @close="showformModal = false">
+            <quick-modal
+              NOTE
+              class="bg-dark text-light position-relative z-index"
+              :toggle="showformModal"
+              @close="showformModal = false"
+            >
               <form @submit.prevent="editMessage(messageProp)">
                 <div class="form-group">
                   <label for>Something Here</label>
-                  <input type="text" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="messageBody"
+                    placeholder
+                    v-model="messageProp.body"
+                  />
                 </div>
               </form>
               <div slot="modal-footer">
-                <button type="button" @click="editMessage(messageProp)" class="btn btn-success">Submit</button>
+                <button
+                  type="button"
+                  @click="editMessage(messageProp)"
+                  class="btn btn-success"
+                >Submit</button>
               </div>
             </quick-modal>
 
@@ -53,64 +67,62 @@
 
 
 <script>
-  import editMessageModal from "../components/EditMessageModal";
-  export default {
-    props: ["messageProp"],
-    data() {
-      return {
-        message: {
-          body: ""
-        },
-        // editMessageModal
-        showformModal: false
-      };
-    },
-    mounted() {
-      let payload = {
-        author: this.messageProp.author._id,
-        chatId: this.messageProp.chat._id,
-        messageId: this.messageProp._id
-      };
-    },
-    computed: {
-      currentCharacter() {
-        return this.$store.state.currentCharacter;
-      }
-    },
-    methods: {
-      // openEditor(editMessage) {
-      //   $("#editMessageModal").modal("show");
-      // },
-      deleteMessage(message) {
-        this.$store.dispatch("deleteMessage", message);
+import editMessageModal from "../components/EditMessageModal";
+export default {
+  props: ["messageProp"],
+  data() {
+    return {
+      message: {
+        body: ""
       },
-      // submit() {
-      //   console.log("cool");
-      //   this.showformModal = false;
-      // },
-      editMessage(message) {
-        // debugger
-        this.$store.dispatch("editMessage", message);
-        this.showformModal = false;
-
-
-      },
-    },
-    components: {
-      editMessageModal
+      // editMessageModal
+      showformModal: false
+    };
+  },
+  mounted() {
+    let payload = {
+      author: this.messageProp.author._id,
+      chatId: this.messageProp.chat._id,
+      messageId: this.messageProp._id
+    };
+  },
+  computed: {
+    currentCharacter() {
+      return this.$store.state.currentCharacter;
     }
-  };
+  },
+  methods: {
+    // openEditor(editMessage) {
+    //   $("#editMessageModal").modal("show");
+    // },
+    deleteMessage(message) {
+      this.$store.dispatch("deleteMessage", message);
+    },
+    // submit() {
+    //   console.log("cool");
+    //   this.showformModal = false;
+    // },
+    editMessage(message) {
+      // debugger
+      this.$store.dispatch("editMessage", message);
+      this.showformModal = false;
+    }
+  },
+  components: {
+    editMessageModal
+  }
+};
 </script>
 
 
 <style scoped>
-  .dialogue-box {
-    border: 1px solid black;
-    padding: 10px;
-  }
+.dialogue-box {
+  border: 1px solid black;
+  padding: 10px;
+}
 
-  .z-index {
-    /* position: relative !important; */
-    z-index: 9999 !important;
-  }
+.z-index {
+  /* position: relative !important; */
+  z-index: 9999 !important;
+}
 </style>

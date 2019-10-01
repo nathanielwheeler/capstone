@@ -53,7 +53,7 @@ export default class ChatController {
             let data = await _messageService.find({ chat: req.params.id })
                 .populate('chat', '_id')
                 .populate('author', 'name')
-                .populate('style', 'name')
+                .populate('character')
             // @ts-ignore
             return res.send(data.sort(function (a, b) { return b.createdAt - a.createdAt }))
         } catch (error) { next(error) }

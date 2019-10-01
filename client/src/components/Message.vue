@@ -4,7 +4,7 @@
     <div class="row" v-if="messageProp.dialogueBool === true">
       <div class="col-3">
         <div class="row">
-          <strong v-if="messageProp.style.name">{{messageProp.style.name}}</strong>
+          <strong v-if="messageProp.character">{{messageProp.character.name}}</strong>
         </div>
         <div class="row">
           <em>{{messageProp.author.name}}</em>

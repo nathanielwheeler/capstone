@@ -21,45 +21,48 @@
       </div>
       <div class="col-9 col-md-10 text-left">
         {{messageProp.body}}
-        <span NOTE class="dropdown position-relative">
-          <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
-          <div class="dropdown-menu">
-            <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
-            data-target="#editMessageModal">edit</a>-->
+        <div v-if="user._id != messageProp.author._id"></div>
+        <div v-else>
+          <span NOTE class="dropdown position-relative">
+            <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
+            <div class="dropdown-menu">
+              <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
+              data-target="#editMessageModal">edit</a>-->
 
-            <!-- <editMessageModal /> -->
+              <!-- <editMessageModal /> -->
 
-            <button @click.stop="showformModal = true">Edit</button>
-            <quick-modal
-              NOTE
-              class="bg-dark text-light position-relative z-index"
-              :toggle="showformModal"
-              @close="showformModal = false"
-            >
-              <form @submit.prevent="editMessage(messageProp)">
-                <div class="form-group">
-                  <label for>Something Here</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="messageBody"
-                    placeholder
-                    v-model="messageProp.body"
-                  />
+              <button @click.stop="showformModal = true">Edit</button>
+              <quick-modal
+                NOTE
+                class="bg-dark text-light position-relative z-index"
+                :toggle="showformModal"
+                @close="showformModal = false"
+              >
+                <form @submit.prevent="editMessage(messageProp)">
+                  <div class="form-group">
+                    <label for>Something Here</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="messageBody"
+                      placeholder
+                      v-model="messageProp.body"
+                    />
+                  </div>
+                </form>
+                <div slot="modal-footer">
+                  <button
+                    type="button"
+                    @click="editMessage(messageProp)"
+                    class="btn btn-success"
+                  >Submit</button>
                 </div>
-              </form>
-              <div slot="modal-footer">
-                <button
-                  type="button"
-                  @click="editMessage(messageProp)"
-                  class="btn btn-success"
-                >Submit</button>
-              </div>
-            </quick-modal>
+              </quick-modal>
 
-            <a @click="deleteMessage(messageProp)" class="dropdown-item">Delete</a>
-          </div>
-        </span>
+              <a @click="deleteMessage(messageProp)" class="dropdown-item">Delete</a>
+            </div>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -89,6 +92,9 @@ export default {
   computed: {
     currentCharacter() {
       return this.$store.state.currentCharacter;
+    },
+    user() {
+      return this.$store.state.user;
     }
   },
   methods: {

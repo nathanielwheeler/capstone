@@ -140,7 +140,7 @@ export default new Vuex.Store({
     }) {
       try {
         let success = await AuthService.Logout()
-        if (!success) { }
+        if (!success) {}
         commit('resetState')
         router.push({
           name: "login"
@@ -175,7 +175,10 @@ export default new Vuex.Store({
       }
     },
 
-    async deleteCharacter({ commit, dispatch }, characterId) {
+    async deleteCharacter({
+      commit,
+      dispatch
+    }, characterId) {
       try {
         await api.delete('/characters/' + characterId)
         dispatch('getCharacters')
@@ -184,7 +187,10 @@ export default new Vuex.Store({
       }
     },
 
-    async editCharacter({ commit, dispatch }, character) {
+    async editCharacter({
+      commit,
+      dispatch
+    }, character) {
       try {
         let change = await api.put('/characters/' + character._id, character)
         commit('editCharacter', change)
@@ -226,14 +232,22 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
-    resetActiveCharacter({ commit, dispatch }) {
+    resetActiveCharacter({
+      commit,
+      dispatch
+    }) {
       commit('setActiveCharacter', {})
     },
-    async changeActiveCharacter({ commit, dispatch }, characterId) {
+    async changeActiveCharacter({
+      commit,
+      dispatch
+    }, characterId) {
       try {
         let res = await api.get("/characters/" + characterId)
         commit('setActiveCharacter', res.data)
-      } catch (error) { console.error(error) }
+      } catch (error) {
+        console.error(error)
+      }
     },
     async addChat({
       commit,
@@ -305,6 +319,7 @@ export default new Vuex.Store({
     }, payload) {
 
       try {
+        debugger
         let res = await api.put('/messages/' + payload._id, payload)
         commit('editMessage', res.data)
         dispatch('getMessages', payload.chat._id)

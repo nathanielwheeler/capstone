@@ -6,7 +6,7 @@
       <span
         :contentEditable="user._id == activeCharacter.author"
         v-text="activeCharacter.style.color"
-        @blue="updateColor(hex)"
+        @blur="updateColor"
       ></span>
     </p>
     <p>
@@ -14,7 +14,7 @@
       <span
         :contentEditable="user._id == activeCharacter.author"
         v-text="activeCharacter.style.background"
-        @blue="updateBackground(hex)"
+        @blur="updateBackground"
       ></span>
     </p>
     <p>
@@ -22,7 +22,7 @@
       <span
         :contentEditable="user._id == activeCharacter.author"
         v-text="activeCharacter.style.borderColor"
-        @blue="updateBordorColor(hex)"
+        @blur="updateBordorColor"
       ></span>
     </p>
     <br />
@@ -57,44 +57,46 @@ export default {
     }
   },
   methods: {
-    updateColor(hex) {
-      let updated = hex.target.innerText;
-      if (hexValidate(updated) === false) {
+    updateColor(evt) {
+      let hex = evt.target.innerText;
+      if (this.hexValidate(hex) === false) {
         console.error("invalid hex");
       } else {
-        this.activeCharacter.style.color = updated;
-        this.$store.dispatch("editColor", this.activeCharacter);
+        this.activeCharacter.style.color = hex;
+        this.$store.dispatch("editCharacter", this.activeCharacter);
       }
     },
-    updateBackground(hex) {
-      let updated = hex.target.innerText;
-      if (hexValidate(updated) === false) {
+    updateBackground(evt) {
+      let hex = evt.target.innerText;
+      if (this.hexValidate(hex) === false) {
         console.error("invalid hex");
       } else {
-        this.activeCharacter.style.background = updated;
-        this.$store.dispatch("editColor", this.activeCharacter);
+        this.activeCharacter.style.background = hex;
+        this.$store.dispatch("editCharacter", this.activeCharacter);
       }
     },
-    updateBordorColor(hex) {
-      let updated = hex.target.innerText;
-      if (hexValidate(updated) === false) {
+    updateBordorColor(evt) {
+      let hex = evt.target.innerText;
+      if (this.hexValidate(hex) === false) {
         console.error("invalid hex");
       } else {
-        this.activeCharacter.style.borderColor = updated;
-        this.$store.dispatch("editColor", this.activeCharacter);
+        this.activeCharacter.style.borderColor = hex;
+        this.$store.dispatch("editCharacter", this.activeCharacter);
       }
     },
     hexValidate(hex) {
-      let arr = hex.split("");
-      let re = /[0-9A-Fa-f]{6}/g;
-      if (arr[0] === "#" && arr.length === 7) {
-        for (let i = 1; i < arr.length; i++) {
-          let char = arr[i];
-          if (!re.test(char)) {
-            return false;
-          }
-        }
-        return true;
+      debugger;
+      let hexChar = hex.substring(1);
+      //   let re = /[0-9A-Fa-f]{6}/g;
+      let re = /^[A-Fa-f0-9]+$/;
+      if (hex[0] === "#" && hex.length === 7) {
+        // for (let i = 1; i < arr.length; i++) {
+        //   let char = arr[i];
+        //   if (!re.test(char)) {
+        //     return false;
+        //   }
+        // }
+        return re.test(hexChar);
       } else {
         return false;
       }

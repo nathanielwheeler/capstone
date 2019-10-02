@@ -85,7 +85,6 @@ export default {
       }
     },
     hexValidate(hex) {
-      debugger;
       let hexChar = hex.substring(1);
       //   let re = /[0-9A-Fa-f]{6}/g;
       let re = /^[A-Fa-f0-9]+$/;

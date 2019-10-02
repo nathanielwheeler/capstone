@@ -2,25 +2,29 @@
   <div id="app">
     <nav id="nav">
       <div class="row">
-        <router-link to="/" class="col-4">
+        <router-link to="/" class="col-3">
           <h1>P&P</h1>
         </router-link>
-        <router-link to="/chats" class="col-4">
+        <router-link to="/chats" class="col-3" >
           <button class="Chats btn btn-info">Chats</button>
         </router-link>
         <!-- <router-link to="/currentCharacter" class="col-4">
           <button class="Current-Character col-4 btn btn-info">Current Character</button>
         </router-link> -->
-        <router-link to="/characters" class="col-4">
+        <router-link to="/characters" class="col-3">
           <button class="Characters btn btn-info">Characters</button>
         </router-link>
         <!-- <router-link to="/groups" class="col-4"> 
         <button class="Group btn col-4 btn-info">Group</button>
         </router-link>-->
-        <button class="LogOut btn col-4 btn-danger" @click="logout()">Log Out</button>
+        <div class="col-3"> 
+        <button class="Logout btn btn btn-danger" @click="logout()">Log Out</button>
       </div>
-    </nav>
+      </div>
+    </nav> 
+    <div class="img"> 
     <router-view />
+  </div>
   </div>
 </template>
 
@@ -48,6 +52,18 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+.img {
+  background-image: url("./assets/D.jpg"); 
+  height: 85vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+nav {
+  background-color: black;
+  height: 15vh;
+}
 #nav {
   padding: 30px;
 }
@@ -62,27 +78,20 @@ export default {
 }
 .Chats {
   border-radius: 20%;
-  width: 80px;
-  height: 40px;
-}
-.Current-Character {
-  border-radius: 20%;
-  width: 80px;
+  width: 120px;
   height: 40px;
 }
 .Characters {
   border-radius: 20%;
-  width: 80px;
+  width: 120px;
   height: 40px;
 }
-.Group {
+.Logout {
   border-radius: 20%;
-  width: 80px;
+  width: 120px;
   height: 40px;
 }
-.LogOut {
-  border-radius: 20%;
-  width: 80px;
-  height: 40px;
+h1 {
+  font-size: 40px;
 }
 </style>

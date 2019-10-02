@@ -16,6 +16,17 @@
         @blur="updateText"
         class="col-9 dialogue-box"
       >{{messageProp.body}}</p>
+
+      <div v-if="user._id != messageProp.author._id"></div>
+      <div v-else class="col-12">
+        <div class="row justify-content-right">
+          <div class="col-2 offset-10">
+            <button>
+              <i class="fas fa-trash-alt" @click="deleteMessage(this.messageProp._id)"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     <!--  NOTE This appears if a character is not selected -->
     <div class="row" v-else>
@@ -32,39 +43,6 @@
         ></p>
         <div v-if="user._id != messageProp.author._id"></div>
         <div v-else>
-          <!-- <span class="dropdown position-relative">
-            <button class="badge badge-pill badge-info dropdown-toggle" data-toggle="dropdown">..</button>
-          <div class="dropdown-menu">-->
-          <!-- <a @click="openEditor(editMessage)" class="dropdown-item" role="button" data-toggle="modal"
-          data-target="#editMessageModal">edit</a>-->
-
-          <!-- <editMessageModal /> -->
-
-          <!-- <button @click.stop="showformModal = true">Edit</button>
-              <quick-modal
-                class="bg-dark text-light position-relative z-index"
-                :toggle="showformModal"
-                @close="showformModal = false"
-              >
-                <form @submit.prevent="editMessage(messageProp)">
-                  <div class="form-group">
-                    <label for>Something Here</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="messageBody"
-                      placeholder
-                      v-model="messageProp.body"
-                    />
-                  </div>
-                </form>
-                <div slot="modal-footer">
-                  <button
-                    type="button"
-                    @click="editMessage(messageProp)"
-                    class="btn btn-success"
-                  >Submit</button>
-          </div>-->
           <div class="row">
             <div class="col-6">
               <!-- <editMessageModal :messageProp="messageProp"/> -->

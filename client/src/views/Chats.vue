@@ -12,9 +12,11 @@
     </div>
     <hr class="top-margin">
     <div class="row justify-content-center">
+      <strong> 
       <div class="col-12 my-1" v-for="chat in chats" :key="chat._id">
         <router-link :to="{name:'chat' , params: {chatId: chat._id}}">{{chat.title}}</router-link>
-      </div>
+      </div> 
+      </strong>
     </div>
   </div>
 </template>

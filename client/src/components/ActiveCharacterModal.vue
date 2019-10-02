@@ -1,11 +1,8 @@
 <template>
   <div class="activeCharacter">
     <br />
-    <button
-      class="btn btn-info"
-      data-toggle="modal"
-      data-target="#activeCharacterModal"
-    >Current Active Character!</button>
+    <button class="btn btn-info bottom-margin" data-toggle="modal" data-target="#activeCharacterModal">Current Active
+      Character!</button>
     <div id="activeCharacterModal" class="modal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -26,11 +23,7 @@
             <editStyle v-if="displayStyle === true" v-bind:character="activeCharacter"></editStyle>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              @click="toggleStyle(displayStyle)"
-              class="btn btn-info border"
-            >Edit Style</button>
+            <button type="button" @click="toggleStyle(displayStyle)" class="btn btn-info border">Edit Style</button>
             <button type="submit" @click="editcharacter()" class="btn btn-info">Edit Character</button>
             <button type="button" class="btn btn-danger border" data-dismiss="modal">Close</button>
           </div>
@@ -42,45 +35,48 @@
 
 
 <script>
-import EditStyle from "./EditStyle";
-export default {
-  name: "Active-Character-Modal",
-  data() {
-    return {
-      character: {},
-      displayStyle: false
-    };
-  },
-  computed: {
-    user() {
-      return this.$store.state.user;
+  import EditStyle from "./EditStyle";
+  export default {
+    name: "Active-Character-Modal",
+    data() {
+      return {
+        character: {},
+        displayStyle: false
+      };
     },
-    activeCharacter() {
-      return this.$store.state.activeCharacter;
-    }
-  },
-  methods: {
-    getActiveCharacter() {
-      this.activeCharacter.authorId = user._id;
-      this.$store.dispatch("getactiveCharacter", this.activeCharacter);
-      this.activeCharacter = {};
-    },
-    toggleStyle(x) {
-      console.log(x);
-      switch (x) {
-        case false:
-          return (this.displayStyle = true);
-        case true:
-          return (this.displayStyle = false);
+    computed: {
+      user() {
+        return this.$store.state.user;
+      },
+      activeCharacter() {
+        return this.$store.state.activeCharacter;
       }
+    },
+    methods: {
+      getActiveCharacter() {
+        this.activeCharacter.authorId = user._id;
+        this.$store.dispatch("getactiveCharacter", this.activeCharacter);
+        this.activeCharacter = {};
+      },
+      toggleStyle(x) {
+        console.log(x);
+        switch (x) {
+          case false:
+            return (this.displayStyle = true);
+          case true:
+            return (this.displayStyle = false);
+        }
+      }
+    },
+    components: {
+      EditStyle
     }
-  },
-  components: {
-    EditStyle
-  }
-};
+  };
 </script>
 
 
 <style scoped>
+  .bottom-margin {
+    margin: 15px;
+  }
 </style>

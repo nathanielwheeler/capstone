@@ -6,7 +6,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
+            <h5 class="modal-title">Die Simulator</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -59,81 +59,81 @@
 
 
 <script>
-export default {
-  name: "DiceSim",
-  data() {
-    return {
-      modifier: 0
-    };
-  },
-  computed: {},
-  methods: {
-    d20() {
-      let x = Math.floor(Math.random() * (20 - 1 + 1)) + 1;
-      if (x == 20) {
-        document.getElementById(
-          "results"
-        ).innerText = `NAT 20! CRITICAL SUCCESS!`;
-      } else if (x == 1) {
-        document.getElementById("results").innerText = `NAT 1! CRITICAL FAIL! `;
-      } else {
+  export default {
+    name: "DiceSim",
+    data() {
+      return {
+        modifier: 0
+      };
+    },
+    computed: {},
+    methods: {
+      d20() {
+        let x = Math.floor(Math.random() * (20 - 1 + 1)) + 1;
+        if (x == 20) {
+          document.getElementById(
+            "results"
+          ).innerText = `NAT 20! CRITICAL SUCCESS!`;
+        } else if (x == 1) {
+          document.getElementById("results").innerText = `NAT 1! CRITICAL FAIL! `;
+        } else {
+          x += +this.modifier;
+          document.getElementById("results").innerText = `Result: ${x}`;
+        }
+      },
+
+      d12() {
+        let x = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
+
         x += +this.modifier;
+
         document.getElementById("results").innerText = `Result: ${x}`;
+      },
+
+      d10() {
+        let x = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+
+        x += +this.modifier;
+
+        document.getElementById("results").innerText = `Result: ${x}`;
+      },
+
+      d8() {
+        let x = Math.floor(Math.random() * (8 - 1 + 1)) + 1;
+
+        x += +this.modifier;
+
+        document.getElementById("results").innerText = `Result: ${x}`;
+      },
+
+      d6() {
+        let x = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+
+        x += +this.modifier;
+
+        document.getElementById("results").innerText = `Result: ${x}`;
+      },
+
+      d4() {
+        let x = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+
+        x += +this.modifier;
+
+        document.getElementById("results").innerText = `Result: ${x}`;
+      },
+
+      dPercent() {
+        let x = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+        document.getElementById("results").innerText = `Result: ${x}%`;
       }
     },
-
-    d12() {
-      let x = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
-
-      x += +this.modifier;
-
-      document.getElementById("results").innerText = `Result: ${x}`;
-    },
-
-    d10() {
-      let x = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-
-      x += +this.modifier;
-
-      document.getElementById("results").innerText = `Result: ${x}`;
-    },
-
-    d8() {
-      let x = Math.floor(Math.random() * (8 - 1 + 1)) + 1;
-
-      x += +this.modifier;
-
-      document.getElementById("results").innerText = `Result: ${x}`;
-    },
-
-    d6() {
-      let x = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
-
-      x += +this.modifier;
-
-      document.getElementById("results").innerText = `Result: ${x}`;
-    },
-
-    d4() {
-      let x = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
-
-      x += +this.modifier;
-
-      document.getElementById("results").innerText = `Result: ${x}`;
-    },
-
-    dPercent() {
-      let x = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
-      document.getElementById("results").innerText = `Result: ${x}%`;
-    }
-  },
-  components: {}
-};
+    components: {}
+  };
 </script>
 
 
 <style scoped>
-.bttn {
-  margin: 2px;
-}
+  .bttn {
+    margin: 2px;
+  }
 </style>

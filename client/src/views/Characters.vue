@@ -123,6 +123,6 @@
 
 <style scoped>
   .route-color {
-    color: white;
+    color: #3a3a3a;
   }
 </style>

@@ -12,7 +12,8 @@
       </div>
       <br>
       <br>
-      <div class="col-12">
+      <strong> 
+      <div class="editcharacter col-12">
         <div v-for="character in characters" :key="character._id">
           <router-link :to="{name:'characters' , params: {characterId: character._id}}" class="route-color">
             {{character.name}}</router-link>
@@ -61,11 +62,11 @@
                 </div>
               </div>
             </div>
-          </div>
-
+          </div> 
           <button class="btn btn-danger" type="button" @click="deleteCharacter(character._id)">Delete</button>
         </div>
-      </div>
+      </div> 
+      </strong> 
     </div>
   </div>
 </template>
@@ -73,56 +74,59 @@
 
 
 <script>
-  import CreateCharacterModal from "../components/CreateCharacterModal.vue";
-  import ActiveCharacterModal from "../components/ActiveCharacterModal.vue";
+import CreateCharacterModal from "../components/CreateCharacterModal.vue";
+import ActiveCharacterModal from "../components/ActiveCharacterModal.vue";
 
-  export default {
-    name: "characters",
-    prop: ["characterProp"],
-    data() {
-      return {
-        newCharacter: ""
-      };
-    },
-    mounted() {
-      this.$store.dispatch("getCharacters");
-    },
-    computed: {
-      characters() {
-        return this.$store.state.characters;
-      }
-    },
-    methods: {
-      getCharacters() {
-        this.$store.dispatch("getActiveCharacter", this.activeCharacter);
-        this.activeCharacter = { name: "", stats: "", description: "" };
-      },
-
-      createCharacter() {
-        this.$store.dispatch("createCharacter", this.newCharacter);
-        this.newCharacter = { name: "", stats: "", description: "" };
-      },
-
-      deleteCharacter(characterId) {
-        let x = confirm("Are you sure you want to delete this character?");
-        if (x == true) {
-          this.$store.dispatch("deleteCharacter", characterId);
-        }
-      },
-      editCharacter(character) {
-        this.$store.dispatch("editCharacter", character);
-      }
-    },
-    components: {
-      CreateCharacterModal,
-      ActiveCharacterModal
+export default {
+  name: "characters",
+  prop: ["characterProp"],
+  data() {
+    return {
+      newCharacter: ""
+    };
+  },
+  mounted() {
+    this.$store.dispatch("getCharacters");
+  },
+  computed: {
+    characters() {
+      return this.$store.state.characters;
     }
-  };
+  },
+  methods: {
+    getCharacters() {
+      this.$store.dispatch("getActiveCharacter", this.activeCharacter);
+      this.activeCharacter = { name: "", stats: "", description: "" };
+    },
+
+    createCharacter() {
+      this.$store.dispatch("createCharacter", this.newCharacter);
+      this.newCharacter = { name: "", stats: "", description: "" };
+    },
+
+    deleteCharacter(characterId) {
+      let x = confirm("Are you sure you want to delete this character?");
+      if (x == true) {
+        this.$store.dispatch("deleteCharacter", characterId);
+      }
+    },
+    editCharacter(character) {
+      this.$store.dispatch("editCharacter", character);
+    }
+  },
+  components: {
+    CreateCharacterModal,
+    ActiveCharacterModal
+  }
+};
 </script>
 
 
 <style scoped>
-  .route-color {
-    color: #3a3a3a;
-  }
+.route-color {
+  color: #3a3a3a;
+}
+.editcharacter {
+  text-align: end;
+}
 </style>

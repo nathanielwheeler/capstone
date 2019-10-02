@@ -2,7 +2,7 @@
   <div class="chat">
     <div class="container-fluid">
       <div class="row">
-        <h3 class="col-12">
+        <h3 class=" col-12">
           <b>{{chat.title}}</b>
           <button class="btn btn-primary mybutton mx-2" @click="subscribe(chat._id)">
             <b>Subscribe</b>
@@ -92,4 +92,5 @@
   .btn-margin {
     margin: 20px;
   }
+  
 </style>

@@ -6,7 +6,7 @@
           <input type="text" placeholder="title" v-model="newChat.title" required />
           <input type="text" placeholder="description" v-model="newChat.description" />
           <br>
-          <button class="btn btn-success my-2" type="submit">Create a Chat</button>
+          <button class="btn btn-success my-2" type="submit">Make a new chat!</button>
         </form>
       </div>
     </div>
@@ -14,7 +14,10 @@
     <div class="row justify-content-center">
       <strong>
         <div class="col-12 my-1" v-for="chat in chats" :key="chat._id">
-          <router-link :to="{name:'chat' , params: {chatId: chat._id}}" class="route-color">{{chat.title}}</router-link>
+          <strong>
+            <router-link :to="{name:'chat' , params: {chatId: chat._id}}" class="route-color">{{chat.title}}
+            </router-link>
+          </strong>
         </div>
       </strong>
     </div>

@@ -77,6 +77,6 @@
 
 <style scoped>
   .bottom-margin {
-    margin: 15px;
+    margin-bottom: 75px;
   }
 </style>

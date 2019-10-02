@@ -5,7 +5,8 @@
         <form @submit.prevent="addChat">
           <input type="text" placeholder="title" v-model="newChat.title" required />
           <input type="text" placeholder="description" v-model="newChat.description" />
-          <button class="btn btn-outline-success my-3" type="submit">Create a Chat</button>
+          <br>
+          <button class="btn btn-outline-success my-2" type="submit">Create a Chat</button>
         </form>
       </div>
     </div>

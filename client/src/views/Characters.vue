@@ -14,7 +14,8 @@
       <br>
       <div class="col-12">
         <div v-for="character in characters" :key="character._id">
-          <router-link :to="{name:'characters' , params: {characterId: character._id}}">{{character.name}}</router-link>
+          <router-link :to="{name:'characters' , params: {characterId: character._id}}" class="route-color">
+            {{character.name}}</router-link>
 
           <button class="btn btn-dark mx-2" data-toggle="modal"
             :data-target="'#editCharacterModal'+character._id">Edit</button>
@@ -121,4 +122,7 @@
 
 
 <style scoped>
+  .route-color {
+    color: white;
+  }
 </style>

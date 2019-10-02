@@ -45,7 +45,7 @@
         <div v-if="user._id != messageProp.author._id"></div>
         <div v-else>
           <div class="row">
-            <div class="col-6">
+            <div class="col-2 offset-9">
               <!-- <editMessageModal :messageProp="messageProp"/> -->
               <button>
                 <i class="fas fa-trash-alt" @click="deleteMessage(this.messageProp._id)"></i>

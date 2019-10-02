@@ -1,30 +1,48 @@
 <template>
   <div id="app">
     <nav id="nav">
-      <div class="row justify-content-center">
+      <div class="row">
+        <div class="col-4">
+          <router-link to="/characters">
+            <button class="space btn btn-dark">Characters</button>
+          </router-link>
+          <div class="row">
+            <div class="col-12">
+              <button class="space btn btn-dark" @click="logout()">Log Out</button>
+            </div>
+          </div>
+        </div>
+
         <router-link to="/" class="col-3">
           <div class="row logo">
             <img class="col-12" src="../public/P&PLogo.jpg" alt />
           </div>
         </router-link>
-        <router-link to="/chats" class="col-3 offset-1">
+
+        <div class="col-4 offset-1">
+          <router-link to="/chats">
+            <button class="Chats space btn btn-dark">Chats</button>
+          </router-link>
+          <div class="row">
+            <dice-sim class="space col-12" />
+          </div>
+        </div>
+        <!-- <router-link to="/" class="col-4">
+          <div class="row logo">
+            <img class="col-12" src="../public/P&PLogo.jpg" alt />
+          </div>
+        </router-link>-->
+        <!-- <router-link to="/chats" class="col-3 offset-1">
           <button class="Chats btn btn-dark">Chats</button>
         </router-link>
-        <!-- <router-link to="/currentCharacter" class="col-4">
-          <button class="Current-Character col-4 btn btn-info">Current Character</button>
-        </router-link>-->
+       
         <router-link to="/characters" class="col-3 offset-1">
           <button class="Characters btn btn-dark">Characters</button>
         </router-link>
-      </div>
-      <div class="row justify-content-center">
-        <!-- <router-link to="/groups" class="col-4"> 
-        <button class="Group btn col-4 btn-info">Group</button>
-        </router-link>-->
-        <div class="col-5 offset-1">
-          <button class="Logout btn btn btn-dark" @click="logout()">Log Out</button>
-        </div>
-        <dice-sim class="col-5 offset-1" />
+        </div>-->
+        <!-- <div class="row justify-content-center">
+          <dice-sim class="col-5 offset-1" />
+        </div>-->
       </div>
     </nav>
     <div>
@@ -63,15 +81,27 @@ export default {
 }
 
 .logo {
-  width: 200%;
+  width: 220%;
+  height: 100%;
 }
+
+.space {
+  margin: 5px;
+}
+
+/* .space2 {
+  padding-right: 75px;
+  padding-left: 25px;
+  width: 300px;
+} */
 
 nav {
   background-color: black;
 }
 #nav {
   padding: 10px;
-  padding-right: 50px;
+  padding-right: 25px;
+  padding-left: 25px;
 }
 
 #nav a {

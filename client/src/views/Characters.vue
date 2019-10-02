@@ -8,19 +8,16 @@
     <div class="row">
       <div class="col-12">
         <!-- <button class="btn btn-info" data-toggle="modal" :data-target="#create-character-modal">Make a new character!</button>    -->
+        <create-character-modal />
       </div>
-      <create-character-modal />
+      <br>
+      <br>
       <div class="col-12">
         <div v-for="character in characters" :key="character._id">
-          <router-link
-            :to="{name:'characters' , params: {characterId: character._id}}"
-          >{{character.name}}</router-link>
+          <router-link :to="{name:'characters' , params: {characterId: character._id}}">{{character.name}}</router-link>
 
-          <button
-            class="btn btn-info"
-            data-toggle="modal"
-            :data-target="'#editCharacterModal'+character._id"
-          >Edit</button>
+          <button class="btn btn-outline-info mx-2" data-toggle="modal"
+            :data-target="'#editCharacterModal'+character._id">Edit</button>
 
           <div :id="'editCharacterModal'+character._id" class="modal" role="dialog">
             <div class="modal-dialog">
@@ -33,23 +30,12 @@
                   <form>
                     <div class="form-group">
                       <label for="group name">Character Name</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="charactername"
-                        placeholder
-                        v-model="character.name"
-                      />
+                      <input type="text" class="form-control" id="charactername" placeholder v-model="character.name" />
                     </div>
                     <div class="form-group">
                       <label for="group name">Character Stats</label>
-                      <textarea
-                        class="form-control"
-                        id="characterStats"
-                        placeholder
-                        v-model="character.stats"
-                      />
-                    </div>
+                      <textarea class="form-control" id="characterStats" placeholder v-model="character.stats" />
+                      </div>
                     <div class="form-group">
                       <label for="character class">Character Description</label>
                       <textarea
@@ -65,11 +51,7 @@
                         placeholder
                         v-model="character.description"
                       />-->
-                      <button
-                        type="submit"
-                        @click="editCharacter(character)"
-                        class="btn btn-primary"
-                      >Submit</button>
+                      <button type="submit" @click="editCharacter(character)" class="btn btn-primary">Submit</button>
                     </div>
                   </form>
                 </div>
@@ -80,11 +62,7 @@
             </div>
           </div>
 
-          <button
-            class="btn btn-danger"
-            type="button"
-            @click="deleteCharacter(character._id)"
-          >Delete</button>
+          <button class="btn btn-danger" type="button" @click="deleteCharacter(character._id)">Delete</button>
         </div>
       </div>
     </div>
@@ -94,51 +72,51 @@
 
 
 <script>
-import CreateCharacterModal from "../components/CreateCharacterModal.vue";
-import ActiveCharacterModal from "../components/ActiveCharacterModal.vue";
+  import CreateCharacterModal from "../components/CreateCharacterModal.vue";
+  import ActiveCharacterModal from "../components/ActiveCharacterModal.vue";
 
-export default {
-  name: "characters",
-  prop: ["characterProp"],
-  data() {
-    return {
-      newCharacter: ""
-    };
-  },
-  mounted() {
-    this.$store.dispatch("getCharacters");
-  },
-  computed: {
-    characters() {
-      return this.$store.state.characters;
-    }
-  },
-  methods: {
-    getCharacters() {
-      this.$store.dispatch("getActiveCharacter", this.activeCharacter);
-      this.activeCharacter = { name: "", stats: "", description: "" };
+  export default {
+    name: "characters",
+    prop: ["characterProp"],
+    data() {
+      return {
+        newCharacter: ""
+      };
     },
-
-    createCharacter() {
-      this.$store.dispatch("createCharacter", this.newCharacter);
-      this.newCharacter = { name: "", stats: "", description: "" };
+    mounted() {
+      this.$store.dispatch("getCharacters");
     },
-
-    deleteCharacter(characterId) {
-      let x = confirm("Are you sure you want to delete this character?");
-      if (x == true) {
-        this.$store.dispatch("deleteCharacter", characterId);
+    computed: {
+      characters() {
+        return this.$store.state.characters;
       }
     },
-    editCharacter(character) {
-      this.$store.dispatch("editCharacter", character);
+    methods: {
+      getCharacters() {
+        this.$store.dispatch("getActiveCharacter", this.activeCharacter);
+        this.activeCharacter = { name: "", stats: "", description: "" };
+      },
+
+      createCharacter() {
+        this.$store.dispatch("createCharacter", this.newCharacter);
+        this.newCharacter = { name: "", stats: "", description: "" };
+      },
+
+      deleteCharacter(characterId) {
+        let x = confirm("Are you sure you want to delete this character?");
+        if (x == true) {
+          this.$store.dispatch("deleteCharacter", characterId);
+        }
+      },
+      editCharacter(character) {
+        this.$store.dispatch("editCharacter", character);
+      }
+    },
+    components: {
+      CreateCharacterModal,
+      ActiveCharacterModal
     }
-  },
-  components: {
-    CreateCharacterModal,
-    ActiveCharacterModal
-  }
-};
+  };
 </script>
 
 

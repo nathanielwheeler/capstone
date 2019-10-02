@@ -28,7 +28,7 @@
         <p
           :contentEditable="user._id == messageProp.author._id"
           v-text="messageProp.body"
-          @blur="editMessage(message)"
+          @blur="updateText"
         ></p>
         <div v-if="user._id != messageProp.author._id"></div>
         <div v-else>
@@ -114,6 +114,8 @@ export default {
     updateText(evt) {
       var updated = evt.target.innerText;
       this.messageProp.body = updated;
+      this.$store.dispatch("editMessage", this.messageProp);
+      this.showformModal = false;
     },
 
     // openEditor(editMessage) {
@@ -126,9 +128,8 @@ export default {
     //   console.log("cool");
     //   this.showformModal = false;
     // },
-    editMessage(message) {
-      this.$store.dispatch("editMessage", this.messageProp);
-      this.showformModal = false;
+    editMessage(event) {
+      this.messageProp.body = event.target;
     }
   },
   components: {

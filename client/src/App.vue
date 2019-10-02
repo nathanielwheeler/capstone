@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav id="nav">
-      <div class="row">
+      <div class="row justify-content-center">
         <router-link to="/" class="col-3">
           <h1>P&P</h1>
         </router-link>
@@ -15,14 +15,14 @@
           <button class="Characters btn btn-dark">Characters</button>
         </router-link>
       </div>
-      <div class="row justify-content-around">
+      <div class="row justify-content-center">
         <!-- <router-link to="/groups" class="col-4"> 
         <button class="Group btn col-4 btn-info">Group</button>
         </router-link>-->
-        <div class="col-5">
+        <div class="col-5 offset-1">
           <button class="Logout btn btn btn-dark" @click="logout()">Log Out</button>
         </div>
-        <dice-sim class="col-5" />
+        <dice-sim class="col-5 offset-1" />
       </div>
     </nav>
     <div>
@@ -65,6 +65,7 @@ nav {
 }
 #nav {
   padding: 10px;
+  padding-right: 50px;
 }
 
 #nav a {

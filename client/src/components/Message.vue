@@ -23,7 +23,7 @@
         <div class="row justify-content-right">
           <div class="col-2 offset-10">
             <button>
-              <i class="fas fa-trash-alt" @click="deleteMessage(this.messageProp._id)"></i>
+              <i class="fas fa-trash-alt" @click="deleteMessage(messageProp)"></i>
             </button>
           </div>
         </div>

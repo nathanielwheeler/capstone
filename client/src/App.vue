@@ -62,10 +62,9 @@ export default {
 
 nav {
   background-color: black;
-  height: 18vh;
 }
 #nav {
-  padding: 30px;
+  padding: 10px;
 }
 
 #nav a {

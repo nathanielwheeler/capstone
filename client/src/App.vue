@@ -3,7 +3,9 @@
     <nav id="nav">
       <div class="row justify-content-center">
         <router-link to="/" class="col-3">
-          <h1>P&P</h1>
+          <div class="row logo">
+            <img class="col-12" src="../public/P&PLogo.jpg" alt />
+          </div>
         </router-link>
         <router-link to="/chats" class="col-3 offset-1">
           <button class="Chats btn btn-dark">Chats</button>
@@ -58,6 +60,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.logo {
+  width: 200%;
 }
 
 nav {

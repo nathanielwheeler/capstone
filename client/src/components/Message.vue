@@ -11,6 +11,7 @@
         </div>
       </div>
       <p
+        v-bind:style="messageProp.character.style"
         :contentEditable="user._id == messageProp.author._id"
         v-text="messageProp.body"
         @blur="updateText"
@@ -125,6 +126,7 @@ export default {
 .dialogue-box {
   border: 1px solid black;
   padding: 10px;
+  border-radius: 8px;
 }
 
 .z-index {

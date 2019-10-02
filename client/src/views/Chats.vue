@@ -6,7 +6,7 @@
           <input type="text" placeholder="title" v-model="newChat.title" required />
           <input type="text" placeholder="description" v-model="newChat.description" />
           <br>
-          <button class="btn btn-outline-success my-2" type="submit">Create a Chat</button>
+          <button class="btn btn-success my-2" type="submit">Create a Chat</button>
         </form>
       </div>
     </div>

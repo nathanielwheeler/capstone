@@ -6,15 +6,20 @@
           <input type="text" placeholder="title" v-model="newChat.title" required />
           <input type="text" placeholder="description" v-model="newChat.description" />
           <br>
-          <button class="btn btn-outline-success my-2" type="submit">Create a Chat</button>
+          <button class="btn btn-success my-2" type="submit">Create a Chat</button>
         </form>
       </div>
     </div>
     <hr class="top-margin">
     <div class="row justify-content-center">
-      <div class="col-12 my-1" v-for="chat in chats" :key="chat._id">
-        <router-link :to="{name:'chat' , params: {chatId: chat._id}}">{{chat.title}}</router-link>
-      </div>
+      <strong>
+        <div class="col-12 my-1" v-for="chat in chats" :key="chat._id">
+          <strong>
+            <router-link :to="{name:'chat' , params: {chatId: chat._id}}" class="route-color">{{chat.title}}
+            </router-link>
+          </strong>
+        </div>
+      </strong>
     </div>
   </div>
 </template>
@@ -61,5 +66,9 @@
 
   .top-margin {
     margin-top: 5px !important;
+  }
+
+  .route-color {
+    color: #3a3a3a;
   }
 </style>

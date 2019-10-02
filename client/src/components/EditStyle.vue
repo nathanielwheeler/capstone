@@ -34,6 +34,7 @@
         </div>
         <p
           class="col-9 dialogue-box"
+          v-bind:style="activeCharacter.style"
         >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, doloribus quisquam.</p>
       </div>
     </div>

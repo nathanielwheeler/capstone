@@ -10,13 +10,15 @@
           <em>{{messageProp.author.name}}</em>
         </div>
       </div>
-      <p
-        v-bind:style="messageProp.character.style"
-        :contentEditable="user._id == messageProp.author._id"
-        v-text="messageProp.body"
-        @blur="updateText"
-        class="col-9 dialogue-box"
-      >{{messageProp.body}}</p>
+      <div class="col-9 d-flex align-items-center">
+        <p
+          v-bind:style="messageProp.character.style"
+          :contentEditable="user._id == messageProp.author._id"
+          v-text="messageProp.body"
+          @blur="updateText"
+          class="col-9 dialogue-box"
+        >{{messageProp.body}}</p>
+      </div>
 
       <div v-if="user._id != messageProp.author._id"></div>
       <div v-else class="col-12">

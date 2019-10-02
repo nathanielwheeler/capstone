@@ -14,7 +14,10 @@
     <div class="row justify-content-center">
       <strong>
         <div class="col-12 my-1" v-for="chat in chats" :key="chat._id">
-          <router-link :to="{name:'chat' , params: {chatId: chat._id}}" class="route-color">{{chat.title}}</router-link>
+          <strong>
+            <router-link :to="{name:'chat' , params: {chatId: chat._id}}" class="route-color">{{chat.title}}
+            </router-link>
+          </strong>
         </div>
       </strong>
     </div>

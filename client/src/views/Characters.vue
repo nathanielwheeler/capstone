@@ -12,33 +12,35 @@
       </div>
       <br>
       <br>
-      <div class="col-12">
-        <div v-for="character in characters" :key="character._id">
-          <strong>
-            <router-link :to="{name:'characters' , params: {characterId: character._id}}" class="route-color">
-              {{character.name}}</router-link>
-          </strong>
+      <strong>
+        <div class="editcharacter col-12">
+          <div v-for="character in characters" :key="character._id">
+            <strong>
+              <router-link :to="{name:'characters' , params: {characterId: character._id}}" class="route-color">
+                {{character.name}}</router-link>
+            </strong>
 
-          <button class="btn btn-dark mx-2" data-toggle="modal"
-            :data-target="'#editCharacterModal'+character._id">Edit</button>
+            <button class="btn btn-dark mx-2" data-toggle="modal"
+              :data-target="'#editCharacterModal'+character._id">Edit</button>
 
-          <div :id="'editCharacterModal'+character._id" class="modal" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"></button>
-                  <h4 class="modal-title">Edit your character</h4>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group">
-                      <label for="group name">Character Name</label>
-                      <input type="text" class="form-control" id="charactername" placeholder v-model="character.name" />
-                    </div>
-                    <div class="form-group">
-                      <label for="group name">Character Stats</label>
-                      <textarea class="form-control" id="characterStats" placeholder v-model="character.stats" />
+            <div :id="'editCharacterModal'+character._id" class="modal" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title">Edit your character</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="group name">Character Name</label>
+                        <input type="text" class="form-control" id="charactername" placeholder
+                          v-model="character.name" />
                       </div>
+                      <div class="form-group">
+                        <label for="group name">Character Stats</label>
+                        <textarea class="form-control" id="characterStats" placeholder v-model="character.stats" />
+                        </div>
                     <div class="form-group">
                       <label for="character class">Character Description</label>
                       <textarea
@@ -47,27 +49,27 @@
                         id="characterDescription"
                         v-model="character.description"
                       ></textarea>
-                      <!-- <input
+                        <!-- <input
                         type="text"
                         class="form-control"
                         id="characterDescription"
                         placeholder
                         v-model="character.description"
                       />-->
-                      <button type="submit" @click="editCharacter(character)" class="btn btn-primary">Submit</button>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" @click="editCharacter(character)" class="btn btn-primary">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
                 </div>
               </div>
             </div>
+            <button class="btn btn-danger" type="button" @click="deleteCharacter(character._id)">Delete</button>
           </div>
-
-          <button class="btn btn-danger" type="button" @click="deleteCharacter(character._id)">Delete</button>
         </div>
-      </div>
+      </strong>
     </div>
   </div>
 </template>
@@ -126,5 +128,9 @@
 <style scoped>
   .route-color {
     color: #3a3a3a;
+  }
+
+  .editcharacter {
+    text-align: end;
   }
 </style>

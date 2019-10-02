@@ -2,9 +2,9 @@
   <div class="chat">
     <div class="container-fluid">
       <div class="row">
-        <h3 class="col-12">
-          {{chat.title}}
-          <button class="btn btn-primary mybutton" @click="subscribe(chat._id)">
+        <h3 class=" col-12">
+          <b>{{chat.title}}</b>
+          <button class="btn btn-primary mybutton mx-2" @click="subscribe(chat._id)">
             <b>Subscribe</b>
           </button>
         </h3>
@@ -81,6 +81,8 @@
 
   h3 {
     text-align: center;
+    color: #000000;
+    margin-top: 10px;
   }
 
   .chat {
@@ -90,4 +92,5 @@
   .btn-margin {
     margin: 20px;
   }
+  
 </style>

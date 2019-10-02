@@ -16,7 +16,7 @@
         <div v-for="character in characters" :key="character._id">
           <router-link :to="{name:'characters' , params: {characterId: character._id}}">{{character.name}}</router-link>
 
-          <button class="btn btn-outline-info mx-2" data-toggle="modal"
+          <button class="btn btn-dark mx-2" data-toggle="modal"
             :data-target="'#editCharacterModal'+character._id">Edit</button>
 
           <div :id="'editCharacterModal'+character._id" class="modal" role="dialog">

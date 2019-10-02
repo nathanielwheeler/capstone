@@ -2,7 +2,9 @@
   <div class="characters container-fluid">
     <div class="row">
       <div class="col-12">
-        <h3 class="offset-3 col-6 text-center">My Characters</h3>
+        <strong>
+          <h3 class="offset-3 col-6 text-center">My Characters</h3>
+        </strong>
       </div>
     </div>
     <div class="row">

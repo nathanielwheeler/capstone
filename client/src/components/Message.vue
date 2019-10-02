@@ -11,6 +11,7 @@
         </div>
       </div>
       <p
+        v-bind:style="messageProp.character.style"
         :contentEditable="user._id == messageProp.author._id"
         v-text="messageProp.body"
         @blur="updateText"

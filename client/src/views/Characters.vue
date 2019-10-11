@@ -12,7 +12,7 @@
 			</div>
 		</div>
 
-		<div class="editcharacter row">
+		<div class="editcharacter row d-flex justify-content-around">
 			<div
 				class="col-11 col-md-5 col-lg-3 card bg-dark text-light m-3"
 				v-for="character in characters"

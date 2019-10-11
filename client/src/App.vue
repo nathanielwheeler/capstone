@@ -2,7 +2,7 @@
   <div id="app">
     <nav id="nav">
       <div class="row justify-content-around">
-        <div class="col-4">
+        <div class="col-md-3 col-5">
           <router-link to="/characters">
             <button class="space btn btn-dark">Characters</button>
           </router-link>
@@ -13,11 +13,11 @@
           </div>
         </div>
 
-        <router-link to="/" class="col-3 logo">
+        <router-link to="/" class="col-md-3 col-2 logo">
           <br />
         </router-link>
 
-        <div class="col-4">
+        <div class="col-md-3 col-5">
           <router-link to="/chats">
             <button class="Chats space btn btn-dark">Chats</button>
           </router-link>
@@ -83,17 +83,13 @@ export default {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  /* margin-right: 3vw;
+  margin-left: 3vw; */
 }
 
 .space {
   margin: 5px;
 }
-
-/* .space2 {
-  padding-right: 75px;
-  padding-left: 25px;
-  width: 300px;
-} */
 
 nav {
   background-color: black;
@@ -108,27 +104,7 @@ nav {
   font-weight: bold;
   color: #2c3e50;
 }
-.Characters {
-  padding-right: 6px;
-}
-/* #nav a.router-link-exact-active {
-  color: #42b983;
-} */
-/* .Chats {
-  border-radius: 20%;
-  width: 120px;
-  height: 40px;
-}
-.Characters {
-  border-radius: 20%;
-  width: 120px;
-  height: 40px;
-}
-.Logout {
-  border-radius: 20%;
-  width: 120px;
-  height: 40px;
-} */
+
 h1 {
   font-size: 40px;
 }

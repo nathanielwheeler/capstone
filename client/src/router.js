@@ -6,7 +6,6 @@ import Login from './views/Login.vue'
 import Chat from './views/Chat.vue'
 import Chats from './views/Chats.vue'
 import Characters from './views/Characters.vue'
-import CurrentCharacter from './views/CurrentCharacter.vue'
 
 
 Vue.use(Router)
@@ -31,11 +30,6 @@ export default new Router({
     path: '/characters',
     name: 'characters',
     component: Characters
-  },
-  {
-    path: '/currentCharacter',
-    name: 'currentCharacter',
-    component: CurrentCharacter
   },
   {
     path: '/chats',

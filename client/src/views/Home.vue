@@ -7,9 +7,11 @@
     <div class="welcome">
       <strong>Welcome to Post & Play, an app that lets people play tabletop games, without the tabletop!</strong>
       <br />
+      <br> 
+      <br> 
     </div>
     <div v-if="user._id">
-      <div class="current-chats">Your Current Chats:</div>
+      <strong><div class="current-chats"><u>Your Current Chats:</u></div></strong>
       <subscribed-chats />
     </div>
     <div v-else>
@@ -41,10 +43,13 @@ export default {
   color: black;
 }
 .welcome {
-  font-size: 5vw;
+  width: 85%; 
+  font-size: 4vh;
+  text-align: center; 
 }
 .current-chats {
   color: black;
-  font-size: 5vw;
+  font-size: 5vh;
+  text-align: center; 
 }
 </style>

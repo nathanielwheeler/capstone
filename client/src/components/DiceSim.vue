@@ -144,4 +144,7 @@ export default {
 .bg {
   background-color: rgb(36, 36, 36);
 }
+span {
+  color: white; 
+}
 </style>

@@ -6,7 +6,6 @@ import Login from './views/Login.vue'
 import Chat from './views/Chat.vue'
 import Chats from './views/Chats.vue'
 import Characters from './views/Characters.vue'
-import CurrentCharacter from './views/CurrentCharacter.vue'
 
 
 Vue.use(Router)
@@ -22,20 +21,10 @@ export default new Router({
     name: 'login',
     component: Login
   },
-  // {
-  //   path: '/groups',
-  //   name: 'group',
-  //   component: Groups
-  // },
   {
     path: '/characters',
     name: 'characters',
     component: Characters
-  },
-  {
-    path: '/currentCharacter',
-    name: 'currentCharacter',
-    component: CurrentCharacter
   },
   {
     path: '/chats',
@@ -60,9 +49,6 @@ export default new Router({
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: function () {
-      return import( /* webpackChunkName: "about" */ './views/About.vue')
-    }
   }
   ]
 })

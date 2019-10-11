@@ -55,56 +55,56 @@
 
 
 <script>
-export default {
-	props: ["messageProp"],
-	data() {
-		return {
-			message: {
-				body: ""
-			},
-			// editMessageModal
-			showformModal: false
-		};
-	},
-	mounted() {
-		let payload = {
-			author: this.messageProp.author._id,
-			chatId: this.messageProp.chat._id,
-			messageId: this.messageProp._id
-		};
-	},
-	computed: {
-		currentCharacter() {
-			return this.$store.state.currentCharacter;
-		},
-		user() {
-			return this.$store.state.user;
-		}
-	},
-	methods: {
-		updateText(evt) {
-			var updated = evt.target.innerText;
-			this.messageProp.body = updated;
-			this.$store.dispatch("editMessage", this.messageProp);
-			this.showformModal = false;
-		},
+  export default {
+    props: ["messageProp"],
+    data() {
+      return {
+        message: {
+          body: ""
+        },
+        // editMessageModal
+        showformModal: false
+      };
+    },
+    mounted() {
+      let payload = {
+        author: this.messageProp.author._id,
+        chatId: this.messageProp.chat._id,
+        messageId: this.messageProp._id
+      };
+    },
+    computed: {
+      currentCharacter() {
+        return this.$store.state.currentCharacter;
+      },
+      user() {
+        return this.$store.state.user;
+      }
+    },
+    methods: {
+      updateText(evt) {
+        var updated = evt.target.innerText;
+        this.messageProp.body = updated;
+        this.$store.dispatch("editMessage", this.messageProp);
+        this.showformModal = false;
+      },
 
-		// openEditor(editMessage) {
-		//   $("#editMessageModal").modal("show");
-		// },
-		deleteMessage(message) {
-			this.$store.dispatch("deleteMessage", message);
-		},
-		// submit() {
-		//   console.log("cool");
-		//   this.showformModal = false;
-		// },
-		editMessage(event) {
-			this.messageProp.body = event.target;
-		}
-	},
-	components: {}
-};
+      // openEditor(editMessage) {
+      //   $("#editMessageModal").modal("show");
+      // },
+      deleteMessage(message) {
+        this.$store.dispatch("deleteMessage", message);
+      },
+      // submit() {
+      //   console.log("cool");
+      //   this.showformModal = false;
+      // },
+      editMessage(event) {
+        this.messageProp.body = event.target;
+      }
+    },
+    components: {}
+  };
 </script>
 
 
@@ -125,7 +125,7 @@ export default {
     z-index: 9999 !important;
   }
 
- .timestamp {
+  .timestamp {
     color: #bbb;
     font-size: 9pt;
   }

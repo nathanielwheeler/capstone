@@ -18,17 +18,33 @@
             <router-link :to="{name:'chat' , params: {chatId: chat._id}}" class="route-color">{{chat.title}}
             </router-link>
           </strong>
+          <div v-if="user._id != chat.author"></div>
+          <div v-else class="col-12">
+            <div class="row justify-content-right">
+              <div class="col-2 offset-10">
+                <button>
+                  <i class="fas fa-trash-alt" @click="deleteChat(chat)"></i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </strong>
     </div>
+
   </div>
 </template>
 
 <script>
   export default {
     name: "chats",
+    props: ["chat"],
     mounted() {
       this.$store.dispatch("getChats");
+      // let payload = {
+      //   author: this.chat.author._id,
+      //   chatId: this.chatProp.chat._id
+      // };
     },
     data() {
       return {
@@ -41,12 +57,20 @@
     computed: {
       chats() {
         return this.$store.state.chats;
+      },
+      user() {
+        return this.$store.state.user;
       }
     },
     methods: {
       addChat() {
         this.$store.dispatch("addChat", this.newChat);
         this.newChat = { title: "", description: "" };
+      },
+
+      deleteChat(chat) {
+        debugger
+        this.$store.dispatch("deleteChat", chat);
       }
     },
     components: {}

@@ -302,6 +302,18 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+
+    async deleteChat({
+      commit,
+      dispatch
+    }, payload) {
+      try {
+        let res = await api.delete('/chat/' + payload._id)
+        dispatch('getChats')
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async deleteMessage({
       commit,
       dispatch

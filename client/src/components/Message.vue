@@ -11,13 +11,8 @@
         </div>
       </div>
       <div class="col-9 d-flex align-items-center">
-        <p
-          v-bind:style="messageProp.character.style"
-          :contentEditable="user._id == messageProp.author._id"
-          v-text="messageProp.body"
-          @blur="updateText"
-          class="col-9 dialogue-box"
-        >{{messageProp.body}}</p>
+        <p v-bind:style="messageProp.character.style" :contentEditable="user._id == messageProp.author._id"
+          v-text="messageProp.body" @blur="updateText" class="col-9 dialogue-box">{{messageProp.body}}</p>
       </div>
 
       <div v-if="user._id != messageProp.author._id"></div>
@@ -39,11 +34,7 @@
         <strong>{{messageProp.author.name}}:</strong>
       </div>
       <div class="col-9 col-md-10 text-left">
-        <p
-          :contentEditable="user._id == messageProp.author._id"
-          v-text="messageProp.body"
-          @blur="updateText"
-        ></p>
+        <p :contentEditable="user._id == messageProp.author._id" v-text="messageProp.body" @blur="updateText"></p>
         <div v-if="user._id != messageProp.author._id"></div>
         <div v-else>
           <div class="row">
@@ -64,75 +55,68 @@
 
 
 <script>
-import editMessageModal from "../components/EditMessageModal";
-export default {
-  props: ["messageProp"],
-  data() {
-    return {
-      message: {
-        body: ""
+  export default {
+    props: ["messageProp"],
+    data() {
+      return {
+        message: {
+          body: ""
+        },
+        // editMessageModal
+        showformModal: false
+      };
+    },
+    mounted() {
+      let payload = {
+        author: this.messageProp.author._id,
+        chatId: this.messageProp.chat._id,
+        messageId: this.messageProp._id
+      };
+    },
+    computed: {
+      currentCharacter() {
+        return this.$store.state.currentCharacter;
       },
-      // editMessageModal
-      showformModal: false
-    };
-  },
-  mounted() {
-    let payload = {
-      author: this.messageProp.author._id,
-      chatId: this.messageProp.chat._id,
-      messageId: this.messageProp._id
-    };
-  },
-  computed: {
-    currentCharacter() {
-      return this.$store.state.currentCharacter;
+      user() {
+        return this.$store.state.user;
+      }
     },
-    user() {
-      return this.$store.state.user;
-    }
-  },
-  methods: {
-    updateText(evt) {
-      var updated = evt.target.innerText;
-      this.messageProp.body = updated;
-      this.$store.dispatch("editMessage", this.messageProp);
-      this.showformModal = false;
-    },
+    methods: {
+      updateText(evt) {
+        var updated = evt.target.innerText;
+        this.messageProp.body = updated;
+        this.$store.dispatch("editMessage", this.messageProp);
+        this.showformModal = false;
+      },
 
-    // openEditor(editMessage) {
-    //   $("#editMessageModal").modal("show");
-    // },
-    deleteMessage(message) {
-      this.$store.dispatch("deleteMessage", message);
+      deleteMessage(message) {
+        this.$store.dispatch("deleteMessage", message);
+      },
+
+      editMessage(event) {
+        this.messageProp.body = event.target;
+      }
     },
-    // submit() {
-    //   console.log("cool");
-    //   this.showformModal = false;
-    // },
-    editMessage(event) {
-      this.messageProp.body = event.target;
+    components: {
     }
-  },
-  components: {
-    editMessageModal
-  }
-};
+  };
 </script>
 
 
 <style scoped>
-.timestamp {
-  color: #bbb;
-  font-size: 9pt;
-}
-.dialogue-box {
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 8px;
-}
+  .timestamp {
+    color: #bbb;
+    font-size: 9pt;
+  }
 
-.z-index {
-  /* position: relative !important; */
-  z-index: 9999 !important;
-}
+  .dialogue-box {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .z-index {
+    /* position: relative !important; */
+    z-index: 9999 !important;
+  }
 </style>

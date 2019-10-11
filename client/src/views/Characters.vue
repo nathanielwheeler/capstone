@@ -3,87 +3,89 @@
 		<div class="row">
 			<div class="col-12">
 				<h3 class="offset-3 col-6 text-center">My Characters</h3>
+				<div class="col-12">
+					<!-- <button class="btn btn-info" data-toggle="modal" :data-target="#create-character-modal">Make a new character!</button>    -->
+					<create-character-modal />
+					<br />
+					<br />
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-12">
-				<!-- <button class="btn btn-info" data-toggle="modal" :data-target="#create-character-modal">Make a new character!</button>    -->
-				<create-character-modal />
-			</div>
-			<br />
-			<br />
 
-			<div class="editcharacter col-12 col-md-6 col-lg-4">
-				<div class="card bg-dark text-light m-3" v-for="character in characters" :key="character._id">
-					<strong class="card-header text-center">{{character.name}}</strong>
-					<div class="card-body">
-						<p>{{character.description}}</p>
-					</div>
-					<div class="card-footer text-center">
-						<button
-							class="btn btn-secondary mx-2"
-							data-toggle="modal"
-							:data-target="'#editCharacterModal'+character._id"
-						>Edit</button>
+		<div class="editcharacter row">
+			<div
+				class="col-11 col-md-5 col-lg-3 card bg-dark text-light m-3"
+				v-for="character in characters"
+				:key="character._id"
+			>
+				<strong class="card-header text-center">{{character.name}}</strong>
+				<div class="card-body text-left">
+					<p>{{character.description}}</p>
+				</div>
+				<div class="card-footer text-center">
+					<button
+						class="btn btn-secondary mx-2"
+						data-toggle="modal"
+						:data-target="'#editCharacterModal'+character._id"
+					>Edit</button>
 
-						<!-- #region CHARACTER MODAL-->
-						<div :id="'editCharacterModal'+character._id" class="modal" role="dialog">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"></button>
-										<h4 class="modal-title">Edit your character</h4>
-									</div>
-									<div class="modal-body">
-										<form>
-											<div class="form-group">
-												<label for="group name">Character Name</label>
-												<input
-													type="text"
-													class="form-control"
-													id="charactername"
-													placeholder
-													v-model="character.name"
-												/>
-											</div>
-											<div class="form-group">
-												<label for="group name">Character Stats</label>
-												<textarea
-													class="form-control"
-													id="characterStats"
-													placeholder
-													v-model="character.stats"
-												/>
-											</div>
-											<div class="form-group">
-												<label for="character class">Character Description</label>
-												<textarea
-													class="form-control"
-													aria-label="With textarea"
-													id="characterDescription"
-													v-model="character.description"
-												></textarea>
-												<!-- <input
+					<!-- #region CHARACTER MODAL-->
+					<div :id="'editCharacterModal'+character._id" class="modal" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"></button>
+									<h4 class="modal-title">Edit your character</h4>
+								</div>
+								<div class="modal-body">
+									<form>
+										<div class="form-group">
+											<label for="group name">Character Name</label>
+											<input
+												type="text"
+												class="form-control"
+												id="charactername"
+												placeholder
+												v-model="character.name"
+											/>
+										</div>
+										<div class="form-group">
+											<label for="group name">Character Stats</label>
+											<textarea
+												class="form-control"
+												id="characterStats"
+												placeholder
+												v-model="character.stats"
+											/>
+										</div>
+										<div class="form-group">
+											<label for="character class">Character Description</label>
+											<textarea
+												class="form-control"
+												aria-label="With textarea"
+												id="characterDescription"
+												v-model="character.description"
+											></textarea>
+											<!-- <input
                         type="text"
                         class="form-control"
                         id="characterDescription"
                         placeholder
                         v-model="character.description"
-												/>-->
-												<button type="submit" @click="editCharacter(character)" class="btn btn-primary">Submit</button>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									</div>
+											/>-->
+											<button type="submit" @click="editCharacter(character)" class="btn btn-primary">Submit</button>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
-						<!-- #endregion -->
-
-						<button class="btn btn-danger" type="button" @click="deleteCharacter(character._id)">Delete</button>
 					</div>
+					<!-- #endregion -->
+
+					<button class="btn btn-danger" type="button" @click="deleteCharacter(character._id)">Delete</button>
 				</div>
 			</div>
 		</div>

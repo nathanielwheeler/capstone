@@ -69,7 +69,6 @@
       },
 
       deleteChat(chat) {
-        debugger
         this.$store.dispatch("deleteChat", chat);
       }
     },

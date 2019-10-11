@@ -7,12 +7,9 @@ import Socket from './socket'
 
 //Sets the port to Heroku's, and the files to the built project 
 const port = process.env.PORT || 3000
-const path = require('path');
-const index = path.join(__dirname, 'index.html');
 
 //NOTE next we need to create our server
-let server = express()
-  .use((req, res) => res.sendFile(index))
+let server = express();
 const socketServer = require('http').createServer(server);
 const io = require("socket.io")(socketServer);
 

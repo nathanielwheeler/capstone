@@ -55,53 +55,6 @@
 
 
 <script>
-<<<<<<< HEAD
-  export default {
-    props: ["messageProp"],
-    data() {
-      return {
-        message: {
-          body: ""
-        },
-        // editMessageModal
-        showformModal: false
-      };
-    },
-    mounted() {
-      let payload = {
-        author: this.messageProp.author._id,
-        chatId: this.messageProp.chat._id,
-        messageId: this.messageProp._id
-      };
-    },
-    computed: {
-      currentCharacter() {
-        return this.$store.state.currentCharacter;
-      },
-      user() {
-        return this.$store.state.user;
-      }
-    },
-    methods: {
-      updateText(evt) {
-        var updated = evt.target.innerText;
-        this.messageProp.body = updated;
-        this.$store.dispatch("editMessage", this.messageProp);
-        this.showformModal = false;
-      },
-
-      deleteMessage(message) {
-        this.$store.dispatch("deleteMessage", message);
-      },
-
-      editMessage(event) {
-        this.messageProp.body = event.target;
-      }
-    },
-    components: {
-    }
-  };
-=======
 export default {
 	props: ["messageProp"],
 	data() {
@@ -152,12 +105,11 @@ export default {
 	},
 	components: {}
 };
->>>>>>> f0af7f484453eae3963b5229cc524baaa03ff7ac
 </script>
 
 
 <style scoped>
-  <<<<<<< HEAD .timestamp {
+  .timestamp {
     color: #bbb;
     font-size: 9pt;
   }
@@ -173,7 +125,7 @@ export default {
     z-index: 9999 !important;
   }
 
-  =======.timestamp {
+ .timestamp {
     color: #bbb;
     font-size: 9pt;
   }
@@ -188,6 +140,4 @@ export default {
     /* position: relative !important; */
     z-index: 9999 !important;
   }
-
-  >>>>>>>f0af7f484453eae3963b5229cc524baaa03ff7ac
 </style>

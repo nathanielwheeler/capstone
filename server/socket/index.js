@@ -9,6 +9,9 @@ class Socket {
     });
     io.on("join", data => this.joinRoom(data))
   }
+
+
+
   newConnection(socket) {
     socket.emit("CONNECTED", {
       socket: socket.id,

@@ -2,7 +2,11 @@ class Socket {
   setIO(io) {
     this.io = io
     this.rooms = {}
-    io.on("connection", socket => this.newConnection(socket));
+    io.on("connection", socket => {
+      console.log('Client connected')
+      socket.on('disconnect', () => console.log('Client disconnected'))
+      this.newConnection(socket)
+    });
     io.on("join", data => this.joinRoom(data))
   }
   newConnection(socket) {

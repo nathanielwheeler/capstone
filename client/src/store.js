@@ -82,7 +82,8 @@ export default new Vuex.Store({
       commit,
       dispatch
     }) {
-      socket = io('//localhost:3000')
+      // socket = io('//localhost:3000')
+      socket = io('//post-n-play.herokuapp.com')
       socket.on('CONNECTED', data => {
         console.log('Connected to socket')
       })

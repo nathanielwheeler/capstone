@@ -5,6 +5,7 @@ import bp from 'body-parser'
 import DbContext from "./db/dbConfig"
 import Socket from './socket'
 
+//Sets the port to Heroku's, and the files to the built project 
 const port = process.env.PORT || 3000
 
 //NOTE next we need to create our server

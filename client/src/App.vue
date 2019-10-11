@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav id="nav">
-      <div class="row">
+      <div class="row justify-content-around">
         <div class="col-4">
           <router-link to="/characters">
             <button class="space btn btn-dark">Characters</button>
@@ -13,13 +13,11 @@
           </div>
         </div>
 
-        <router-link to="/" class="col-3">
-          <div class="row logo">
-            <img class="col-12" src="../public/P&PLogo.jpg" alt />
-          </div>
+        <router-link to="/" class="col-3 logo">
+          <br />
         </router-link>
 
-        <div class="col-4 offset-1">
+        <div class="col-4">
           <router-link to="/chats">
             <button class="Chats space btn btn-dark">Chats</button>
           </router-link>
@@ -81,8 +79,10 @@ export default {
 }
 
 .logo {
-  width: 220%;
-  height: 100%;
+  background-image: url(../public/P&PLogo.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .space {

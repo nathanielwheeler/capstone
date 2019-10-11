@@ -6,7 +6,7 @@
     <br />
     <div class="welcome">
       <strong>Welcome to Post & Play, an app that lets people play tabletop games, without the tabletop!</strong>
-      <br />
+      <br>
       <br> 
       <br> 
     </div>
@@ -41,11 +41,12 @@ export default {
 <style scoped>
 .home {
   color: black;
+  text-align: center; 
 }
 .welcome {
-  width: 85%; 
   font-size: 4vh;
   text-align: center; 
+  
 }
 .current-chats {
   color: black;

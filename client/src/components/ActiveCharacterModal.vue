@@ -34,13 +34,6 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" @click="toggleStyle(displayStyle)" class="btn btn-info">Edit Style</button>
-						<div>
-							<button
-								class="btn btn-secondary mx-2"
-								data-toggle="modal"
-								:data-target="'#editCharacterModal'+activeCharacter._id"
-							>Edit</button>
-						</div>
 
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 					</div>

@@ -37,16 +37,6 @@ export default class ChatController {
         catch (err) { next(err) }
     }
 
-    // async getMyChats(req, res, next) {
-    //     try {
-    //         //only gets chats by user who is logged in
-    //         let data = await _chatService.find({ author: req.session.uid }).populate('author', 'name')
-    //         return res.send(data)
-    //     }
-    //     catch (err) { next(err) }
-    // }
-
-
     // NOTE This function returns an array with the most recent message at index 0
     async getMessages(req, res, next) {
         try {
@@ -88,18 +78,6 @@ export default class ChatController {
 
     }
 
-    // async edit(req, res, next) {
-    //     try {
-    //         let data = await _chatService.findOneAndUpdate({ _id: req.params.id, }, req.body, { new: true })
-    //         if (data) {
-    //             return res.send(data)
-    //         }
-    //         throw new Error("invalid id")
-    //     } catch (error) {
-    //         next(error)
-    //     }
-    // }
-
     async getUserSubscriptions(req, res, next) {
         try {
             let data = await _chatService.find({ subscribers: { $in: req.session.uid } })
@@ -135,40 +113,4 @@ export default class ChatController {
             next(error)
         }
     }
-    //     let chat = await _chatService.findByIdAndUpdate(req.params.id, { $deleteFromSet: { subscribers: req.session.uid } })
-
-    //     let chat = await _chatService.findById(req.params.id)
-    //     let index = chat.subscribers.indexOf(req.session.uid)
-    //     if (index == -1) {
-    //         next(new Error("You aren't even subscribed bro"))
-    //     } else {
-    //         try {
-    //             chat.subscribers.splice(index, 1)
-    //             await chat.save()
-    //             res.send("Unsubscribed!")
-    //         } catch (error) {
-    //             console.error(error)
-    //         }
-    //     }
-    // }
-
-    // if (!chat.find({ subscribers: { $in: req.session.uid } })) 
-    //NOTE if the users Id is NOT in the subscribers
-    // if (!chat(req.session.uid)) {
-
-    //         //NOTE Add user id to subscriber array
-    //         chat.subscribers.$push(req.session.uid)
-    //         //NOTE Save Changes
-    //         await chat.save();
-    //         //NOTE notify of success
-    //         
-
-    //     }
-    // } else {
-    //     next(new Error("You're already subscribed bruh"))
-    // }
-
-
-
-
 }

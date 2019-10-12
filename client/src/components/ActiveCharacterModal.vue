@@ -33,71 +33,16 @@
 						<editCharacterStyle v-if="displayStyle === true" v-bind:character="activeCharacter"></editCharacterStyle>
 					</div>
 					<div class="modal-footer">
-						<button
-							type="button"
-							@click="toggleStyle(displayStyle)"
-							class="btn btn-info border"
-						>Edit Style</button>
+						<button type="button" @click="toggleStyle(displayStyle)" class="btn btn-info">Edit Style</button>
 						<div>
 							<button
-								class="btn btn-dark mx-2"
+								class="btn btn-secondary mx-2"
 								data-toggle="modal"
 								:data-target="'#editCharacterModal'+activeCharacter._id"
 							>Edit</button>
-
-							<div :id="'editCharacterModal'+activeCharacter._id" class="modal" role="dialog">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"></button>
-											<h4 class="modal-title">Edit your character</h4>
-										</div>
-										<div class="modal-body">
-											<form>
-												<div class="form-group">
-													<label for="group name">Character Name</label>
-													<input
-														type="text"
-														class="form-control"
-														id="charactername"
-														placeholder
-														v-model="activeCharacter.name"
-													/>
-												</div>
-												<div class="form-group">
-													<label for="group name">Character Stats</label>
-													<textarea
-														class="form-control"
-														id="characterStats"
-														placeholder
-														v-model="activeCharacter.stats"
-													/>
-												</div>
-												<div class="form-group">
-													<label for="character class">Character Description</label>
-													<textarea
-														class="form-control"
-														aria-label="With textarea"
-														id="characterDescription"
-														v-model="activeCharacter.description"
-													></textarea>
-
-													<button
-														type="submit"
-														@click="editCharacter(activeCharacter)"
-														class="btn btn-primary"
-													>Submit</button>
-												</div>
-											</form>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
-						<button type="button" class="btn btn-danger border" data-dismiss="modal">Close</button>
+
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>

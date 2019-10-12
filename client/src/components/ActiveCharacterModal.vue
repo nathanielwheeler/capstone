@@ -26,7 +26,7 @@
 							<h3>Character Description</h3>
 							<label for="character class">{{activeCharacter.description}}</label>
 						</form>
-						<editStyle v-if="displayStyle === true" v-bind:character="activeCharacter"></editStyle>
+						<editCharacterStyle v-if="displayStyle === true" v-bind:character="activeCharacter"></editCharacterStyle>
 					</div>
 					<div class="modal-footer">
 						<button

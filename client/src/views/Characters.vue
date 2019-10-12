@@ -5,7 +5,7 @@
 				<h3 class="offset-3 col-6 text-center">My Characters</h3>
 				<div class="col-12">
 					<!-- <button class="btn btn-info" data-toggle="modal" :data-target="#create-character-modal">Make a new character!</button>    -->
-					<create-character-modal />
+					<character-modal />
 					<br />
 					<br />
 				</div>
@@ -95,8 +95,7 @@
 
 
 <script>
-import CreateCharacterModal from "../components/CreateCharacterModal.vue";
-import ActiveCharacterModal from "../components/ActiveCharacterModal.vue";
+import CharacterModal from "../components/CharacterModal.vue";
 
 export default {
 	name: "characters",
@@ -136,8 +135,7 @@ export default {
 		}
 	},
 	components: {
-		CreateCharacterModal,
-		ActiveCharacterModal
+		CharacterModal
 	}
 };
 </script>

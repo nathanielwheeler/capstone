@@ -1,38 +1,50 @@
 <template>
-  <div class="navBar">
-    <h1>P&P</h1> 
-    <button class="nav btn btn-info"></button> 
-    <button class="Current Character btn btn-info"></button>
-    <button class="Characters btn btn-info"></button> 
-    <button class="Group btn btn-info"></button> 
-  </div>
+	<div class="nav text-light container-fluid d-flex justify-content-around">
+		<div class="row">
+			<div class="col">
+				<router-link to="/chats" class="btn btn-secondary">Chats</router-link>
+				<router-link to="/characters" class="btn btn-secondary">Characters</router-link>
+			</div>
+			<router-link to="/" class="col logo">
+				<br />
+			</router-link>
+			<div class="col">
+				<dice-sim />
+				<button class="btn btn-secondary">Notifications</button>
+			</div>
+		</div>
+	</div>
 </template>
 
 
 <script>
+import DiceSim from "../../src/components/DiceSim.vue";
+
 export default {
-  name: "navBar",
-  data() {
-    return {};
-  },
-  computed: {},
-  methods: {},
-  components: {}
+	name: "navbar",
+	data() {
+		return {};
+	},
+	computed: {},
+	methods: {},
+	components: {
+		DiceSim
+	}
 };
 </script>
 
 
 <style scoped>
 .nav {
-  border-radius: 50%;
+	background: black;
 }
-.current {
-  border-radius: 50%;
+.logo {
+	background-image: url(../../public/P&PLogo.jpg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 }
-.characters {
-  border-radius: 50%;
-}
-.group {
-  border-radius: 50%;
+.btn {
+	margin: 5px;
 }
 </style>

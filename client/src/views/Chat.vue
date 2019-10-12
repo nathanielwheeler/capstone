@@ -64,6 +64,9 @@ export default {
 
 
 <style scoped>
+.container {
+	max-width: 750px;
+}
 .mybutton {
 	padding: 0px;
 }

@@ -26,16 +26,16 @@
 					<button
 						class="btn btn-secondary mx-2"
 						data-toggle="modal"
-						:data-target="'#editCharacterModal'+character._id"
+						:data-target="'#characterModal'+character._id"
 					>Edit</button>
 
 					<!-- #region CHARACTER MODAL-->
-					<div :id="'editCharacterModal'+character._id" class="modal" role="dialog">
+					<div :id="'characterModal'+character._id" class="modal" role="dialog">
 						<div class="modal-dialog">
-							<div class="modal-content">
+							<div class="modal-content bg-dark text-light">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"></button>
-									<h4 class="modal-title">Edit your character</h4>
+									<h4 class="modal-title text-center">Edit your character</h4>
 								</div>
 								<div class="modal-body">
 									<form>
@@ -66,19 +66,16 @@
 												id="characterDescription"
 												v-model="character.description"
 											></textarea>
-											<!-- <input
-                        type="text"
-                        class="form-control"
-                        id="characterDescription"
-                        placeholder
-                        v-model="character.description"
-											/>-->
-											<button type="submit" @click="editCharacter(character)" class="btn btn-primary">Submit</button>
+											<button
+												type="submit"
+												@click="editCharacter(character)"
+												class="btn btn-outline-primary m-3"
+											>Submit</button>
 										</div>
 									</form>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>

@@ -201,16 +201,6 @@ export default new Vuex.Store({
       }
     },
 
-    // async updateComment({ commit }, comment) {
-    //   try {
-    //     let endPoint = `comments/${comment._id}`
-    //     let updatedComment = await _api.put(endPoint, comment)
-    //     commit('updateComment', updatedComment)
-    //   } catch (error) {
-    //     console.error('store.js: setCommentLikeValue()')
-    //   }
-    // }
-
     async getCharacters({
       commit,
       dispatch
@@ -377,15 +367,3 @@ export default new Vuex.Store({
     }
   }
 })
-
-// async getComments({ commit, dispatch }, taskId) {
-
-//   try {
-//     let res = await api.get("tasks/" + taskId + "/comments")
-//     let data = {
-//       taskId,
-//       comments: res.data
-//     }
-//     commit('setComments', data)
-//   } catch (error) { console.error(error) }
-// },

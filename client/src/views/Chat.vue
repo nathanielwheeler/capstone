@@ -70,6 +70,9 @@ this.$store.dispatch("unsubscribe", chatId);
 
 
 <style scoped>
+.container {
+	max-width: 750px;
+}
 .mybutton {
 	padding: 0px;
 }

@@ -7,6 +7,9 @@
 					<button class="btn btn-primary mybutton mx-2" @click="subscribe(chat._id)">
 						<b>Subscribe</b>
 					</button>
+            <button class="btn btn-danger mybutton mx-2" @click="unsubscribe(chat._id)">
+              <b>Unsubscribe</b>
+					</button>
 				</h3>
 				<div class="messageBox col-12 d-flex flex-column-reverse border" v-chat-scroll>
 					<message v-for="message in messages" :messageProp="message" :key="message._id"></message>
@@ -51,7 +54,10 @@ export default {
 	methods: {
 		subscribe(chatId) {
 			this.$store.dispatch("subscribe", chatId);
-		}
+    },
+    unsubscribe(chatId) {
+this.$store.dispatch("unsubscribe", chatId); 
+    }
 	},
 	components: {
 		message,
